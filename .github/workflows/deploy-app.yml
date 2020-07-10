@@ -53,9 +53,9 @@ jobs:
     runs-on: ubuntu-latest
     needs: build-backend
     steps:
-      - name: Remove target folder
       - uses: actions/checkout@v2
-        - run: rm -rf backend/target
+      - name: Remove target folder
+        run: rm -rf backend/target
       - name: create target folder
         run: mkdir backend/target
       - name: download green-sitter.jar
