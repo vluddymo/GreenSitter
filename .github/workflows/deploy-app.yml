@@ -42,7 +42,7 @@ jobs:
           java-version: 14
       - name: Build with Maven
         run: mvn -B package --file ./backend/pom.xml
-      - name: upload project-planning.jar file
+      - name: upload green-sitter.jar file
         uses: actions/upload-artifact@v2
         with:
           name: green-sitter.jar
