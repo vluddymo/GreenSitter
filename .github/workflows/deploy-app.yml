@@ -1,6 +1,8 @@
 name: Deploy GreenSitter to heroku
 
-on: push
+on:
+  push:
+    branches: [ master ]
 
 jobs:
   build-frontend:
