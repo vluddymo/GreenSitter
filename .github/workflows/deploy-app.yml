@@ -54,6 +54,8 @@ jobs:
     needs: build-backend
     steps:
       - uses: actions/checkout@v2
+      - name: Remove target folder
+        run: rm -rf backend/target
       - name: create target folder
         run: mkdir backend/target
       - name: download green-sitter.jar
