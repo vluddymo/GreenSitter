@@ -10,3 +10,4 @@ public class ReactRoutingForwarding {
     public String forwardToRoutUrl() {
         return "forward:/";
     }
+}
