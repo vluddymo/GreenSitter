@@ -19,6 +19,6 @@ public class PlantController {
 
     @GetMapping
     public Iterable<Plant> getAllPlantsTest(){
-        return plantService.addSomeTestPlants();
+        return plantService.listPlants();
     }
 }
