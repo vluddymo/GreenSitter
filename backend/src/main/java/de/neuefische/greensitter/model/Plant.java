@@ -9,12 +9,10 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Document(collection = "gardenUsers")
-public class GardenUser {
+@Document(collection = "plants")
+public class Plant {
     @Id
-    private String username;
-    private String password;
+    private String name;
+
+
 }
-
-
-
