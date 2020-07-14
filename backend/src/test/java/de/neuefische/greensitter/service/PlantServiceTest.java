@@ -21,8 +21,8 @@ class PlantServiceTest {
         when(plantDb.findAll()).thenReturn(List.of(
                 new Plant("Rosen"),
                 new Plant("Tulpen"),
-                new Plant ("Veilchen"),
-                new Plant ("Efeu")
+                new Plant("Veilchen"),
+                new Plant("Efeu")
         ));
 
         PlantService plantService = new PlantService(plantDb);
@@ -35,8 +35,8 @@ class PlantServiceTest {
         assertEquals(4, listedPlants.size());
         assertTrue(listedPlants.contains(new Plant("Rosen")));
         assertTrue(listedPlants.contains(new Plant("Tulpen")));
-        assertTrue(listedPlants.contains(new Plant ("Veilchen")));
-        assertTrue(listedPlants.contains(new Plant ("Efeu")));
+        assertTrue(listedPlants.contains(new Plant("Veilchen")));
+        assertTrue(listedPlants.contains(new Plant("Efeu")));
 
     }
 
