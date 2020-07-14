@@ -56,7 +56,7 @@ class PlantControllerTest {
         //GIVEN
         String token = loginUser();
 
-        String url = "http://localhost:" + port + "/api/plants";
+        String url = "http://localhost:" + port + "/api/shelve";
         plantDb.save(new Plant("Rosen"));
         plantDb.save(new Plant("Tulpen"));
 

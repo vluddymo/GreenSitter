@@ -2,7 +2,7 @@ import {getJWTToken} from "./jwt-utils";
 
 export async function fetchAllPlants(){
   const token = getJWTToken();
-  const response = await fetch("/api/plants", {
+  const response = await fetch("/api/shelve", {
     method: 'GET',
     headers: {
       Authorization: `Bearer ${token}`,
