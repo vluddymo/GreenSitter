@@ -8,7 +8,8 @@ import Container from "@material-ui/core/Container";
 import PrivateRoute from "./pages/PrivateRoute";
 import LoginPage from "./pages/LoginPage";
 import GardenAppBar from "./components/GardenAppBar";
-import HelloWorldPage from "./pages/HelloWorldPage";
+import PlantsDashboard from "./pages/PlantsDashboard";
+import PlantContextProvider from "./context/plant/PlantContextProvider";
 
 function Navigation() {
   const dispatch = useContext(UserDispatchContext);
@@ -24,9 +25,7 @@ function Navigation() {
         <GardenAppBar/>
         <Container maxWidth={'md'} component="main">
           <Switch>
-            <PrivateRoute path="/" exact component={HelloWorldPage}>
-
-            </PrivateRoute>
+            <PrivateRoute path="/" exact component={PlantsDashboard}/>
             <Route path="/login" exact>
               <LoginPage/>
             </Route>
@@ -40,7 +39,9 @@ function Navigation() {
 function App() {
   return (
       <UserContextProvider>
+        <PlantContextProvider>
           <Navigation/>
+        </PlantContextProvider>
       </UserContextProvider>
   )
 
