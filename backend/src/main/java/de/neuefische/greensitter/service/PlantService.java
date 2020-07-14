@@ -5,8 +5,6 @@ import de.neuefische.greensitter.model.Plant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
-
 @Service
 public class PlantService {
 
@@ -17,8 +15,13 @@ public class PlantService {
         this.plantDb = plantDb;
     }
 
-
     public Iterable<Plant> listPlants() {
         return plantDb.findAll();
+    }
+
+    public Plant addPlant(String name){
+        Plant newPlant = new Plant(name);
+        plantDb.save(newPlant);
+        return newPlant;
     }
 }
