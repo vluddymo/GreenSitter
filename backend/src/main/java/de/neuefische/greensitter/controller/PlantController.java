@@ -1,10 +1,11 @@
 package de.neuefische.greensitter.controller;
 
+import de.neuefische.greensitter.model.AddPlantDto;
 import de.neuefische.greensitter.model.Plant;
 import de.neuefische.greensitter.service.PlantService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
 
 @RequestMapping("api/shelve")
 @RestController
@@ -18,7 +19,13 @@ public class PlantController {
     }
 
     @GetMapping
-    public Iterable<Plant> getAllPlants(){
+    public Iterable<Plant> getAllPlants() {
         return plantService.listPlants();
     }
+
+    @PutMapping
+    public Plant addPlantToShelve(@RequestBody @Valid AddPlantDto data) {
+        return plantService.addPlant(data.getName());
+    }
 }
+
