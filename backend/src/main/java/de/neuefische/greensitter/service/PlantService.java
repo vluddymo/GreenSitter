@@ -17,9 +17,6 @@ public class PlantService {
         this.plantDb = plantDb;
     }
 
-    public Optional<Plant> getPlant(String id) {
-        return plantDb.findById(id);
-    }
 
     public Iterable<Plant> listPlants() {
         return plantDb.findAll();
