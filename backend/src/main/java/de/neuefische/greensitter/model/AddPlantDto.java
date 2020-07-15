@@ -11,9 +11,7 @@ import javax.validation.constraints.Size;
 @NoArgsConstructor
 public class AddPlantDto {
 
-
-
-    @Size(min = 5, message = "Please tell me what kind of plant you want to add to your shelve")
+    @Size(min = 3, message = "Please use a name with at least three characters")
     private String name;
 
 }
