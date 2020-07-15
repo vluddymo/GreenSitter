@@ -7,12 +7,14 @@ import de.neuefische.greensitter.model.GreenSitterUser;
 import de.neuefische.greensitter.model.LoginData;
 import de.neuefische.greensitter.model.Plant;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.boot.web.server.LocalServerPort;
+import org.springframework.data.mongodb.core.aggregation.ArithmeticOperators;
 import org.springframework.http.*;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
@@ -79,7 +81,7 @@ class PlantControllerTest {
     }
 
     @Test
-    public void addIdeaShouldAddIdea() {
+    public void addPlantShouldAddPlant() {
         // GIVEN
         String token = loginUser();
 
@@ -100,5 +102,24 @@ class PlantControllerTest {
 
         Optional<Plant> byName = plantDb.findById("flower");
         assertTrue(byName.isPresent());
+    }
+
+    @Test
+    public void checkMinLengthName(){
+        //GIVEN
+        String token = loginUser();
+        AddPlantDto plantDto = new AddPlantDto( "ET");
+        String url = "http://localhost:" + port + "/api/shelve";
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.setBearerAuth(token);
+        HttpEntity<AddPlantDto> requestEntity = new HttpEntity<>(plantDto,headers);
+
+        //WHEN
+        ResponseEntity<Plant> putResponse = restTemplate.exchange(url, HttpMethod.PUT, requestEntity, Plant.class);
+
+
+        //THEN
+        assertEquals(HttpStatus.BAD_REQUEST, putResponse.getStatusCode());
     }
 }
