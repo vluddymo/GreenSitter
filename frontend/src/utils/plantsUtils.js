@@ -13,3 +13,22 @@ export async function fetchAllPlants(){
   }
   return await response.json();
 }
+
+export async function putAPlant(plantName) {
+  const token = getJWTToken();
+  return fetch('/api/shelve', {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify({ name: plantName }),
+  }).then((response) => {
+    if (response.status !== 200) {
+      throw new Error('invalid response');
+    }
+
+    return response.json();
+  });
+
+}
