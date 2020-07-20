@@ -1,28 +1,32 @@
-import {removeJWTToken} from "../utils/jwt-utils";
+import {removeJWTToken} from "../../utils/jwt-utils";
 import Button from "@material-ui/core/Button";
 import React, {useContext} from "react";
 import Typography from "@material-ui/core/Typography";
 import Toolbar from "@material-ui/core/Toolbar";
 import AppBar from "@material-ui/core/AppBar";
-import {UserDispatchContext, UserStateContext} from "../context/user/UserContext";
-import {LOGOUT} from "../context/user/UserContextProvider";
+import {UserDispatchContext, UserStateContext} from "../../context/user/UserContext";
+import {LOGOUT} from "../../context/user/UserContextProvider";
 import makeStyles from "@material-ui/core/styles/makeStyles";
 
 const useStyles = makeStyles(() => ({
+  root: {
+    backgroundColor: "darkgreen",
+  },
   title: {
     flexGrow: 1,
   },
+
 }));
 
 function GardenAppBar() {
   const classes = useStyles();
-  const { authStatus, userData } = useContext(UserStateContext);
+  const { authStatus /*, userData*/} = useContext(UserStateContext);
   const dispatch = useContext(UserDispatchContext);
   return (
-      <AppBar position="static">
+      <AppBar position="static" className={classes.root}>
         <Toolbar>
           <Typography variant="h6" className={classes.title}>
-            GreenSitter {userData && userData.sub}
+            GreenSitter
           </Typography>
           {authStatus === 'SUCCESS' && (
               <Button

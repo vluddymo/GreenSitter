@@ -6,3 +6,7 @@ spring:
 auth:
   jwt:
     secret: top-secret-for-token
+
+api:
+  auth:
+    token: xxx

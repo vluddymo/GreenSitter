@@ -1,6 +1,6 @@
 package de.neuefische.greensitter.controller;
 
-import de.neuefische.greensitter.model.AddPlantDto;
+import de.neuefische.greensitter.model.ApiSearchDto;
 import de.neuefische.greensitter.model.Plant;
 import de.neuefische.greensitter.service.PlantService;
 import org.springframework.web.bind.annotation.*;
@@ -24,7 +24,7 @@ public class PlantController {
     }
 
     @PutMapping
-    public Plant addPlantToShelve(@RequestBody @Valid AddPlantDto data) {
+    public Plant addPlantToShelve(@RequestBody @Valid ApiSearchDto data) {
         return plantService.addPlant(data.getName());
     }
 }

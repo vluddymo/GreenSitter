@@ -7,9 +7,10 @@ import {BrowserRouter, Switch, Route} from 'react-router-dom';
 import Container from "@material-ui/core/Container";
 import PrivateRoute from "./pages/PrivateRoute";
 import LoginPage from "./pages/LoginPage";
-import GardenAppBar from "./components/GardenAppBar";
+import GardenAppBar from "./components/GardenAppBar/GardenAppBar";
 import PlantsDashboard from "./pages/PlantsDashboard";
 import PlantContextProvider from "./context/plant/PlantContextProvider";
+import AddPlantPage from "./pages/AddPlantPage";
 
 function Navigation() {
   const dispatch = useContext(UserDispatchContext);
@@ -25,6 +26,11 @@ function Navigation() {
         <GardenAppBar/>
         <Container maxWidth={'md'} component="main">
           <Switch>
+            <PrivateRoute
+                path="/plant/add"
+                component={AddPlantPage}
+                exact
+            />
             <PrivateRoute path="/" exact component={PlantsDashboard}/>
             <Route path="/login" exact>
               <LoginPage/>
@@ -40,7 +46,7 @@ function App() {
   return (
       <UserContextProvider>
         <PlantContextProvider>
-          <Navigation/>
+            <Navigation/>
         </PlantContextProvider>
       </UserContextProvider>
   )
