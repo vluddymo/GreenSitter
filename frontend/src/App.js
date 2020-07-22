@@ -11,6 +11,8 @@ import GardenAppBar from "./components/GardenAppBar/GardenAppBar";
 import PlantsDashboard from "./pages/PlantsDashboard";
 import PlantContextProvider from "./context/plant/PlantContextProvider";
 import AddPlantPage from "./pages/AddPlantPage";
+import {ThemeProvider} from '@material-ui/styles';
+import GardenSitterTheme from "./theme/GardenSitterTheme";
 
 function Navigation() {
   const dispatch = useContext(UserDispatchContext);
@@ -44,11 +46,13 @@ function Navigation() {
 
 function App() {
   return (
-      <UserContextProvider>
-        <PlantContextProvider>
+      <ThemeProvider theme={GardenSitterTheme}>
+        <UserContextProvider>
+          <PlantContextProvider>
             <Navigation/>
-        </PlantContextProvider>
-      </UserContextProvider>
+          </PlantContextProvider>
+        </UserContextProvider>
+      </ThemeProvider>
   )
 
 }
