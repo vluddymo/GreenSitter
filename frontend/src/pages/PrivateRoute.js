@@ -3,9 +3,11 @@ import {LOGOUT} from "../context/user/UserContextProvider";
 import {Route, Redirect} from "react-router-dom";
 import {UserDispatchContext, UserStateContext} from "../context/user/UserContext";
 import {removeJWTToken} from "../utils/jwt-utils";
+import LoadingSpinner from "../components/Spinner/LoadingSpinner";
 
-function PrivateRoute({ component: Component, ...rest }) {
-  const { authStatus, userData } = useContext(UserStateContext);
+function PrivateRoute({component: Component, ...rest}) {
+
+  const {authStatus, userData} = useContext(UserStateContext);
   const dispatch = useContext(UserDispatchContext);
   useEffect(() => {
     if (
@@ -13,7 +15,7 @@ function PrivateRoute({ component: Component, ...rest }) {
         new Date().getTime() / 1000 >= userData.exp
     ) {
       removeJWTToken();
-      dispatch({ type: LOGOUT });
+      dispatch({type: LOGOUT});
     }
   });
 
@@ -21,17 +23,20 @@ function PrivateRoute({ component: Component, ...rest }) {
       <Route
           {...rest}
           render={(props) => {
-            if (authStatus !== 'SUCCESS') {
-              return <Redirect to={'/login'} />;
+            if (authStatus === 'FAILED' || !authStatus) {
+              return <Redirect to={{pathname: "/login", state: {from: props.location}}}/>
+            }
+            if (authStatus === "SUCCESS") {
+
+              if ((new Date().getTime() / 1000) >= userData.exp) {
+                return <Redirect to={{pathname: "/login", state: {from: props.location}}}/>
+              }
+              return <Component {...props}/>
             }
 
-            if (new Date().getTime() / 1000 >= userData.exp) {
-              return <Redirect to={'/login'} />;
-            }
-
-            return <Component {...props} />;
-          }}
-      />
+            return <LoadingSpinner/>
+          }
+          }/>
   );
 }
 
