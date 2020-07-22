@@ -14,7 +14,7 @@ public class ApiSearchService {
     public PlantData[] getSearchResults(String query){
 
         RestTemplate restTemplate = new RestTemplate();
-        String url = "https://trefle.io/api/v1/plants/search?token="+token+"&q="+ query;
+        String url = "https://trefle.io/api/v1/plants/search?token="+token+"&q="+query+"&filter_not[common_name]=null&filter_not[image_url]=null";
 
         ResponseEntity<TrefleApiQueryResults> responseEntity = restTemplate.getForEntity(url, TrefleApiQueryResults.class);
 
@@ -25,7 +25,8 @@ public class ApiSearchService {
             return queryData.getData();
 
         }
-        throw new IllegalStateException("No data form covid api");
+        throw new IllegalStateException("No data from Trefle api");
     }
 
 }
+
