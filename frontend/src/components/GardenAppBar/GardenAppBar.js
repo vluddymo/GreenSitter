@@ -10,7 +10,7 @@ import makeStyles from "@material-ui/core/styles/makeStyles";
 
 const useStyles = makeStyles(() => ({
   root: {
-    backgroundColor: "darkgreen",
+    backgroundColor: "FF219250",
   },
   title: {
     flexGrow: 1,
@@ -20,19 +20,19 @@ const useStyles = makeStyles(() => ({
 
 function GardenAppBar() {
   const classes = useStyles();
-  const { authStatus /*, userData*/} = useContext(UserStateContext);
+  const {authStatus /*, userData*/} = useContext(UserStateContext);
   const dispatch = useContext(UserDispatchContext);
   return (
       <AppBar position="static" className={classes.root}>
         <Toolbar>
-          <Typography variant="h6" className={classes.title}>
+          <Typography variant="h4" className={classes.title} align={"center"}>
             GreenSitter
           </Typography>
           {authStatus === 'SUCCESS' && (
               <Button
                   color="inherit"
                   onClick={() => {
-                    dispatch({ type: LOGOUT });
+                    dispatch({type: LOGOUT});
                     removeJWTToken();
                   }}
               >

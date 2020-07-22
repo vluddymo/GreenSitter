@@ -1,12 +1,12 @@
 import React from "react";
 import Typography from "@material-ui/core/Typography";
 import Card from "@material-ui/core/Card";
-import CardHeader from "@material-ui/core/CardHeader";
 import CardMedia from "@material-ui/core/CardMedia";
 import CardContent from "@material-ui/core/CardContent";
 import CardActions from "@material-ui/core/CardActions";
 import makeStyles from "@material-ui/core/styles/makeStyles";
-import pottyPlant from "../../images/pottyPlant.svg"
+import pottyPlant from "../../images/pottyPlant.svg";
+import "fontsource-roboto";
 
 const useStyles = makeStyles({
   root: {
@@ -33,21 +33,19 @@ export default function SearchResultCard({result}) {
 
   return (
       <Card className={classes.root} key={result.id}>
-        <CardHeader
-            className={classes.header}
-            title={result.scientific_name}
-            subheader={result.common_name}
-        />
+
         <CardMedia
             className={classes.media}
             image={result.image_url ? result.image_url : image}
             title={result.scientific_name}
         />
         <CardContent>
-          <Typography variant="body2" color="textSecondary" component="p">
+          <Typography variant={"h5"}>{result.scientific_name}</Typography>
+          <Typography variant="h6">{result.common_name ? result.common_name : "-"}</Typography>
+          <Typography variant="body2"  component="p">
             Genus: {result.genus ? result.genus : noDataString}
           </Typography>
-          <Typography variant="body2" color="textSecondary" component="p">
+          <Typography variant="body2" component="p">
             Family: {result.family_common_name ? result.family_common_name : noDataString}
           </Typography>
         </CardContent>
