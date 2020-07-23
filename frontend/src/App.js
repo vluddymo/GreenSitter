@@ -3,14 +3,14 @@ import './App.css';
 import UserContextProvider from "./context/user/UserContextProvider";
 import PlantContextProvider from "./context/plant/PlantContextProvider";
 import {ThemeProvider} from '@material-ui/styles';
-import GardenSitterTheme from "./theme/GardenSitterTheme";
+import GreenSitterTheme from "./theme/GreenSitterTheme";
 import Navigation from "./components/Navigation/Navigation";
 
 
 
 function App() {
   return (
-      <ThemeProvider theme={GardenSitterTheme}>
+      <ThemeProvider theme={GreenSitterTheme}>
         <UserContextProvider>
           <PlantContextProvider>
             <Navigation/>
