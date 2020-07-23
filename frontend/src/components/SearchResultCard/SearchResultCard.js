@@ -7,6 +7,7 @@ import CardActions from "@material-ui/core/CardActions";
 import makeStyles from "@material-ui/core/styles/makeStyles";
 import pottyPlant from "../../images/pottyPlant.svg";
 import "fontsource-roboto";
+import Button from "@material-ui/core/Button";
 
 const useStyles = makeStyles({
   root: {
@@ -50,6 +51,7 @@ export default function SearchResultCard({result}) {
           </Typography>
         </CardContent>
         <CardActions disableSpacing>
+          <Button>Add to shelve</Button>
         </CardActions>
       </Card>
   );
