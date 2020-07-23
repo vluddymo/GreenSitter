@@ -3,10 +3,10 @@ import Grid from "@material-ui/core/Grid";
 import PlantPreviewCard from "../components/PlantPreviewCard/PlantPreviewCard";
 import {fetchPlants} from "../context/plant/plantActions";
 import {PlantDispatchContext, PlantStateContext} from "../context/plant/PlantContext";
-import CircularProgress from "@material-ui/core/CircularProgress";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import { useHistory } from 'react-router-dom';
+import LoadingSpinner from "../components/Spinner/LoadingSpinner";
 
 export default function PlantsDashboard() {
 
@@ -37,7 +37,7 @@ export default function PlantsDashboard() {
           >
             Add Plant
           </Button>
-          {fetchStatus === 'PENDING' && <CircularProgress/>}
+          {fetchStatus === 'PENDING' && <LoadingSpinner/>}
           {fetchStatus === 'FAILED' && (
               <Typography variant="body1" color="error" component="p">
                 Fetch Plants failed
