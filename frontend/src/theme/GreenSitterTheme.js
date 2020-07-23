@@ -1,6 +1,6 @@
 import {createMuiTheme} from "@material-ui/core/styles";
 
-const GardenSitterTheme = createMuiTheme({
+const GreenSitterTheme = createMuiTheme({
   palette: {
     primary:
         {
@@ -43,4 +43,4 @@ const GardenSitterTheme = createMuiTheme({
 
 });
 
-export default GardenSitterTheme;
+export default GreenSitterTheme;
