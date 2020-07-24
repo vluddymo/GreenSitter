@@ -1,9 +1,8 @@
 package de.neuefische.greensitter.controller;
 
-import de.neuefische.greensitter.db.PlantMongoDb;
 import de.neuefische.greensitter.db.UserMongoDb;
 import de.neuefische.greensitter.model.GreenSitterUser;
-import de.neuefische.greensitter.model.LoginData;
+import de.neuefische.greensitter.model.dtos.LoginData;
 import de.neuefische.greensitter.security.JWTUtils;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

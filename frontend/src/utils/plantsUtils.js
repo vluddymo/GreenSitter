@@ -14,7 +14,7 @@ export async function fetchAllPlants(){
   return await response.json();
 }
 
-export async function putAPlant(plantName) {
+export async function putAPlant(data) {
   const token = getJWTToken();
   return fetch('/api/shelve', {
     method: 'PUT',
@@ -22,7 +22,7 @@ export async function putAPlant(plantName) {
       'Content-Type': 'application/json',
       Authorization: `Bearer ${token}`,
     },
-    body: JSON.stringify({ name: plantName }),
+    body: JSON.stringify({ nickName: data.nickName, choiceId: data.choiceId }),
   }).then((response) => {
     if (response.status !== 200) {
       throw new Error('invalid response');
