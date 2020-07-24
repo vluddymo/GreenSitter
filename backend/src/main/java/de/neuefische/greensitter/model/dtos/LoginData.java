@@ -1,4 +1,4 @@
-package de.neuefische.greensitter.model;
+package de.neuefische.greensitter.model.dtos;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
