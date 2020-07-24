@@ -1,6 +1,5 @@
 package de.neuefische.greensitter.model;
 
-import de.neuefische.greensitter.api.dtos.ImagesDto;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
