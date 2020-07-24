@@ -7,8 +7,8 @@ import CardActions from "@material-ui/core/CardActions";
 import makeStyles from "@material-ui/core/styles/makeStyles";
 import pottyPlant from "../../images/pottyPlant.svg";
 import "fontsource-roboto";
-import Button from "@material-ui/core/Button";
 import AddPlantDialog from "../AddPlantDialog/AddPlantDialog";
+import Button from "@material-ui/core/Button";
 
 const useStyles = makeStyles({
   root: {
@@ -29,6 +29,7 @@ const useStyles = makeStyles({
 
 export default function SearchResultCard({result}) {
 
+
   const noDataString = "No data"
   const image = pottyPlant;
   const classes = useStyles();
@@ -37,7 +38,6 @@ export default function SearchResultCard({result}) {
 
   return (
       <Card className={classes.root} key={result.id}>
-
         <CardMedia
             className={classes.media}
             image={result.image_url ? result.image_url : image}
@@ -64,5 +64,4 @@ export default function SearchResultCard({result}) {
         </CardActions>
       </Card>
   );
-
 }

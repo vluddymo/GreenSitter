@@ -43,7 +43,7 @@ export default function PlantPreviewCard({plant}) {
   return (
       <Grid container justify={"center"}>
         <Grid item xs={10}>
-          <Card className={classes.root} key={plant.id}>
+          <Card className={classes.root} key={plant.nickName}>
             <Grid item xs={4} sm={3}>
               <CardMedia className={classes.cover} title="potty plant" image={plant.imageUrl === "null" ? pottyPlant : plant.imageUrl}/>
             </Grid>

@@ -31,7 +31,6 @@ public class PlantController {
     public Plant addPlantToShelve(@RequestBody ChosenPlantDto choiceData) {
         ChoiceFetchData plantData = apiSearchService.getChoiceFromApi(choiceData.getChoiceId());
         Plant plant = new Plant();
-        plant.setId(choiceData.getChoiceId());
         plant.setNickName(choiceData.getNickName());
         plant.setCommonName(plantData.getCommon_name());
         plant.setScientificName(plantData.getScientific_name());
