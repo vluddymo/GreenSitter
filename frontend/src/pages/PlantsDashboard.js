@@ -26,7 +26,7 @@ export default function PlantsDashboard() {
         <Grid container justify={'center'}>
           {plants.map((plant) => (
               <PlantPreviewCard
-                  key={plant.name}
+                  key={plant.id}
                   plant={plant}
               />
           ))}
