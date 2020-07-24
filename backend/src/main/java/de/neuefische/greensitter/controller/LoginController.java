@@ -1,6 +1,6 @@
 package de.neuefische.greensitter.controller;
 
-import de.neuefische.greensitter.model.LoginData;
+import de.neuefische.greensitter.model.dtos.LoginData;
 import de.neuefische.greensitter.security.JWTUtils;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.AuthenticationManager;
