@@ -2,22 +2,15 @@ package de.neuefische.greensitter.controller;
 
 import de.neuefische.greensitter.db.PlantMongoDb;
 import de.neuefische.greensitter.db.UserMongoDb;
-import de.neuefische.greensitter.model.ApiSearchDto;
 import de.neuefische.greensitter.model.GreenSitterUser;
-import de.neuefische.greensitter.model.LoginData;
-import de.neuefische.greensitter.model.Plant;
+import de.neuefische.greensitter.model.dtos.LoginData;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.http.*;
 import org.springframework.security.crypto.password.PasswordEncoder;
-
-import java.util.Optional;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 class PlantControllerTest {
@@ -52,7 +45,7 @@ class PlantControllerTest {
         ResponseEntity<String> tokenResponse = restTemplate.postForEntity(loginUrl, new LoginData("superUser", "savePassword"), String.class);
         return tokenResponse.getBody();
     }
-
+/*
     @Test
     public void getAllPlantsShouldReturnAllPlants() {
         //GIVEN
