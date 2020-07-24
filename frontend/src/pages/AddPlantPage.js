@@ -1,8 +1,11 @@
-import React, {useEffect, useState} from "react";
+import React, {useContext, useEffect, useState} from "react";
 import makeStyles from "@material-ui/core/styles/makeStyles";
-import {fetchSearchQuery} from "../utils/api-Utils";
 import SearchResultCard from "../components/SearchResultCard/SearchResultCard";
 import Grid from "@material-ui/core/Grid";
+import {ApiSearchDispatchContext, ApiSearchStateContext} from "../context/apiSearch/ApiSearchContext";
+import {fetchSearchResults} from "../context/apiSearch/apiSearchActions";
+import LoadingSpinner from "../components/Spinner/LoadingSpinner";
+import Typography from "@material-ui/core/Typography";
 
 
 const useStyles = makeStyles({
@@ -16,13 +19,15 @@ export default function AddPlantPage() {
 
   const classes = useStyles();
   const [query, setQuery] = useState("");
-  const [results, setResults] = useState([]);
+  const dispatch = useContext(ApiSearchDispatchContext);
+  const {results, fetchStatus} = useContext(ApiSearchStateContext);
+
 
   useEffect(() => {
     if (query.length > 3) {
-      fetchSearchQuery(query).then(response => setResults(response))
+      fetchSearchResults(dispatch, query)
     }
-  }, [query]);
+  }, [dispatch, query]);
 
   function handleOnInputChange(event) {
     setQuery(event.target.value);
@@ -46,6 +51,12 @@ export default function AddPlantPage() {
                     <SearchResultCard result={result}/>
                   </Grid>
               )
+          )}
+          {fetchStatus === 'PENDING' && <LoadingSpinner/>}
+          {fetchStatus === 'FAILED' && (
+              <Typography variant="body1" color="error" component="p">
+                Fetch Results failed
+              </Typography>
           )}
         </Grid>
       </>
