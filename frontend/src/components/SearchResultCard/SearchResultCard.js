@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import Typography from "@material-ui/core/Typography";
 import Card from "@material-ui/core/Card";
 import CardMedia from "@material-ui/core/CardMedia";
@@ -7,6 +7,8 @@ import CardActions from "@material-ui/core/CardActions";
 import makeStyles from "@material-ui/core/styles/makeStyles";
 import pottyPlant from "../../images/pottyPlant.svg";
 import "fontsource-roboto";
+import Button from "@material-ui/core/Button";
+import AddPlantDialog from "../AddPlantDialog/AddPlantDialog";
 
 const useStyles = makeStyles({
   root: {
@@ -30,6 +32,8 @@ export default function SearchResultCard({result}) {
   const noDataString = "No data"
   const image = pottyPlant;
   const classes = useStyles();
+  const [showAddDialog, setShowAddDialog] = useState(false)
+
 
   return (
       <Card className={classes.root} key={result.id}>
@@ -42,7 +46,7 @@ export default function SearchResultCard({result}) {
         <CardContent>
           <Typography variant={"h5"}>{result.scientific_name}</Typography>
           <Typography variant="h6">{result.common_name ? result.common_name : "-"}</Typography>
-          <Typography variant="body2"  component="p">
+          <Typography variant="body2" component="p">
             Genus: {result.genus ? result.genus : noDataString}
           </Typography>
           <Typography variant="body2" component="p">
@@ -50,6 +54,13 @@ export default function SearchResultCard({result}) {
           </Typography>
         </CardContent>
         <CardActions disableSpacing>
+          <Button onClick={() => setShowAddDialog(true)}>Add to Shelve</Button>
+          <AddPlantDialog
+              open={showAddDialog}
+              handleClose={() => setShowAddDialog(false)}
+              result={result}
+          >
+          </AddPlantDialog>
         </CardActions>
       </Card>
   );
