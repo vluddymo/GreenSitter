@@ -7,8 +7,6 @@ import de.neuefische.greensitter.model.Plant;
 import de.neuefische.greensitter.service.PlantService;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
-
 @RequestMapping("api/shelve")
 @RestController
 public class PlantController {
@@ -22,10 +20,12 @@ public class PlantController {
         this.apiSearchService = apiSearchService;
     }
 
+
     @GetMapping
     public Iterable<Plant> getAllPlants() {
         return plantService.listPlants();
     }
+
 
     @PutMapping
     public Plant addPlantToShelve(@RequestBody ChosenPlantDto choiceData) {
@@ -39,5 +39,5 @@ public class PlantController {
         plant.setImageUrl(plantData.getImage_url());
         return plantService.addPlant(plant);
     }
-}
 
+}
