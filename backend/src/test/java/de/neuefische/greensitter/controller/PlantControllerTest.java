@@ -1,5 +1,8 @@
 package de.neuefische.greensitter.controller;
 
+import de.neuefische.greensitter.api.ApiSearchService;
+import de.neuefische.greensitter.api.dtos.ChoiceFetchData;
+import de.neuefische.greensitter.api.dtos.TrefleChoiceFetchDto;
 import de.neuefische.greensitter.db.PlantMongoDb;
 import de.neuefische.greensitter.db.UserMongoDb;
 import de.neuefische.greensitter.model.GreenSitterUser;
@@ -10,6 +13,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.http.HttpEntity;
@@ -21,6 +25,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.when;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 class PlantControllerTest {
@@ -39,6 +44,9 @@ class PlantControllerTest {
 
     @Autowired
     public UserMongoDb userDb;
+
+    @MockBean
+    public ApiSearchService searchService;
 
     @BeforeEach
     public void resetDatabase() {
@@ -93,6 +101,10 @@ class PlantControllerTest {
         HttpHeaders headers = new HttpHeaders();
         headers.setBearerAuth(token);
         HttpEntity<ChosenPlantDto> requestEntity = new HttpEntity<>(plantDto, headers);
+
+        ChoiceFetchData data = new ChoiceFetchData("Didier's tulip", "Tulipa gesneriana", "Tulipa", "Lily family", "https://bs.floristic.org/image/o/67cb801e2d4f091d7ae27ad83bc0699207631ead");
+        when(searchService.getChoiceFromApi("190185")).thenReturn(data);
+
 
         // WHEN
         ResponseEntity<Plant> putResponse = restTemplate.exchange(url, HttpMethod.PUT, requestEntity, Plant.class);

@@ -15,7 +15,6 @@ public class ApiSearchController {
 
     private final ApiSearchService searchService;
 
-
     public ApiSearchController(ApiSearchService searchService, PlantService plantService) {
         this.searchService = searchService;
     }
