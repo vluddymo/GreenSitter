@@ -2,7 +2,6 @@ package de.neuefische.greensitter.controller;
 
 import de.neuefische.greensitter.api.ApiSearchService;
 import de.neuefische.greensitter.api.dtos.ChoiceFetchData;
-import de.neuefische.greensitter.api.dtos.TrefleChoiceFetchDto;
 import de.neuefische.greensitter.db.PlantMongoDb;
 import de.neuefische.greensitter.db.UserMongoDb;
 import de.neuefische.greensitter.model.GreenSitterUser;
@@ -120,5 +119,48 @@ class PlantControllerTest {
         assertTrue(byId.isPresent());
         assertEquals(byId.get(), expectedPlant);
     }
+
+    @Test
+    public void getAPlantShouldReturnOnePlant() {
+        //GIVEN
+        String token = loginUser();
+
+        String url = "http://localhost:" + port + "/api/shelve/Rosie";
+        plantDb.save(new Plant("Rosie", "Rosen", "rosa rosea", "genus 1", "rosen family", "https://bs.floristic.org/image/o/400851a79391dbe6f667c66e4bf70299e9921853"));
+
+        //WHEN
+        HttpHeaders headers = new HttpHeaders();
+        headers.setBearerAuth(token);
+        HttpEntity entity = new HttpEntity(headers);
+        ResponseEntity<Plant> response = restTemplate.exchange(url, HttpMethod.GET, entity, Plant.class);
+
+
+        //THEN
+        Plant plant = response.getBody();
+        assertEquals(response.getStatusCode(), HttpStatus.OK);
+        assertEquals(plant, new Plant("Rosie", "Rosen", "rosa rosea", "genus 1", "rosen family", "https://bs.floristic.org/image/o/400851a79391dbe6f667c66e4bf70299e9921853"));
+
+    }
+
+    @Test
+    public void deleteAPlantShouldRemovePlantFromDb() {
+        //GIVEN
+        String token = loginUser();
+
+        String url = "http://localhost:" + port + "/api/shelve/Rosie";
+        plantDb.save(new Plant("Rosie", "Rosen", "rosa rosea", "genus 1", "rosen family", "https://bs.floristic.org/image/o/400851a79391dbe6f667c66e4bf70299e9921853"));
+
+        //WHEN
+        HttpHeaders headers = new HttpHeaders();
+        headers.setBearerAuth(token);
+        HttpEntity entity = new HttpEntity(headers);
+        restTemplate.exchange(url, HttpMethod.DELETE, entity, Void.class);
+
+
+        //THEN
+        assertTrue(plantDb.findById("Rosie").isEmpty());
+
+    }
+
 
 }
