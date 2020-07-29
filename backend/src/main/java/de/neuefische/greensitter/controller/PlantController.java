@@ -46,11 +46,16 @@ public class PlantController {
 
     @GetMapping("{nickName}")
     public Plant getPlantByNickname(@PathVariable String nickName) {
-        Optional<Plant> plantOptional = plantService.getIdea(nickName);
+        Optional<Plant> plantOptional = plantService.getPlant(nickName);
         if (plantOptional.isPresent()) {
             return plantOptional.get();
         }
         throw new ResponseStatusException(HttpStatus.NOT_FOUND, "I'm sorry, you don't have a plant with the nickname " + nickName + " yet");
     }
 
+    @DeleteMapping("{nickName}")
+    public void deletePlantByNickname(@PathVariable String nickName){
+        plantService.deletePlant(nickName);
+
+    }
 }
