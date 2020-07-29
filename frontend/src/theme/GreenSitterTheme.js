@@ -12,7 +12,7 @@ const GreenSitterTheme = createMuiTheme({
         },
     error:
         {
-          main: '#dfa528' // sandy yellow
+          main: '#bf4f32' // sandy yellow
         },
     info:
         {

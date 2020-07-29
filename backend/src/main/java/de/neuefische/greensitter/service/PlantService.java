@@ -6,6 +6,8 @@ import de.neuefische.greensitter.model.Plant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class PlantService {
 
@@ -23,5 +25,9 @@ public class PlantService {
     public Plant addPlant(Plant newPlant){
         plantDb.save(newPlant);
         return newPlant;
+    }
+
+    public Optional<Plant> getIdea(String nickName) {
+        return plantDb.findById(nickName);
     }
 }

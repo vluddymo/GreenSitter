@@ -5,7 +5,11 @@ import de.neuefische.greensitter.api.dtos.ChoiceFetchData;
 import de.neuefische.greensitter.model.dtos.ChosenPlantDto;
 import de.neuefische.greensitter.model.Plant;
 import de.neuefische.greensitter.service.PlantService;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
+
+import java.util.Optional;
 
 @RequestMapping("api/shelve")
 @RestController
@@ -38,6 +42,15 @@ public class PlantController {
         plant.setFamilyCommonName(plantData.getFamily_common_name());
         plant.setImageUrl(plantData.getImage_url());
         return plantService.addPlant(plant);
+    }
+
+    @GetMapping("{nickName}")
+    public Plant getPlantByNickname(@PathVariable String nickName) {
+        Optional<Plant> plantOptional = plantService.getIdea(nickName);
+        if (plantOptional.isPresent()) {
+            return plantOptional.get();
+        }
+        throw new ResponseStatusException(HttpStatus.NOT_FOUND, "I'm sorry, you don't have a plant with the nickname " + nickName + " yet");
     }
 
 }
