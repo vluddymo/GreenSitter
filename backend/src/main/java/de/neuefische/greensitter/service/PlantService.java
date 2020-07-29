@@ -27,7 +27,11 @@ public class PlantService {
         return newPlant;
     }
 
-    public Optional<Plant> getIdea(String nickName) {
+    public Optional<Plant> getPlant(String nickName) {
         return plantDb.findById(nickName);
+    }
+
+    public void deletePlant(String nickName) {
+       plantDb.deleteById(nickName);
     }
 }
