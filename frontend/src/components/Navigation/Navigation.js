@@ -11,22 +11,24 @@ import PlantsDashboard from "../../pages/PlantsDashboard";
 import LoginPage from "../../pages/LoginPage";
 import PlantDetails from "../../pages/PlantDetails";
 import makeStyles from "@material-ui/core/styles/makeStyles";
+import GreenSitterLogo from "../GreenSitterLogo/GreenSitterLogo";
 
 const useStyles = makeStyles((theme) => ({
   container: {
-    background: "linear-gradient(180deg, rgba(234, 247, 234, 1) 0%, rgba(217, 243, 217, 1) 20%, rgba(162, 214, 194, 1) 100%)",
-    // "linear-gradient(0deg, rgba(186,235,188,1) 0%, rgba(149,208,197,1) 90%, rgba(0,159,149,1) 100%)",
-    height: "100vh",
-    maxWidth: "95%",
+    backgroundColor: "#1263a3",
+    borderColor: "rgb(83, 96, 52)",
+    height: "100%",
+    maxWidth: "90%",
     padding: theme.spacing(2),
     overflowY: "scroll",
-    display: "flex" ,
-    justifyContent: "center",
-    marginTop: 10,
+    marginTop: 15,
     borderRadius: 25,
+    display: "flex",
+    justifyContent: "center",
   }
 }));
 
+//"linear-gradient(90deg, rgba(194, 214, 189, 1) 0%, rgba(217, 243, 217, 1) 50%, rgba(255, 255, 255, 1) 100%)"
 
 export default function Navigation() {
 
@@ -44,6 +46,7 @@ export default function Navigation() {
   return (
       <BrowserRouter>
         <GardenAppBar/>
+        <GreenSitterLogo/>
         <Container maxWidth={'md'} component="main" className={classes.container}>
           <Switch>
             <PrivateRoute
