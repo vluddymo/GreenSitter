@@ -13,6 +13,7 @@ import {useHistory} from 'react-router-dom';
 const useStyles = makeStyles({
   root: {
     margin: 10,
+    borderRadius: 15,
     display: 'flex',
     backgroundColor: 'white',
     '&:hover': {
@@ -25,7 +26,9 @@ const useStyles = makeStyles({
   cover: {
     height: 0,
     maxWidth: 345,
-    paddingTop: '56.25%', // 16:9
+    paddingTop: '100%', // 16:9
+    margin: 10,
+    borderRadius: 10,
   },
   title: {
     height: "1%",
