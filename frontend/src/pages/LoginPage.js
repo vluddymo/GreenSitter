@@ -9,12 +9,9 @@ import Grid from "@material-ui/core/Grid";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import Paper from "@material-ui/core/Paper";
-import Logo from "../images/Logo200x200.png";
-import Box from "@material-ui/core/Box";
-import GreenSitterLogo from "../components/GreenSitterLogo/GreenSitterLogo";
 
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles({
   gridContainer: {
     justifyContent: "center",
   },
@@ -34,7 +31,7 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "center",
     margin: 10
   }
-}));
+});
 
 function LoginPage() {
   const [username, setUsername] = useState('');
