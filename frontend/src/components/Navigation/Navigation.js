@@ -18,11 +18,10 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: "#1263a3",
     borderColor: "rgb(83, 96, 52)",
     height: "100%",
-    maxWidth: "90%",
+    maxWidth: "100%",
     padding: theme.spacing(2),
     overflowY: "scroll",
     marginTop: 15,
-    borderRadius: 25,
     display: "flex",
     justifyContent: "center",
   }
