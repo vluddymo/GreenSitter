@@ -4,7 +4,7 @@ const GreenSitterTheme = createMuiTheme({
   palette: {
     primary:
         {
-          main: '#219250' // turquoise
+          main: '#219250' // green
         },
     secondary:
         {
@@ -12,11 +12,11 @@ const GreenSitterTheme = createMuiTheme({
         },
     error:
         {
-          main: '#bf4f32' // sandy yellow
+          main: '#bf4f32' // orange-red
         },
-    info:
+    tertiary:
         {
-          main: '#ffffff' // white
+          main: '#c9dfde' // slightly blue white
         },
   },
 

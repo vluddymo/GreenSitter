@@ -10,9 +10,11 @@ import LoadingSpinner from "../Spinner/LoadingSpinner";
 import Typography from "@material-ui/core/Typography";
 import DialogActions from "@material-ui/core/DialogActions";
 import Button from "@material-ui/core/Button";
+import {useHistory} from "react-router-dom";
 
 export default function AddPlantDialog({open, handleClose, result}) {
 
+  const history = useHistory();
   const [nickName, setNickName] = useState('');
   const [choiceId, setChoiceId] = useState('');
   const {addStatus} = useContext(PlantStateContext);
@@ -29,7 +31,9 @@ export default function AddPlantDialog({open, handleClose, result}) {
 
   function handleSubmit() {
     buildDataPackage();
-    addPlant(dispatch, buildDataPackage());
+    addPlant(dispatch, buildDataPackage())
+        .then(() => (history.push("/")));
+
   }
 
   function buildDataPackage() {

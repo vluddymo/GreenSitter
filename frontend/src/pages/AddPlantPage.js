@@ -6,13 +6,20 @@ import {ApiSearchDispatchContext, ApiSearchStateContext} from "../context/apiSea
 import {fetchSearchResults} from "../context/apiSearch/apiSearchActions";
 import LoadingSpinner from "../components/Spinner/LoadingSpinner";
 import Typography from "@material-ui/core/Typography";
+import TextField from "@material-ui/core/TextField";
+import Box from "@material-ui/core/Box";
 
 
 const useStyles = makeStyles({
-  searchField: {
-    margin: "auto"
-
-  }
+  searchBox: {
+    maxWidth: 350,
+    justifyContent: "center",
+    margin: "auto",
+    display: "flex",
+    marginBottom: 10,
+    marginTop: 10,
+    opacity: "100%",
+  },
 });
 
 export default function AddPlantPage() {
@@ -36,15 +43,16 @@ export default function AddPlantPage() {
 
   return (
       <>
-        <Grid container justify={"center"}>
-          <Grid item xs={4}>
-            <input id="search-input"
-                   className={classes.searchField}
-                   value={query}
-                   type={"text"}
-                   onChange={handleOnInputChange}/>
-          </Grid>
-        </Grid>
+          <Box className={classes.searchBox}>
+            <TextField
+                id="Search Input"
+                label="Find your plant"
+                placeholder="sunflower"
+                multiline
+                variant="outlined"
+                onChange={handleOnInputChange}
+            />
+          </Box>
         <Grid container justify={"center"}>
           {results.map(result => (
                   <Grid item xs={10} sm={6} md={4} lg={3} key={result.id}>

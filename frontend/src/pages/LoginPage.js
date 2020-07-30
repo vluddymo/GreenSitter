@@ -9,28 +9,37 @@ import Grid from "@material-ui/core/Grid";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import Paper from "@material-ui/core/Paper";
+import Logo from "../images/Logo200x200.png";
+import Box from "@material-ui/core/Box";
+import GreenSitterLogo from "../components/GreenSitterLogo/GreenSitterLogo";
 
 
 const useStyles = makeStyles((theme) => ({
   gridContainer: {
-    paddingTop: theme.spacing(4),
-    maxWidth: 400,
-    margin: "auto"
+    justifyContent: "center",
   },
   paper: {
-    maxWidth: 600,
-    marginTop: theme.spacing(4),
-    height: 300,
-    margin: "auto"
+    maxWidth: 300,
+    maxHeight: 300,
+    margin: 25,
+    borderRadius: 15,
+    flexGrow: 10,
+    flexDirection: "column",
+    alignContent: "center",
+    borderStyle: "solid",
+    border: "thin",
+    justifyContent: "center",
+  },
+  loginForm: {
+    justifyContent: "center",
+    margin: 10
   }
 }));
 
 function LoginPage() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-
   const dispatch = useContext(UserDispatchContext);
-
   const classes = useStyles();
 
   function login() {
@@ -56,14 +65,8 @@ function LoginPage() {
 
   return (
       <Paper className={classes.paper}>
-        <Grid
-            className={classes.gridContainer}
-            container
-            alignContent="center"
-            justify="center"
-            spacing={4}
-        >
-          <Grid item>
+        <Grid className={classes.gridContainer} container>
+          <Grid item className={classes.loginForm}>
             <div>
               <TextField
                   label="Username"
