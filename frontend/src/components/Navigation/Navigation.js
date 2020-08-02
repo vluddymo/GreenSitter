@@ -3,7 +3,6 @@ import {UserDispatchContext} from "../../context/user/UserContext";
 import {getDecodedJWTToken, isJWTTokenValid} from "../../utils/jwt-utils";
 import {LOGIN_SUCCESS, LOGIN_FAILED} from "../../context/user/UserContextProvider";
 import {BrowserRouter, Route, Switch} from "react-router-dom";
-import GardenAppBar from "../GardenAppBar/GardenAppBar";
 import Container from "@material-ui/core/Container";
 import PrivateRoute from "../../pages/PrivateRoute";
 import AddPlantPage from "../../pages/AddPlantPage";
@@ -15,13 +14,10 @@ import GreenSitterLogo from "../GreenSitterLogo/GreenSitterLogo";
 
 const useStyles = makeStyles((theme) => ({
   container: {
-    backgroundColor: "#1263a3",
-    borderColor: "rgb(83, 96, 52)",
-    height: "100%",
     maxWidth: "100%",
-    padding: theme.spacing(2),
+    flexGrow: 10,
+    padding: theme.spacing(0),
     overflowY: "scroll",
-    marginTop: 15,
     display: "flex",
     justifyContent: "center",
   }
@@ -44,7 +40,6 @@ export default function Navigation() {
 
   return (
       <BrowserRouter>
-        <GardenAppBar/>
         <GreenSitterLogo/>
         <Container maxWidth={'md'} component="main" className={classes.container}>
           <Switch>

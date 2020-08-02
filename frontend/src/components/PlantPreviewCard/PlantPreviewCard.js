@@ -6,13 +6,14 @@ import {makeStyles} from '@material-ui/core/styles';
 import Grid from "@material-ui/core/Grid";
 import CardMedia from "@material-ui/core/CardMedia";
 import pottyPlant from "./../../images/pottyPlant.svg"
-import HealthStatus from "../HealthStatus/HealthStatus";
 import {useHistory} from 'react-router-dom';
+import WateringStatus from "../WateringStatus/WateringStatus";
 
 
 const useStyles = makeStyles({
   root: {
     margin: 10,
+    maxHeight: 150,
     borderRadius: 15,
     display: 'flex',
     backgroundColor: 'white',
@@ -22,25 +23,18 @@ const useStyles = makeStyles({
   },
   content: {
     flex: '1 0 auto',
+    margin: 6,
+    padding: 0,
+    alignContent: "center",
   },
   cover: {
     height: 0,
-    maxWidth: 345,
     paddingTop: '100%', // 16:9
-    margin: 10,
+    margin: 0,
     borderRadius: 10,
   },
   title: {
     height: "1%",
-  },
-  dock: {
-    backgroundColor: "beige",
-    flexGrow: 2,
-    padding: 4,
-    display: "flex",
-    justifyContent: "center",
-    paddingBottom: 0
-
   },
 });
 
@@ -52,19 +46,22 @@ export default function PlantPreviewCard({plant}) {
 
 
   return (
-      <Grid container justify={"center"}>
-        <Grid item xs={10} sm={11}>
+      <Grid container justify={"center"} >
+        <Grid item xs={11} sm={11}>
+          <WateringStatus>
           <Card className={classes.root}
                 key={plant.nickName}
                 onClick={() => history.push(`/plant/${plant.nickName}`)}
+                backgroun
           >
             <Grid container>
-              <Grid item xs={11} sm={6}>
-                <CardMedia className={classes.cover} title="potty plant"
+              <Grid item xs={4} lg={5} >
+                <CardMedia className={classes.cover}
+                           title="potty plant"
                            image={plant.imageUrl === "null" ? pottyPlant : plant.imageUrl}/>
               </Grid>
-              <Grid item xs={11} sm={5}>
-                <CardContent>
+              <Grid item xs={8} sm={7}>
+                <CardContent className={classes.content}>
                   <Typography variant="h5" component="p" className={classes.title}>
                     {plant.nickName}
                   </Typography>
@@ -74,12 +71,8 @@ export default function PlantPreviewCard({plant}) {
                 </CardContent>
               </Grid>
             </Grid>
-            <Grid item xs={2} sm={1}>
-              <CardContent className={classes.dock}>
-              <HealthStatus percentage={80}/>
-              </CardContent>
-            </Grid>
           </Card>
+          </WateringStatus>
         </Grid>
       </Grid>
   )

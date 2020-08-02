@@ -9,29 +9,40 @@ import Grid from "@material-ui/core/Grid";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import Paper from "@material-ui/core/Paper";
+import Container from "@material-ui/core/Container";
 
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) =>({
   gridContainer: {
     justifyContent: "center",
+    alignContent: "center",
   },
   paper: {
     maxWidth: 300,
-    maxHeight: 300,
+    maxHeight: 200,
     margin: 25,
+    flexGrow: 1,
     borderRadius: 15,
-    flexGrow: 10,
-    flexDirection: "column",
-    alignContent: "center",
     borderStyle: "solid",
     border: "thin",
+    display: "flex",
     justifyContent: "center",
+    alignContent: "center",
   },
   loginForm: {
+
+  },
+  container: {
+    backgroundColor: "#1263a3",
+    height: "100vh",
+    borderTopRightRadius: 25,
+    borderTopLeftRadius: 25,
+    flexGrow: 10,
+    display: "flex",
     justifyContent: "center",
-    margin: 10
+    padding: theme.spacing(2),
   }
-});
+}));
 
 function LoginPage() {
   const [username, setUsername] = useState('');
@@ -61,29 +72,31 @@ function LoginPage() {
 
 
   return (
-      <Paper className={classes.paper}>
-        <Grid className={classes.gridContainer} container>
-          <Grid item className={classes.loginForm}>
-            <div>
-              <TextField
-                  label="Username"
-                  type="text"
-                  value={username}
-                  onChange={(event) => setUsername(event.target.value)}
-              />
-            </div>
-            <div>
-              <TextField
-                  label="Password"
-                  type="password"
-                  value={password}
-                  onChange={(event) => setPassword(event.target.value)}
-              />
-            </div>
-            <Button onClick={login}>Login</Button>
+      <Container component="main" className={classes.container}>
+        <Paper className={classes.paper}>
+          <Grid className={classes.gridContainer} container>
+            <Grid item className={classes.loginForm}>
+              <div>
+                <TextField
+                    label="Username"
+                    type="text"
+                    value={username}
+                    onChange={(event) => setUsername(event.target.value)}
+                />
+              </div>
+              <div>
+                <TextField
+                    label="Password"
+                    type="password"
+                    value={password}
+                    onChange={(event) => setPassword(event.target.value)}
+                />
+              </div>
+              <Button onClick={login}>Login</Button>
+            </Grid>
           </Grid>
-        </Grid>
-      </Paper>
+        </Paper>
+      </Container>
   );
 }
 

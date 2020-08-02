@@ -16,7 +16,7 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-function GardenAppBar() {
+function GreenSitterAppBar() {
 
   const classes = useStyles();
   const {authStatus /*, userData*/} = useContext(UserStateContext);
@@ -41,4 +41,4 @@ function GardenAppBar() {
   );
 }
 
-export default GardenAppBar;
+export default GreenSitterAppBar;

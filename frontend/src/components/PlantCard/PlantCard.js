@@ -67,7 +67,7 @@ export default function PlantCard({plant}) {
             }
             action={
               <IconButton aria-label="delete">
-                <EditIcon fontSize={"medium"} color={"primary"}/>
+                <EditIcon fontSize={"small"} color={"primary"}/>
               </IconButton>
             }
             title={
