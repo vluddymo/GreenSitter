@@ -9,7 +9,6 @@ import Grid from "@material-ui/core/Grid";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import Paper from "@material-ui/core/Paper";
-import Container from "@material-ui/core/Container";
 
 
 const useStyles = makeStyles((theme) =>({
@@ -25,6 +24,7 @@ const useStyles = makeStyles((theme) =>({
     borderRadius: 15,
     borderStyle: "solid",
     border: "thin",
+    borderColor: "#f4ac3d",
     display: "flex",
     justifyContent: "center",
     alignContent: "center",
@@ -33,13 +33,12 @@ const useStyles = makeStyles((theme) =>({
 
   },
   container: {
-    backgroundColor: "#1263a3",
-    height: "100vh",
-    borderTopRightRadius: 25,
-    borderTopLeftRadius: 25,
+    backgroundColor: "transparent",
+    maxHeight: "100vh",
     flexGrow: 10,
     display: "flex",
     justifyContent: "center",
+    alignContent: "center",
     padding: theme.spacing(2),
   }
 }));
@@ -72,7 +71,6 @@ function LoginPage() {
 
 
   return (
-      <Container component="main" className={classes.container}>
         <Paper className={classes.paper}>
           <Grid className={classes.gridContainer} container>
             <Grid item className={classes.loginForm}>
@@ -96,7 +94,6 @@ function LoginPage() {
             </Grid>
           </Grid>
         </Paper>
-      </Container>
   );
 }
 

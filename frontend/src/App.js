@@ -4,8 +4,8 @@ import UserContextProvider from "./context/user/UserContextProvider";
 import PlantContextProvider from "./context/plant/PlantContextProvider";
 import {ThemeProvider} from '@material-ui/styles';
 import GreenSitterTheme from "./theme/GreenSitterTheme";
-import Navigation from "./components/Navigation/Navigation";
 import ApiSearchContextProvider from "./context/apiSearch/ApiSearchContextProvider";
+import ContentFrame from "./components/ContentFrame/ContentFrame";
 
 
 function App() {
@@ -14,7 +14,7 @@ function App() {
         <UserContextProvider>
           <PlantContextProvider>
             <ApiSearchContextProvider>
-              <Navigation/>
+              <ContentFrame/>
             </ApiSearchContextProvider>
           </PlantContextProvider>
         </UserContextProvider>

@@ -4,7 +4,6 @@ import {Route, Redirect} from "react-router-dom";
 import {UserDispatchContext, UserStateContext} from "../context/user/UserContext";
 import {removeJWTToken} from "../utils/jwt-utils";
 import LoadingSpinner from "../components/Spinner/LoadingSpinner";
-import GreenSitterAppBar from "../components/GreenSitterAppBar/GreenSitterAppBar";
 
 function PrivateRoute({component: Component, ...rest}) {
 
@@ -39,7 +38,6 @@ function PrivateRoute({component: Component, ...rest}) {
             return <LoadingSpinner/>
           }
           }/>
-  <GreenSitterAppBar/>
   </>
 
 );
