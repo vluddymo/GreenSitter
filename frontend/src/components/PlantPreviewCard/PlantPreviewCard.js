@@ -9,34 +9,49 @@ import pottyPlant from "./../../images/pottyPlant.svg"
 import {useHistory} from 'react-router-dom';
 import WateringStatus from "../WateringStatus/WateringStatus";
 
-
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   root: {
-    margin: 10,
-    maxHeight: 150,
+    position: "sticky",
+    margin: theme.spacing(1.8),
+    maxHeight: 80,
+    '@media (min-width: 599px)': {
+      maxHeight: 150,
+      margin: theme.spacing(3),
+    },
     borderRadius: 15,
     display: 'flex',
-    backgroundColor: 'white',
     '&:hover': {
-      backgroundColor: 'rgb(7, 177, 77, 0.42)',
+      backgroundColor: 'rgb(215,181,58)',
     },
+    transition: "0.5s",
+    outlines: "none",
+    boxShadow: "none",
   },
   content: {
     flex: '1 0 auto',
-    margin: 6,
-    padding: 0,
+    padding: theme.spacing(1),
+    paddingBottom: 0,
     alignContent: "center",
+  },
+  container:{
+    height:"min-content",
+    boxShadow:  '-5px -5px 8px rgb(210,227,207), 5px 5px 8px rgb(81,151,114)',
+    margin: "0 auto",
+    padding: 5
+  },
+  item: {
+    padding: 3,
+    borderRadius: 25,
+    boxShadow: 'inset -5px -5px 8px rgb(210,227,207), inset 5px 5px 8px rgb(81,151,114)',
   },
   cover: {
     height: 0,
-    paddingTop: '100%', // 16:9
-    margin: 0,
-    borderRadius: 10,
+    paddingTop: '105%',
   },
   title: {
     height: "1%",
   },
-});
+}));
 
 
 export default function PlantPreviewCard({plant}) {
@@ -46,13 +61,11 @@ export default function PlantPreviewCard({plant}) {
 
 
   return (
-      <Grid container justify={"center"} >
-        <Grid item xs={11} sm={11}>
-          <WateringStatus>
+      <Grid container justify={"center"} className={classes.container}>
+        <Grid item xs={11} sm={11} className={classes.item}>
           <Card className={classes.root}
                 key={plant.nickName}
                 onClick={() => history.push(`/plant/${plant.nickName}`)}
-                backgroun
           >
             <Grid container>
               <Grid item xs={4} lg={5} >
@@ -66,13 +79,13 @@ export default function PlantPreviewCard({plant}) {
                     {plant.nickName}
                   </Typography>
                   <Typography variant="h6" component="p" className={classes.title}>
-                    {plant.scientificName}
+                    {plant.commonName}
                   </Typography>
                 </CardContent>
+                  <WateringStatus wateringStatus={plant.wateringStatus}/>
               </Grid>
             </Grid>
           </Card>
-          </WateringStatus>
         </Grid>
       </Grid>
   )

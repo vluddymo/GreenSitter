@@ -14,11 +14,9 @@ const useStyles = makeStyles({
   searchBox: {
     maxWidth: 350,
     justifyContent: "center",
-    margin: "auto",
     display: "flex",
     marginBottom: 10,
     marginTop: 10,
-    opacity: "100%",
   },
 });
 
@@ -43,6 +41,7 @@ export default function AddPlantPage() {
 
   return (
       <>
+        <Grid container justify={"center"}>
           <Box className={classes.searchBox}>
             <TextField
                 id="Search Input"
@@ -53,7 +52,6 @@ export default function AddPlantPage() {
                 onChange={handleOnInputChange}
             />
           </Box>
-        <Grid container justify={"center"}>
           {results.map(result => (
                   <Grid item xs={10} sm={6} md={4} lg={3} key={result.id}>
                     <SearchResultCard result={result}/>

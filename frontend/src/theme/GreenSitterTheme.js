@@ -4,7 +4,7 @@ const GreenSitterTheme = createMuiTheme({
   palette: {
     primary:
         {
-          main: '#219250' // green
+          main: 'rgb(255,244,0)' // green
         },
     secondary:
         {
@@ -14,30 +14,39 @@ const GreenSitterTheme = createMuiTheme({
         {
           main: '#bf4f32' // orange-red
         },
-    tertiary:
+    textPrimary:
         {
           main: '#c9dfde' // slightly blue white
         },
   },
 
   typography: {
+    h3: {
+      fontFamily: "Khmer MN",
+      color: "#fff",
+      fontWeight: "bold",
+      fontSize: "30px"
+    },
     h4: {
       fontFamily: "Roboto",
+      color: "white",
+      fontSize: "large",
     },
     h5: {
       fontFamily: 'Pacifico',
+      color: "#006B5F",
       fontWeight: "bold",
-      fontSize: "medium",
+      fontSize: "large",
     },
     h6: {
       fontFamily: "Arimo",
-      color: "rgba(25,127,36,0.65)",
+      color: "rgb(151,198,144)",
       fontWeight: "bold",
       fontSize: "medium"
     },
     body2: {
       fontFamily: 'Arimo',
-      color: '#4e574e',
+      color: '#555855',
     }
   },
 
