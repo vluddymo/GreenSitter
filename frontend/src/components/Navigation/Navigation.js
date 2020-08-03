@@ -18,14 +18,9 @@ const useStyles = makeStyles((theme) => ({
     overflow: "scroll",
     flexGrow: 10,
     display: "flex",
-    color1: "rgb(160,205,150)",
-    color2: "rgb(170,200,165)",
-    background: "linear-gradient(135deg, rgb(160,205,150) 0%, rgb(170,200,165) 100%)"
-
+    color1: "rgb(198,236,193)",
   }
 }));
-
-//"linear-gradient(90deg, rgba(194, 214, 189, 1) 0%, rgba(217, 243, 217, 1) 50%, rgba(255, 255, 255, 1) 100%)"
 
 export default function Navigation() {
 
