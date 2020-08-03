@@ -1,7 +1,6 @@
 package de.neuefische.greensitter.service;
 
 import de.neuefische.greensitter.db.PlantMongoDb;
-import de.neuefische.greensitter.model.dtos.ChosenPlantDto;
 import de.neuefische.greensitter.model.Plant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -34,4 +33,5 @@ public class PlantService {
     public void deletePlant(String nickName) {
        plantDb.deleteById(nickName);
     }
+
 }

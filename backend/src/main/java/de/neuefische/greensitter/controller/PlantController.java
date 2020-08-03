@@ -4,6 +4,7 @@ import de.neuefische.greensitter.api.ApiSearchService;
 import de.neuefische.greensitter.api.dtos.ChoiceFetchData;
 import de.neuefische.greensitter.model.dtos.ChosenPlantDto;
 import de.neuefische.greensitter.model.Plant;
+import de.neuefische.greensitter.service.DataService;
 import de.neuefische.greensitter.service.PlantService;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -17,11 +18,13 @@ public class PlantController {
 
     private final PlantService plantService;
     private final ApiSearchService apiSearchService;
+    private final DataService dataService;
 
 
-    public PlantController(PlantService plantService, ApiSearchService apiSearchService) {
+    public PlantController(PlantService plantService, ApiSearchService apiSearchService, DataService dataService) {
         this.plantService = plantService;
         this.apiSearchService = apiSearchService;
+        this.dataService = dataService;
     }
 
 
@@ -41,7 +44,7 @@ public class PlantController {
         plant.setGenus(plantData.getGenus());
         plant.setFamilyCommonName(plantData.getFamily_common_name());
         plant.setImageUrl(plantData.getImage_url());
-        plant.setWateringStatus(30 + (int)(Math.random() * (70 + 1)));
+        plant.setWateringStatus(dataService.mockSensorData());
         return plantService.addPlant(plant);
     }
 

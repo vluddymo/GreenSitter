@@ -8,8 +8,11 @@ import de.neuefische.greensitter.model.GreenSitterUser;
 import de.neuefische.greensitter.model.Plant;
 import de.neuefische.greensitter.model.dtos.ChosenPlantDto;
 import de.neuefische.greensitter.model.dtos.LoginData;
+import de.neuefische.greensitter.service.DataService;
+import de.neuefische.greensitter.service.PlantService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.InjectMocks;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
@@ -46,6 +49,9 @@ class PlantControllerTest {
 
     @MockBean
     public ApiSearchService searchService;
+
+    @MockBean
+    public DataService dataService;
 
     @BeforeEach
     public void resetDatabase() {
@@ -102,7 +108,9 @@ class PlantControllerTest {
         HttpEntity<ChosenPlantDto> requestEntity = new HttpEntity<>(plantDto, headers);
 
         ChoiceFetchData data = new ChoiceFetchData("Didier's tulip", "Tulipa gesneriana", "Tulipa", "Lily family", "https://bs.floristic.org/image/o/67cb801e2d4f091d7ae27ad83bc0699207631ead");
+        int sensorData = 60;
         when(searchService.getChoiceFromApi("190185")).thenReturn(data);
+        when(dataService.mockSensorData()).thenReturn(sensorData);
 
 
         // WHEN
