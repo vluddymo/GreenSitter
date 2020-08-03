@@ -20,6 +20,7 @@ function PrivateRoute({component: Component, ...rest}) {
   });
 
   return (
+      <>
       <Route
           {...rest}
           render={(props) => {
@@ -37,7 +38,9 @@ function PrivateRoute({component: Component, ...rest}) {
             return <LoadingSpinner/>
           }
           }/>
-  );
+  </>
+
+);
 }
 
 export default PrivateRoute;

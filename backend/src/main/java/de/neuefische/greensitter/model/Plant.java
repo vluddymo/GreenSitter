@@ -19,5 +19,6 @@ public class Plant {
     private String genus;
     private String familyCommonName;
     private String imageUrl;
+    private int wateringStatus;
 
 }

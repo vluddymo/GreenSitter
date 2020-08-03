@@ -5,14 +5,14 @@ import makeStyles from "@material-ui/core/styles/makeStyles";
 
 const useStyles = makeStyles((theme) => ({
   logoBox: {
-    maxWidth: 250,
-    margin: "auto",
-    marginTop: 15,
+    maxWidth: "60%",
     display: "flex",
     justifyContent: "center",
+    padding: theme.spacing(1),
+
   },
   logo: {
-    maxWidth: "100%",
+    maxWidth: "50%",
     margin: "auto",
   }
 }))

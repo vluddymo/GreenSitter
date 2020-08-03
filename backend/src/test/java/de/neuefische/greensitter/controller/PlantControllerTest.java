@@ -8,8 +8,11 @@ import de.neuefische.greensitter.model.GreenSitterUser;
 import de.neuefische.greensitter.model.Plant;
 import de.neuefische.greensitter.model.dtos.ChosenPlantDto;
 import de.neuefische.greensitter.model.dtos.LoginData;
+import de.neuefische.greensitter.service.DataService;
+import de.neuefische.greensitter.service.PlantService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.InjectMocks;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
@@ -47,6 +50,9 @@ class PlantControllerTest {
     @MockBean
     public ApiSearchService searchService;
 
+    @MockBean
+    public DataService dataService;
+
     @BeforeEach
     public void resetDatabase() {
         plantDb.deleteAll();
@@ -69,8 +75,8 @@ class PlantControllerTest {
         String token = loginUser();
 
         String url = "http://localhost:" + port + "/api/shelve";
-        plantDb.save(new Plant("Rosie", "Rosen", "rosa rosea", "genus 1", "rosen family", "https://bs.floristic.org/image/o/400851a79391dbe6f667c66e4bf70299e9921853"));
-        plantDb.save(new Plant("Tulpie", "Tulpe", "tulpe tulpea", "genus 2", "tulpen family", "https://bs.floristic.org/image/o/3b03c9b70f8aedc82e89a1047089920ccad6c825"));
+        plantDb.save(new Plant("Rosie", "Rosen", "rosa rosea", "genus 1", "rosen family", "https://bs.floristic.org/image/o/400851a79391dbe6f667c66e4bf70299e9921853", 75));
+        plantDb.save(new Plant("Tulpie", "Tulpe", "tulpe tulpea", "genus 2", "tulpen family", "https://bs.floristic.org/image/o/3b03c9b70f8aedc82e89a1047089920ccad6c825", 75));
 
         //WHEN
         HttpHeaders headers = new HttpHeaders();
@@ -83,8 +89,8 @@ class PlantControllerTest {
         assertEquals(response.getStatusCode(), HttpStatus.OK);
         Plant[] plants = response.getBody();
         assertEquals(plants.length, 2);
-        assertEquals(plants[0], new Plant("Rosie", "Rosen", "rosa rosea", "genus 1", "rosen family", "https://bs.floristic.org/image/o/400851a79391dbe6f667c66e4bf70299e9921853"));
-        assertEquals(plants[1], new Plant("Tulpie", "Tulpe", "tulpe tulpea", "genus 2", "tulpen family", "https://bs.floristic.org/image/o/3b03c9b70f8aedc82e89a1047089920ccad6c825"));
+        assertEquals(plants[0], new Plant("Rosie", "Rosen", "rosa rosea", "genus 1", "rosen family", "https://bs.floristic.org/image/o/400851a79391dbe6f667c66e4bf70299e9921853", 75));
+        assertEquals(plants[1], new Plant("Tulpie", "Tulpe", "tulpe tulpea", "genus 2", "tulpen family", "https://bs.floristic.org/image/o/3b03c9b70f8aedc82e89a1047089920ccad6c825", 75));
 
     }
 
@@ -102,14 +108,16 @@ class PlantControllerTest {
         HttpEntity<ChosenPlantDto> requestEntity = new HttpEntity<>(plantDto, headers);
 
         ChoiceFetchData data = new ChoiceFetchData("Didier's tulip", "Tulipa gesneriana", "Tulipa", "Lily family", "https://bs.floristic.org/image/o/67cb801e2d4f091d7ae27ad83bc0699207631ead");
+        int sensorData = 60;
         when(searchService.getChoiceFromApi("190185")).thenReturn(data);
+        when(dataService.mockSensorData()).thenReturn(sensorData);
 
 
         // WHEN
         ResponseEntity<Plant> putResponse = restTemplate.exchange(url, HttpMethod.PUT, requestEntity, Plant.class);
 
         // THEN
-        Plant expectedPlant = new Plant("dumbo", "Didier's tulip", "Tulipa gesneriana", "Tulipa", "Lily family","https://bs.floristic.org/image/o/67cb801e2d4f091d7ae27ad83bc0699207631ead");
+        Plant expectedPlant = new Plant("dumbo", "Didier's tulip", "Tulipa gesneriana", "Tulipa", "Lily family","https://bs.floristic.org/image/o/67cb801e2d4f091d7ae27ad83bc0699207631ead", 60);
 
         assertEquals(HttpStatus.OK, putResponse.getStatusCode());
         assertNotNull(putResponse.getBody());
@@ -126,7 +134,7 @@ class PlantControllerTest {
         String token = loginUser();
 
         String url = "http://localhost:" + port + "/api/shelve/Rosie";
-        plantDb.save(new Plant("Rosie", "Rosen", "rosa rosea", "genus 1", "rosen family", "https://bs.floristic.org/image/o/400851a79391dbe6f667c66e4bf70299e9921853"));
+        plantDb.save(new Plant("Rosie", "Rosen", "rosa rosea", "genus 1", "rosen family", "https://bs.floristic.org/image/o/400851a79391dbe6f667c66e4bf70299e9921853", 60));
 
         //WHEN
         HttpHeaders headers = new HttpHeaders();
@@ -138,7 +146,7 @@ class PlantControllerTest {
         //THEN
         Plant plant = response.getBody();
         assertEquals(response.getStatusCode(), HttpStatus.OK);
-        assertEquals(plant, new Plant("Rosie", "Rosen", "rosa rosea", "genus 1", "rosen family", "https://bs.floristic.org/image/o/400851a79391dbe6f667c66e4bf70299e9921853"));
+        assertEquals(plant, new Plant("Rosie", "Rosen", "rosa rosea", "genus 1", "rosen family", "https://bs.floristic.org/image/o/400851a79391dbe6f667c66e4bf70299e9921853", 60));
 
     }
 
@@ -148,7 +156,7 @@ class PlantControllerTest {
         String token = loginUser();
 
         String url = "http://localhost:" + port + "/api/shelve/Rosie";
-        plantDb.save(new Plant("Rosie", "Rosen", "rosa rosea", "genus 1", "rosen family", "https://bs.floristic.org/image/o/400851a79391dbe6f667c66e4bf70299e9921853"));
+        plantDb.save(new Plant("Rosie", "Rosen", "rosa rosea", "genus 1", "rosen family", "https://bs.floristic.org/image/o/400851a79391dbe6f667c66e4bf70299e9921853", 60));
 
         //WHEN
         HttpHeaders headers = new HttpHeaders();
