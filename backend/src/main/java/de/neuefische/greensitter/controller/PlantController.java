@@ -41,6 +41,7 @@ public class PlantController {
         plant.setGenus(plantData.getGenus());
         plant.setFamilyCommonName(plantData.getFamily_common_name());
         plant.setImageUrl(plantData.getImage_url());
+        plant.setWateringStatus(30 + (int)(Math.random() * (70 + 1)));
         return plantService.addPlant(plant);
     }
 

@@ -69,8 +69,8 @@ class PlantControllerTest {
         String token = loginUser();
 
         String url = "http://localhost:" + port + "/api/shelve";
-        plantDb.save(new Plant("Rosie", "Rosen", "rosa rosea", "genus 1", "rosen family", "https://bs.floristic.org/image/o/400851a79391dbe6f667c66e4bf70299e9921853"));
-        plantDb.save(new Plant("Tulpie", "Tulpe", "tulpe tulpea", "genus 2", "tulpen family", "https://bs.floristic.org/image/o/3b03c9b70f8aedc82e89a1047089920ccad6c825"));
+        plantDb.save(new Plant("Rosie", "Rosen", "rosa rosea", "genus 1", "rosen family", "https://bs.floristic.org/image/o/400851a79391dbe6f667c66e4bf70299e9921853", 75));
+        plantDb.save(new Plant("Tulpie", "Tulpe", "tulpe tulpea", "genus 2", "tulpen family", "https://bs.floristic.org/image/o/3b03c9b70f8aedc82e89a1047089920ccad6c825", 75));
 
         //WHEN
         HttpHeaders headers = new HttpHeaders();
@@ -83,8 +83,8 @@ class PlantControllerTest {
         assertEquals(response.getStatusCode(), HttpStatus.OK);
         Plant[] plants = response.getBody();
         assertEquals(plants.length, 2);
-        assertEquals(plants[0], new Plant("Rosie", "Rosen", "rosa rosea", "genus 1", "rosen family", "https://bs.floristic.org/image/o/400851a79391dbe6f667c66e4bf70299e9921853"));
-        assertEquals(plants[1], new Plant("Tulpie", "Tulpe", "tulpe tulpea", "genus 2", "tulpen family", "https://bs.floristic.org/image/o/3b03c9b70f8aedc82e89a1047089920ccad6c825"));
+        assertEquals(plants[0], new Plant("Rosie", "Rosen", "rosa rosea", "genus 1", "rosen family", "https://bs.floristic.org/image/o/400851a79391dbe6f667c66e4bf70299e9921853", 75));
+        assertEquals(plants[1], new Plant("Tulpie", "Tulpe", "tulpe tulpea", "genus 2", "tulpen family", "https://bs.floristic.org/image/o/3b03c9b70f8aedc82e89a1047089920ccad6c825", 75));
 
     }
 
@@ -109,7 +109,7 @@ class PlantControllerTest {
         ResponseEntity<Plant> putResponse = restTemplate.exchange(url, HttpMethod.PUT, requestEntity, Plant.class);
 
         // THEN
-        Plant expectedPlant = new Plant("dumbo", "Didier's tulip", "Tulipa gesneriana", "Tulipa", "Lily family","https://bs.floristic.org/image/o/67cb801e2d4f091d7ae27ad83bc0699207631ead");
+        Plant expectedPlant = new Plant("dumbo", "Didier's tulip", "Tulipa gesneriana", "Tulipa", "Lily family","https://bs.floristic.org/image/o/67cb801e2d4f091d7ae27ad83bc0699207631ead", 60);
 
         assertEquals(HttpStatus.OK, putResponse.getStatusCode());
         assertNotNull(putResponse.getBody());
@@ -126,7 +126,7 @@ class PlantControllerTest {
         String token = loginUser();
 
         String url = "http://localhost:" + port + "/api/shelve/Rosie";
-        plantDb.save(new Plant("Rosie", "Rosen", "rosa rosea", "genus 1", "rosen family", "https://bs.floristic.org/image/o/400851a79391dbe6f667c66e4bf70299e9921853"));
+        plantDb.save(new Plant("Rosie", "Rosen", "rosa rosea", "genus 1", "rosen family", "https://bs.floristic.org/image/o/400851a79391dbe6f667c66e4bf70299e9921853", 60));
 
         //WHEN
         HttpHeaders headers = new HttpHeaders();
@@ -138,7 +138,7 @@ class PlantControllerTest {
         //THEN
         Plant plant = response.getBody();
         assertEquals(response.getStatusCode(), HttpStatus.OK);
-        assertEquals(plant, new Plant("Rosie", "Rosen", "rosa rosea", "genus 1", "rosen family", "https://bs.floristic.org/image/o/400851a79391dbe6f667c66e4bf70299e9921853"));
+        assertEquals(plant, new Plant("Rosie", "Rosen", "rosa rosea", "genus 1", "rosen family", "https://bs.floristic.org/image/o/400851a79391dbe6f667c66e4bf70299e9921853", 60));
 
     }
 
@@ -148,7 +148,7 @@ class PlantControllerTest {
         String token = loginUser();
 
         String url = "http://localhost:" + port + "/api/shelve/Rosie";
-        plantDb.save(new Plant("Rosie", "Rosen", "rosa rosea", "genus 1", "rosen family", "https://bs.floristic.org/image/o/400851a79391dbe6f667c66e4bf70299e9921853"));
+        plantDb.save(new Plant("Rosie", "Rosen", "rosa rosea", "genus 1", "rosen family", "https://bs.floristic.org/image/o/400851a79391dbe6f667c66e4bf70299e9921853", 60));
 
         //WHEN
         HttpHeaders headers = new HttpHeaders();
