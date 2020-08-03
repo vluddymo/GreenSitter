@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
     maxWidth: "95%",
     color: "#fff",
     zIndex: 0,
-    boxShadow: '-5px -5px 8px rgb(210,227,207), 5px 5px 8px rgb(39,73,55)',
+    boxShadow: '-5px -5px 8px #fff, 5px 5px 8px rgb(73, 139, 104, 0.7)',
     display: "flex",
     justifyContent: "space-between",
     alignContent: "center"

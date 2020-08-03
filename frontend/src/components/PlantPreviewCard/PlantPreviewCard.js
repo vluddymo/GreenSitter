@@ -11,8 +11,9 @@ import WateringStatus from "../WateringStatus/WateringStatus";
 
 const useStyles = makeStyles((theme) => ({
   root: {
+    backgroundColor: "transparent",
     position: "sticky",
-    margin: theme.spacing(1.8),
+    margin: theme.spacing(2),
     maxHeight: 80,
     '@media (min-width: 599px)': {
       maxHeight: 150,
@@ -35,14 +36,14 @@ const useStyles = makeStyles((theme) => ({
   },
   container:{
     height:"min-content",
-    boxShadow:  '-5px -5px 8px rgb(210,227,207), 5px 5px 8px rgb(81,151,114)',
     margin: "0 auto",
-    padding: 5
+    padding: 5,
   },
   item: {
-    padding: 3,
-    borderRadius: 25,
-    boxShadow: 'inset -5px -5px 8px rgb(210,227,207), inset 5px 5px 8px rgb(81,151,114)',
+    borderRadius: 20,
+    backgroundColor: "#f0f0f3",
+    color1: "rgba(174,170,192,0.4)",
+    boxShadow: '-8px -8px 24px #fff, 8px 8px 24px rgba(174,170,192,0.4), -8px -8px 8px rgba(174,170,192,0.25) inset, 8px  8px 8px #fff inset',
   },
   cover: {
     height: 0,

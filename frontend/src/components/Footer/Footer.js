@@ -11,6 +11,10 @@ const useStyles = makeStyles({
     background: "rgb(170,200,165)",
     display: "flex",
     justifyContent: "center",
+    borderTopRightRadius: 40,
+    borderTopLeftRadius: 40,
+    boxShadow: '-8px -8px 8px #fff, 8px 8px 8px rgb(73, 139, 104, 0.7)',
+
   }
 });
 

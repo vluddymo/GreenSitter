@@ -11,30 +11,14 @@ import Box from "@material-ui/core/Box";
 import AddIcon from '@material-ui/icons/Add';
 import OpacityOutlinedIcon from '@material-ui/icons/OpacityOutlined';
 import Fab from "@material-ui/core/Fab";
+import PageTitle from "../components/PageTitle/PageTitle";
 
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles({
   container: {
     display: "flex",
     justifyContent: "flex-start",
     height: "min-content",
-  },
-  pageTitle: {
-    maxWidth: "90%",
-    height: "min-content",
-    backgroundColor: "rgb(73, 139, 104)",
-    textAlign: "center",
-    paddingTop: 20,
-    borderRadius: 40,
-    flex: '1 0 auto',
-    padding: theme.spacing(1),
-    margin: theme.spacing(2),
-    color: "rgb(148,184,165)",
-    color2: "rgb(210,227,207)",
-    color23: "rgb(39,73,55)",
-    marginBottom: theme.spacing(3),
-    boxShadow: ' 5px 5px 8px rgb(39,73,55),' +
-        ' -5px -5px 8px rgb(210,227,207)',
   },
   fabButton: {
     position: 'absolute',
@@ -46,11 +30,8 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     justifyContent: "space-around",
     width: "50%",
-
-
-
   },
-}));
+});
 
 export default function PlantsDashboard() {
 
@@ -67,11 +48,7 @@ export default function PlantsDashboard() {
   return (
       <>
         <Grid container className={classes.container}>
-          <Box className={classes.pageTitle}>
-            <Typography variant={"h3"}>
-              My Shelve
-            </Typography>
-          </Box>
+          <PageTitle title={"My Shelve"}/>
           {plants.map((plant) => (
               <PlantPreviewCard
                   key={plant.nickName}
@@ -86,18 +63,18 @@ export default function PlantsDashboard() {
               </Typography>
           )}
           <Box className={classes.fabButton}>
-          <Fab color="primary"
-               aria-label="add"
-               onClick={() => history.push("/plant/add")}
-          >
-            <AddIcon/>
-          </Fab>
-          <Fab color="secondary"
-               aria-label="add"
-               onClick={() => history.push("/plant/add")}
-          >
-            <OpacityOutlinedIcon/>
-          </Fab>
+            <Fab color="primary"
+                 aria-label="add"
+                 onClick={() => history.push("/plant/add")}
+            >
+              <AddIcon/>
+            </Fab>
+            <Fab color="secondary"
+                 aria-label="add"
+                 onClick={() => history.push("/plant/add")}
+            >
+              <OpacityOutlinedIcon/>
+            </Fab>
           </Box>
         </Grid>
       </>

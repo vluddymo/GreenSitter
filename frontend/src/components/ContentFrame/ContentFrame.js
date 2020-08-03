@@ -13,6 +13,7 @@ const useStyles = makeStyles({
     padding: 0,
     maxWidth: "100%",
     height: "100vh",
+    backgroundColor: "#f0f0f3"
   }
 })
 
