@@ -6,7 +6,7 @@ import makeStyles from "@material-ui/core/styles/makeStyles";
 const useStyles = makeStyles({
   container: {
     maxWidth: "80%",
-    minHeight: 42,
+    maxHeight: 100,
     padding: 5,
     background: "rgb(170,200,165)",
     display: "flex",
