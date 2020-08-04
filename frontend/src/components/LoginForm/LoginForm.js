@@ -1,5 +1,4 @@
 import Paper from "@material-ui/core/Paper";
-import Box from "@material-ui/core/Box";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import React, {useContext, useState} from "react";
@@ -9,6 +8,7 @@ import {LOGIN, LOGIN_FAILED, LOGIN_SUCCESS} from "../../context/user/UserContext
 import {performLogin} from "../../utils/auth-utils";
 import {getDecodedJWTToken, setJWTToken} from "../../utils/jwt-utils";
 import {Redirect, useLocation} from "react-router";
+import InputBox from "../Containers/InputBox/InputBox";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
     '@media (max-width: 320px)': {
       width: 220,
     },
-    maxHeight: 200,
+    maxHeight: 250,
     padding: theme.spacing(2.5),
     marginTop: theme.spacing(2),
     flexGrow: 1,
@@ -31,20 +31,10 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "center",
     alignSelf: "center",
   },
-  textBox: {
-    padding: theme.spacing(1),
-    margin: theme.spacing(1),
-    width: "90%",
-    borderRadius: 10,
-    display: "flex",
-    alignSelf: "center",
-    justifyContent: "center",
-    boxShadow: '-5px -5px 5px rgba(255,255,255,0.7) inset, 5px 5px 5px rgba(174,170,192,0.2) inset',
-  },
   loginButton: {
     margin: theme.spacing(2),
     width: "50%",
-    backgroundColor: "rgb(170,200,165)",
+    backgroundColor: theme.palette.primary.main,
     boxShadow: '-5px -5px 5px rgba(255,255,255, 1), 5px 5px 5px rgba(163,172,161, 0.4)',
     borderRadius: 10,
     fontWeight: "normal",
@@ -84,7 +74,7 @@ export default function LoginForm() {
 
   return (
       <Paper className={classes.paper}>
-        <Box className={classes.textBox}>
+        <InputBox>
           <TextField
               className={classes.textField}
               label="Username"
@@ -92,8 +82,8 @@ export default function LoginForm() {
               value={username}
               onChange={(event) => setUsername(event.target.value)}
           />
-        </Box>
-        <Box className={classes.textBox}>
+        </InputBox>
+        <InputBox>
           <TextField
               className={classes.textField}
               label="Password"
@@ -101,7 +91,7 @@ export default function LoginForm() {
               value={password}
               onChange={(event) => setPassword(event.target.value)}
           />
-        </Box>
+        </InputBox>
         <Button onClick={login} className={classes.loginButton}>Login</Button>
       </Paper>
   );
