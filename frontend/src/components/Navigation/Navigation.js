@@ -13,12 +13,12 @@ import makeStyles from "@material-ui/core/styles/makeStyles";
 
 const useStyles = makeStyles((theme) => ({
   container: {
+    backgroundColor: "transparent",
     maxWidth: 800,
     padding: theme.spacing(0),
     overflow: "scroll",
     flexGrow: 10,
     display: "flex",
-    color1: "rgb(198,236,193)",
     justifyContent: "center"
   }
 }));
