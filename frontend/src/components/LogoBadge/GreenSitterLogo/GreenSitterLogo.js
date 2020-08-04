@@ -1,18 +1,18 @@
 import Box from "@material-ui/core/Box";
-import Logo from "../../images/Logo200x200.png";
+import Logo from "../../../images/Logo200x200.png";
 import React from "react";
 import makeStyles from "@material-ui/core/styles/makeStyles";
 
 const useStyles = makeStyles((theme) => ({
   logoBox: {
-    maxWidth: "60%",
+    maxWidth: "100%",
     display: "flex",
     justifyContent: "center",
-    padding: theme.spacing(1),
-
+    alignSelf: "center",
+    padding: theme.spacing(0),
   },
   logo: {
-    maxWidth: "50%",
+    maxWidth: "100%",
     margin: "auto",
   }
 }))

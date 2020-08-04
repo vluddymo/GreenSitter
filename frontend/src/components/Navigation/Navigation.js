@@ -19,6 +19,7 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 10,
     display: "flex",
     color1: "rgb(198,236,193)",
+    justifyContent: "center"
   }
 }));
 

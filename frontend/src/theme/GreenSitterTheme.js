@@ -4,7 +4,7 @@ const GreenSitterTheme = createMuiTheme({
   palette: {
     primary:
         {
-          main: 'rgb(255,244,0)' // green
+          main: 'rgb(170,200,165)' // green
         },
     secondary:
         {
@@ -22,10 +22,12 @@ const GreenSitterTheme = createMuiTheme({
 
   typography: {
     h3: {
-      fontFamily: "Khmer MN",
-      color: "#fff",
-      fontWeight: "bold",
-      fontSize: "30px"
+      fontFamily: "Arial",
+      color: "rgba(0, 0, 0, 0.87)",
+      fontSize: "1rem",
+      fontWeight: "normal",
+      textTransform: "uppercase",
+      letterSpacing: "0.050em"
     },
     h4: {
       fontFamily: "Roboto",
