@@ -40,7 +40,6 @@ const useStyles = makeStyles((theme) => ({
     alignSelf: "center",
     justifyContent: "center",
     boxShadow: '-5px -5px 5px rgba(255,255,255,0.7) inset, 5px 5px 5px rgba(174,170,192,0.2) inset',
-
   },
   loginButton: {
     margin: theme.spacing(2),
