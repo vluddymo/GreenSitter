@@ -1,5 +1,4 @@
 import React, {useContext, useEffect, useState} from "react";
-import makeStyles from "@material-ui/core/styles/makeStyles";
 import SearchResultCard from "../components/SearchResultCard/SearchResultCard";
 import Grid from "@material-ui/core/Grid";
 import {ApiSearchDispatchContext, ApiSearchStateContext} from "../context/apiSearch/ApiSearchContext";
@@ -7,22 +6,12 @@ import {fetchSearchResults} from "../context/apiSearch/apiSearchActions";
 import LoadingSpinner from "../components/Spinner/LoadingSpinner";
 import Typography from "@material-ui/core/Typography";
 import TextField from "@material-ui/core/TextField";
-import Box from "@material-ui/core/Box";
-
-
-const useStyles = makeStyles({
-  searchBox: {
-    maxWidth: 350,
-    justifyContent: "center",
-    display: "flex",
-    marginBottom: 10,
-    marginTop: 10,
-  },
-});
+import InputBox from "../components/Containers/InputBox/InputBox";
+import PageContent from "../components/Containers/PageComponents/PageContent/PageContent";
+import PageTitle from "../components/Containers/PageComponents/PageTitle/PageTitle";
 
 export default function AddPlantPage() {
 
-  const classes = useStyles();
   const [query, setQuery] = useState("");
   const dispatch = useContext(ApiSearchDispatchContext);
   const {results, fetchStatus} = useContext(ApiSearchStateContext);
@@ -40,18 +29,18 @@ export default function AddPlantPage() {
 
 
   return (
-      <>
+      <PageContent>
+        <PageTitle title={"Browse the plant world"}/>
         <Grid container justify={"center"}>
-          <Box className={classes.searchBox}>
+          <InputBox>
             <TextField
                 id="Search Input"
                 label="Find your plant"
                 placeholder="sunflower"
                 multiline
-                variant="outlined"
                 onChange={handleOnInputChange}
             />
-          </Box>
+          </InputBox>
           {results.map(result => (
                   <Grid item xs={10} sm={6} md={4} lg={3} key={result.id}>
                     <SearchResultCard result={result}/>
@@ -65,7 +54,7 @@ export default function AddPlantPage() {
               </Typography>
           )}
         </Grid>
-      </>
+      </PageContent>
 
   )
 
