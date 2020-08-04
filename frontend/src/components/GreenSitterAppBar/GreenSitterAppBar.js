@@ -12,17 +12,17 @@ import HomeRoundedIcon from '@material-ui/icons/HomeRounded';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    background: "rgb(73, 139, 104)",
+    background: "transparent",
     maxHeight: 50,
     margin: theme.spacing(1),
-    borderRadius: 30,
-    maxWidth: "95%",
+    maxWidth: "90%",
     color: "#fff",
     zIndex: 0,
-    boxShadow: '-5px -5px 8px #fff, 5px 5px 8px rgb(73, 139, 104, 0.7)',
     display: "flex",
     justifyContent: "space-between",
-    alignContent: "center"
+    alignContent: "center",
+    border: "none",
+    boxShadow: "none",
   },
   toolbar: {
     width: "90%",

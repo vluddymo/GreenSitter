@@ -5,15 +5,15 @@ import makeStyles from "@material-ui/core/styles/makeStyles";
 
 const useStyles = makeStyles({
   container: {
-    maxWidth: 800,
-    maxHeight: 100,
+    maxWidth: "80%",
+    minHeight: 42,
     padding: 5,
     background: "rgb(170,200,165)",
     display: "flex",
     justifyContent: "center",
     borderTopRightRadius: 40,
     borderTopLeftRadius: 40,
-    boxShadow: '-8px -8px 8px #fff, 8px 8px 8px rgb(73, 139, 104, 0.7)',
+    boxShadow: '-8px -8px 8px #fff, 8px 8px 8px rgba(144,153,142, 0.7)',
 
   }
 });
