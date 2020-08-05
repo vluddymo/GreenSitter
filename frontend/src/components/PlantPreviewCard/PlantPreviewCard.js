@@ -10,40 +10,41 @@ import {useHistory} from 'react-router-dom';
 import WateringStatus from "../WateringStatus/WateringStatus";
 
 const useStyles = makeStyles((theme) => ({
+  container: {
+    height: "min-content",
+    margin: "0 auto",
+    padding: 5,
+    backgroundColor: "transparent",
+  },
+  item: {
+    borderRadius: 12,
+    backgroundColor: "transparent",
+    boxShadow: "-8px -8px 16px #fff, 8px 8px 16px rgba(174,170,192,0.4)",
+    margin: theme.spacing(1),
+    padding: theme.spacing(1.2),
+  },
   root: {
     backgroundColor: "transparent",
     position: "sticky",
-    margin: theme.spacing(2),
     maxHeight: 80,
     '@media (min-width: 599px)': {
       maxHeight: 150,
       margin: theme.spacing(3),
     },
-    borderRadius: 15,
     display: 'flex',
     '&:hover': {
-      backgroundColor: 'rgb(215,181,58)',
+      backgroundColor: theme.palette.primary.light,
     },
     transition: "0.5s",
     outlines: "none",
     boxShadow: "none",
+    borderRadius: 10,
   },
   content: {
     flex: '1 0 auto',
     padding: theme.spacing(1),
     paddingBottom: 0,
     alignContent: "center",
-  },
-  container:{
-    height:"min-content",
-    margin: "0 auto",
-    padding: 5,
-  },
-  item: {
-    borderRadius: 20,
-    backgroundColor: "#f0f0f3",
-    color1: "rgba(174,170,192,0.4)",
-    boxShadow: '-8px -8px 24px #fff, 8px 8px 24px rgba(174,170,192,0.4), -8px -8px 8px rgba(174,170,192,0.25) inset, 8px  8px 8px #fff inset',
   },
   cover: {
     height: 0,
@@ -63,13 +64,13 @@ export default function PlantPreviewCard({plant}) {
 
   return (
       <Grid container justify={"center"} className={classes.container}>
-        <Grid item xs={11} sm={11} className={classes.item}>
+        <Grid item xs={9} sm={10} className={classes.item}>
           <Card className={classes.root}
                 key={plant.nickName}
                 onClick={() => history.push(`/plant/${plant.nickName}`)}
           >
             <Grid container>
-              <Grid item xs={4} lg={5} >
+              <Grid item xs={4} lg={5}>
                 <CardMedia className={classes.cover}
                            title="potty plant"
                            image={plant.imageUrl === "null" ? pottyPlant : plant.imageUrl}/>
@@ -83,7 +84,7 @@ export default function PlantPreviewCard({plant}) {
                     {plant.commonName}
                   </Typography>
                 </CardContent>
-                  <WateringStatus wateringStatus={plant.wateringStatus}/>
+                <WateringStatus wateringStatus={plant.wateringStatus}/>
               </Grid>
             </Grid>
           </Card>

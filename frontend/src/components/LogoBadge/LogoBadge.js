@@ -7,7 +7,7 @@ import GreenSitterLogo from "./GreenSitterLogo/GreenSitterLogo";
 const useStyles = makeStyles((theme) => ({
   paper: {
     background: "transparent",
-    boxShadow: "-10px -10px 36px #fff, 10px 10px 36px rgba(174,170,192,0.4), 10px 10px 10px #fff inset, -10px -10px 10px rgba(174,170,192,0.25) inset",
+    boxShadow: "-10px -10px 25px #fff, 10px 10px 25px rgba(174,170,192,0.4), 10px 10px 10px #fff inset, -10px -10px 10px rgba(174,170,192,0.25) inset",
     width: 160,
     maxHeight: 160,
     padding: theme.spacing(1),
@@ -20,6 +20,7 @@ const useStyles = makeStyles((theme) => ({
     alignSelf: "center",
   },
   logoBox: {
+    background: "transparent",
     padding: theme.spacing(0),
     height: 140,
     width: 140,

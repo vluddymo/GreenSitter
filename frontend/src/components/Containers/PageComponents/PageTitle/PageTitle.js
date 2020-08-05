@@ -7,24 +7,26 @@ const useStyles = makeStyles((theme) => ({
   container: {
     background: "transparent",
     alignSelf: "center",
-    width: "80%",
+    width: "90%",
     display: "flex",
     justifyContent: "center",
-    marginTop: theme.spacing(1),
+    marginTop: theme.spacing(2.5),
+    marginBottom: theme.spacing(1.5),
     borderRadius: 30,
     boxShadow: "-8px -8px 8px #fff inset, 8px 8px 8px rgba(174,170,192,0.4) inset",
+
   },
   pageTitle: {
     borderRadius: 27.5,
     width: "100%",
-    height: "min-content",
-    margin: 8,
-    backgroundColor: "rgb(170,200,165)",
+    height: 32,
+    margin: 16,
+    backgroundColor: theme.palette.primary.main,
     textAlign: "center",
   },
   title: {
-    marginTop: theme.spacing(1.5),
-    height: 30,
+    alignSelf: "center",
+    marginTop: theme.spacing(1)
 
   }
 }));
