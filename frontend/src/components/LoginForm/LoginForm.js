@@ -13,7 +13,7 @@ import InputBox from "../Containers/InputBox/InputBox";
 const useStyles = makeStyles((theme) => ({
   paper: {
     background: "transparent",
-    boxShadow: "-10px -10px 36px #fff, 10px 10px 36px rgba(174,170,192,0.4)",
+    boxShadow: "-10px -10px 25px #fff, 10px 10px 25px rgba(174,170,192,0.4)",
     width: 300,
     '@media (max-width: 375px)': {
       width: 250,
@@ -21,18 +21,18 @@ const useStyles = makeStyles((theme) => ({
     '@media (max-width: 320px)': {
       width: 220,
     },
-    maxHeight: 250,
-    padding: theme.spacing(2.5),
+    maxHeight: 220,
+    padding: theme.spacing(2),
     marginTop: theme.spacing(2),
     flexGrow: 1,
-    borderRadius: 15,
+    borderRadius: 45,
     display: "flex",
     flexDirection: "column",
     justifyContent: "center",
     alignSelf: "center",
   },
   loginButton: {
-    margin: theme.spacing(2),
+    margin: theme.spacing(1),
     width: "50%",
     backgroundColor: theme.palette.primary.main,
     boxShadow: '-5px -5px 5px rgba(255,255,255, 1), 5px 5px 5px rgba(163,172,161, 0.4)',

@@ -14,13 +14,14 @@ const useStyles = makeStyles((theme) => ({
     height: "min-content",
     margin: "0 auto",
     padding: 5,
+    backgroundColor: "transparent",
   },
   item: {
     borderRadius: 12,
     backgroundColor: "transparent",
-    boxShadow: "-5px -5px 15px #fff, 5px 5px 15px rgba(174,170,192,0.4)",
-    margin: theme.spacing(0.5),
-    padding: theme.spacing(1),
+    boxShadow: "-8px -8px 16px #fff, 8px 8px 16px rgba(174,170,192,0.4)",
+    margin: theme.spacing(1),
+    padding: theme.spacing(1.2),
   },
   root: {
     backgroundColor: "transparent",
@@ -63,7 +64,7 @@ export default function PlantPreviewCard({plant}) {
 
   return (
       <Grid container justify={"center"} className={classes.container}>
-        <Grid item xs={11} sm={11} className={classes.item}>
+        <Grid item xs={9} sm={10} className={classes.item}>
           <Card className={classes.root}
                 key={plant.nickName}
                 onClick={() => history.push(`/plant/${plant.nickName}`)}

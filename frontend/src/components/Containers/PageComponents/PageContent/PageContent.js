@@ -4,6 +4,7 @@ import makeStyles from "@material-ui/core/styles/makeStyles";
 
 const useStyles = makeStyles({
   container: {
+    background: "transparent",
     display: "flex",
     flexDirection: "column",
     width: "100%",

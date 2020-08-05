@@ -9,7 +9,7 @@ export default function () {
 
   return (
 
-      <IconButton color="inherit" onClick={() => history.push("/")}>
+      <IconButton color="primary" onClick={() => history.push("/")}>
         <HomeRoundedIcon/>
       </IconButton>
   )

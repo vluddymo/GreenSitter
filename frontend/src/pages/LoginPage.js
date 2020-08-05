@@ -7,6 +7,7 @@ import LogoBadge from "../components/LogoBadge/LogoBadge";
 
 const useStyles = makeStyles({
   container: {
+    background: "transparent",
     display: "flex",
     flexDirection: "column",
     width: "100%",

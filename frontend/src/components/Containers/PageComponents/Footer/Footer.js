@@ -3,21 +3,22 @@ import React from "react";
 import Container from "@material-ui/core/Container";
 import makeStyles from "@material-ui/core/styles/makeStyles";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles({
   container: {
 
     maxWidth: "80%",
-    maxHeight: 70,
+    maxHeight: 50,
+    minHeight: 30,
     padding: 5,
-    background: theme.palette.primary.main,
+    background: "transparent",
     display: "flex",
     justifyContent: "center",
     borderTopRightRadius: 40,
     borderTopLeftRadius: 40,
-    boxShadow: '-8px -8px 8px #fff, 8px 8px 8px rgba(144,153,142, 0.7)',
+    boxShadow: "-10px -10px 16px #fff, 10px 10px 16px rgba(174,170,192,0.4)",
 
   }
-}));
+});
 
 export default function Footer() {
 

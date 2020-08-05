@@ -8,7 +8,6 @@ import Typography from "@material-ui/core/Typography";
 import TextField from "@material-ui/core/TextField";
 import InputBox from "../components/Containers/InputBox/InputBox";
 import PageContent from "../components/Containers/PageComponents/PageContent/PageContent";
-import PageTitle from "../components/Containers/PageComponents/PageTitle/PageTitle";
 
 export default function AddPlantPage() {
 
@@ -30,7 +29,6 @@ export default function AddPlantPage() {
 
   return (
       <PageContent>
-        <PageTitle title={"Browse the plant world"}/>
         <Grid container justify={"center"}>
           <InputBox>
             <TextField

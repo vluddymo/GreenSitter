@@ -7,7 +7,7 @@ const useStyles = makeStyles((theme) => ({
   container: {
     background: "transparent",
     alignSelf: "center",
-    width: "80%",
+    width: "90%",
     display: "flex",
     justifyContent: "center",
     marginTop: theme.spacing(2.5),
@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: 27.5,
     width: "100%",
     height: 32,
-    margin: 8,
+    margin: 16,
     backgroundColor: theme.palette.primary.main,
     textAlign: "center",
   },

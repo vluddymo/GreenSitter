@@ -13,7 +13,7 @@ import makeStyles from "@material-ui/core/styles/makeStyles";
 
 const useStyles = makeStyles((theme) => ({
   container: {
-    backgroundColor: "transparent",
+    background: "transparent",
     maxWidth: 800,
     padding: theme.spacing(0),
     overflow: "scroll",

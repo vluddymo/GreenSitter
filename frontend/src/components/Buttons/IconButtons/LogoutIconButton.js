@@ -13,7 +13,7 @@ export default function LogoutIconButton() {
   return (
 
       <IconButton
-          color="inherit"
+          color="primary"
           onClick={() => {
             dispatch({type: LOGOUT});
             removeJWTToken();

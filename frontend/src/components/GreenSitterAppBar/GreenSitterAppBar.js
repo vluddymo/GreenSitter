@@ -1,5 +1,4 @@
 import React, {useContext} from "react";
-import Toolbar from "@material-ui/core/Toolbar";
 import AppBar from "@material-ui/core/AppBar";
 import {UserStateContext} from "../../context/user/UserContext";
 import makeStyles from "@material-ui/core/styles/makeStyles";
@@ -11,22 +10,22 @@ const useStyles = makeStyles({
   root: {
     background: "transparent",
     maxHeight: 50,
+    minHeight: 30,
     maxWidth: "100%",
     color: "#fff",
     display: "flex",
     zIndex: 0,
     border: "none",
     boxShadow: "none",
-    alignSelf: "center"
+    alignSelf: "center",
+    justifyContent: "space-between",
+    flexDirection: "row",
   },
   toolbar: {
     alignSelf: "center",
     width: "90%",
     height: 50,
-    display: "flex",
-    flexDirection: "row",
     margin: "auto",
-    justifyContent: "space-between",
   }
 });
 
@@ -38,10 +37,10 @@ function GreenSitterAppBar() {
   return (
       <AppBar position={"static"} className={classes.root}>
         {authStatus === 'SUCCESS' && (
-            <Toolbar className={classes.toolbar}>
+            <>
               <HomeIconButton/>
               <LogoutIconButton/>
-            </Toolbar>
+            </>
         )}
       </AppBar>
   );

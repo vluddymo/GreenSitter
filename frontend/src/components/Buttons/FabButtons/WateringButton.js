@@ -9,7 +9,7 @@ export default function WateringButton() {
   const history = useHistory();
 
   return (
-      <Fab color="secondary"
+      <Fab color="primary"
            aria-label="add"
            onClick={() => history.push("/plant/add")}
       >
