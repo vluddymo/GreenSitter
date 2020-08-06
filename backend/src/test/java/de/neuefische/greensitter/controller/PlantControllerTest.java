@@ -8,11 +8,11 @@ import de.neuefische.greensitter.model.GreenSitterUser;
 import de.neuefische.greensitter.model.Plant;
 import de.neuefische.greensitter.model.dtos.ChosenPlantDto;
 import de.neuefische.greensitter.model.dtos.LoginData;
+import de.neuefische.greensitter.model.dtos.PlantImages;
+import de.neuefische.greensitter.model.dtos.PlantImagesData;
 import de.neuefische.greensitter.service.DataService;
-import de.neuefische.greensitter.service.PlantService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.InjectMocks;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
@@ -24,6 +24,7 @@ import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
+
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -73,10 +74,26 @@ class PlantControllerTest {
     public void getAllPlantsShouldReturnAllPlants() {
         //GIVEN
         String token = loginUser();
+        PlantImagesData dataSet = new PlantImagesData("1", "", "");
+
+        PlantImagesData[] flower = new PlantImagesData[1];
+        flower[0] = dataSet;
+        PlantImagesData[] leaf = new PlantImagesData[1];
+        leaf[0] = dataSet;
+        PlantImagesData[] habit = new PlantImagesData[1];
+        habit[0] = dataSet;
+        PlantImagesData[] fruit = new PlantImagesData[1];
+        fruit[0] = dataSet;
+        PlantImagesData[] bark = new PlantImagesData[1];
+        bark[0] = dataSet;
+        PlantImagesData[] other = new PlantImagesData[1];
+        other[0] = dataSet;
+
+        PlantImages images = new PlantImages(flower, leaf, habit, fruit, bark, other);
 
         String url = "http://localhost:" + port + "/api/shelve";
-        plantDb.save(new Plant("Rosie", "Rosen", "rosa rosea", "genus 1", "rosen family", "https://bs.floristic.org/image/o/400851a79391dbe6f667c66e4bf70299e9921853", 75));
-        plantDb.save(new Plant("Tulpie", "Tulpe", "tulpe tulpea", "genus 2", "tulpen family", "https://bs.floristic.org/image/o/3b03c9b70f8aedc82e89a1047089920ccad6c825", 75));
+        plantDb.save(new Plant("Rosie", "Rosen", "rosa rosea", "genus 1", "rosen family", "https://bs.floristic.org/image/o/400851a79391dbe6f667c66e4bf70299e9921853", 75, images));
+        plantDb.save(new Plant("Tulpie", "Tulpe", "tulpe tulpea", "genus 2", "tulpen family", "https://bs.floristic.org/image/o/3b03c9b70f8aedc82e89a1047089920ccad6c825", 75, images));
 
         //WHEN
         HttpHeaders headers = new HttpHeaders();
@@ -89,8 +106,8 @@ class PlantControllerTest {
         assertEquals(response.getStatusCode(), HttpStatus.OK);
         Plant[] plants = response.getBody();
         assertEquals(plants.length, 2);
-        assertEquals(plants[0], new Plant("Rosie", "Rosen", "rosa rosea", "genus 1", "rosen family", "https://bs.floristic.org/image/o/400851a79391dbe6f667c66e4bf70299e9921853", 75));
-        assertEquals(plants[1], new Plant("Tulpie", "Tulpe", "tulpe tulpea", "genus 2", "tulpen family", "https://bs.floristic.org/image/o/3b03c9b70f8aedc82e89a1047089920ccad6c825", 75));
+        assertEquals(plants[0], new Plant("Rosie", "Rosen", "rosa rosea", "genus 1", "rosen family", "https://bs.floristic.org/image/o/400851a79391dbe6f667c66e4bf70299e9921853", 75, images));
+        assertEquals(plants[1], new Plant("Tulpie", "Tulpe", "tulpe tulpea", "genus 2", "tulpen family", "https://bs.floristic.org/image/o/3b03c9b70f8aedc82e89a1047089920ccad6c825", 75, images));
 
     }
 
@@ -99,6 +116,22 @@ class PlantControllerTest {
         // GIVEN
 
         String token = loginUser();
+        PlantImagesData dataSet = new PlantImagesData("1", "", "");
+
+        PlantImagesData[] flower = new PlantImagesData[1];
+        flower[0] = dataSet;
+        PlantImagesData[] leaf = new PlantImagesData[1];
+        leaf[0] = dataSet;
+        PlantImagesData[] habit = new PlantImagesData[1];
+        habit[0] = dataSet;
+        PlantImagesData[] fruit = new PlantImagesData[1];
+        fruit[0] = dataSet;
+        PlantImagesData[] bark = new PlantImagesData[1];
+        bark[0] = dataSet;
+        PlantImagesData[] other = new PlantImagesData[1];
+        other[0] = dataSet;
+
+        PlantImages images = new PlantImages(flower, leaf, habit, fruit, bark, other);
 
         ChosenPlantDto plantDto = new ChosenPlantDto("dumbo", "190185");
         String url = "http://localhost:" + port + "/api/shelve";
@@ -107,17 +140,16 @@ class PlantControllerTest {
         headers.setBearerAuth(token);
         HttpEntity<ChosenPlantDto> requestEntity = new HttpEntity<>(plantDto, headers);
 
-        ChoiceFetchData data = new ChoiceFetchData("Didier's tulip", "Tulipa gesneriana", "Tulipa", "Lily family", "https://bs.floristic.org/image/o/67cb801e2d4f091d7ae27ad83bc0699207631ead");
+        ChoiceFetchData data = new ChoiceFetchData("Didier's tulip", "Tulipa gesneriana", "Tulipa", "Lily family", "https://bs.floristic.org/image/o/67cb801e2d4f091d7ae27ad83bc0699207631ead", images);
         int sensorData = 60;
         when(searchService.getChoiceFromApi("190185")).thenReturn(data);
         when(dataService.mockSensorData()).thenReturn(sensorData);
-
 
         // WHEN
         ResponseEntity<Plant> putResponse = restTemplate.exchange(url, HttpMethod.PUT, requestEntity, Plant.class);
 
         // THEN
-        Plant expectedPlant = new Plant("dumbo", "Didier's tulip", "Tulipa gesneriana", "Tulipa", "Lily family","https://bs.floristic.org/image/o/67cb801e2d4f091d7ae27ad83bc0699207631ead", 60);
+        Plant expectedPlant = new Plant("dumbo", "Didier's tulip", "Tulipa gesneriana", "Tulipa", "Lily family", "https://bs.floristic.org/image/o/67cb801e2d4f091d7ae27ad83bc0699207631ead", 60, images);
 
         assertEquals(HttpStatus.OK, putResponse.getStatusCode());
         assertNotNull(putResponse.getBody());
@@ -132,9 +164,25 @@ class PlantControllerTest {
     public void getAPlantShouldReturnOnePlant() {
         //GIVEN
         String token = loginUser();
+        PlantImagesData dataSet = new PlantImagesData("1", "", "");
+
+        PlantImagesData[] flower = new PlantImagesData[1];
+        flower[0] = dataSet;
+        PlantImagesData[] leaf = new PlantImagesData[1];
+        leaf[0] = dataSet;
+        PlantImagesData[] habit = new PlantImagesData[1];
+        habit[0] = dataSet;
+        PlantImagesData[] fruit = new PlantImagesData[1];
+        fruit[0] = dataSet;
+        PlantImagesData[] bark = new PlantImagesData[1];
+        bark[0] = dataSet;
+        PlantImagesData[] other = new PlantImagesData[1];
+        other[0] = dataSet;
+
+        PlantImages images = new PlantImages(flower, leaf, habit, fruit, bark, other);
 
         String url = "http://localhost:" + port + "/api/shelve/Rosie";
-        plantDb.save(new Plant("Rosie", "Rosen", "rosa rosea", "genus 1", "rosen family", "https://bs.floristic.org/image/o/400851a79391dbe6f667c66e4bf70299e9921853", 60));
+        plantDb.save(new Plant("Rosie", "Rosen", "rosa rosea", "genus 1", "rosen family", "https://bs.floristic.org/image/o/400851a79391dbe6f667c66e4bf70299e9921853", 60, images));
 
         //WHEN
         HttpHeaders headers = new HttpHeaders();
@@ -146,7 +194,7 @@ class PlantControllerTest {
         //THEN
         Plant plant = response.getBody();
         assertEquals(response.getStatusCode(), HttpStatus.OK);
-        assertEquals(plant, new Plant("Rosie", "Rosen", "rosa rosea", "genus 1", "rosen family", "https://bs.floristic.org/image/o/400851a79391dbe6f667c66e4bf70299e9921853", 60));
+        assertEquals(plant, new Plant("Rosie", "Rosen", "rosa rosea", "genus 1", "rosen family", "https://bs.floristic.org/image/o/400851a79391dbe6f667c66e4bf70299e9921853", 60, images));
 
     }
 
@@ -154,9 +202,25 @@ class PlantControllerTest {
     public void deleteAPlantShouldRemovePlantFromDb() {
         //GIVEN
         String token = loginUser();
+        PlantImagesData dataSet = new PlantImagesData("1", "", "");
+
+        PlantImagesData[] flower = new PlantImagesData[1];
+        flower[0] = dataSet;
+        PlantImagesData[] leaf = new PlantImagesData[1];
+        leaf[0] = dataSet;
+        PlantImagesData[] habit = new PlantImagesData[1];
+        habit[0] = dataSet;
+        PlantImagesData[] fruit = new PlantImagesData[1];
+        fruit[0] = dataSet;
+        PlantImagesData[] bark = new PlantImagesData[1];
+        bark[0] = dataSet;
+        PlantImagesData[] other = new PlantImagesData[1];
+        other[0] = dataSet;
+
+        PlantImages images = new PlantImages(flower, leaf, habit, fruit, bark, other);
 
         String url = "http://localhost:" + port + "/api/shelve/Rosie";
-        plantDb.save(new Plant("Rosie", "Rosen", "rosa rosea", "genus 1", "rosen family", "https://bs.floristic.org/image/o/400851a79391dbe6f667c66e4bf70299e9921853", 60));
+        plantDb.save(new Plant("Rosie", "Rosen", "rosa rosea", "genus 1", "rosen family", "https://bs.floristic.org/image/o/400851a79391dbe6f667c66e4bf70299e9921853", 60, images));
 
         //WHEN
         HttpHeaders headers = new HttpHeaders();

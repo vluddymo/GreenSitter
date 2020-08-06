@@ -1,9 +1,11 @@
 package de.neuefische.greensitter.api;
 
+import com.fasterxml.jackson.databind.JsonNode;
 import de.neuefische.greensitter.api.dtos.ChoiceFetchData;
 import de.neuefische.greensitter.api.dtos.SearchResultData;
 import de.neuefische.greensitter.api.dtos.TrefleApiQueryDto;
 import de.neuefische.greensitter.api.dtos.TrefleChoiceFetchDto;
+import de.neuefische.greensitter.model.dtos.PlantImages;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -38,6 +40,7 @@ public class ApiSearchService {
 
         return queryData.getData();
     }
+
 
 }
 

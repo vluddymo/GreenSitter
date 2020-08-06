@@ -44,6 +44,7 @@ public class PlantController {
         plant.setGenus(plantData.getGenus());
         plant.setFamilyCommonName(plantData.getFamily_common_name());
         plant.setImageUrl(plantData.getImage_url());
+        plant.setImages(plantData.getImages());
         plant.setWateringStatus(dataService.mockSensorData());
         return plantService.addPlant(plant);
     }
