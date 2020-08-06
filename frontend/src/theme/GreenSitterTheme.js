@@ -8,7 +8,7 @@ const GreenSitterTheme = createMuiTheme({
         },
     secondary:
         {
-          main: '#19c4bf' // light turquoise
+          main: "#006B5F" // light turquoise
         },
     error:
         {
@@ -23,7 +23,6 @@ const GreenSitterTheme = createMuiTheme({
   typography: {
     h3: {
       fontFamily: "Arial",
-      color: "rgba(0, 0, 0, 0.87)",
       fontSize: "1rem",
       fontWeight: "normal",
       textTransform: "uppercase",

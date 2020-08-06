@@ -7,7 +7,7 @@ import LoadingSpinner from "../components/Spinner/LoadingSpinner";
 import Typography from "@material-ui/core/Typography";
 import TextField from "@material-ui/core/TextField";
 import InputBox from "../components/Containers/InputBox/InputBox";
-import PageContent from "../components/Containers/PageComponents/PageContent/PageContent";
+import PageContent from "../components/PageComponents/PageContent/PageContent";
 
 export default function AddPlantPage() {
 
