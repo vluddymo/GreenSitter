@@ -74,7 +74,8 @@ class PlantControllerTest {
     public void getAllPlantsShouldReturnAllPlants() {
         //GIVEN
         String token = loginUser();
-        PlantImagesData dataSet = new PlantImagesData("1","","");
+        PlantImagesData dataSet = new PlantImagesData("1", "", "");
+
         PlantImagesData[] flower = new PlantImagesData[1];
         flower[0] = dataSet;
         PlantImagesData[] leaf = new PlantImagesData[1];
@@ -88,12 +89,10 @@ class PlantControllerTest {
         PlantImagesData[] other = new PlantImagesData[1];
         other[0] = dataSet;
 
-        PlantImages images = new PlantImages(flower, leaf,habit, fruit, bark, other);
-
+        PlantImages images = new PlantImages(flower, leaf, habit, fruit, bark, other);
 
         String url = "http://localhost:" + port + "/api/shelve";
         plantDb.save(new Plant("Rosie", "Rosen", "rosa rosea", "genus 1", "rosen family", "https://bs.floristic.org/image/o/400851a79391dbe6f667c66e4bf70299e9921853", 75, images));
-
         plantDb.save(new Plant("Tulpie", "Tulpe", "tulpe tulpea", "genus 2", "tulpen family", "https://bs.floristic.org/image/o/3b03c9b70f8aedc82e89a1047089920ccad6c825", 75, images));
 
         //WHEN
@@ -117,7 +116,8 @@ class PlantControllerTest {
         // GIVEN
 
         String token = loginUser();
-        PlantImagesData dataSet = new PlantImagesData("1","","");
+        PlantImagesData dataSet = new PlantImagesData("1", "", "");
+
         PlantImagesData[] flower = new PlantImagesData[1];
         flower[0] = dataSet;
         PlantImagesData[] leaf = new PlantImagesData[1];
@@ -131,7 +131,7 @@ class PlantControllerTest {
         PlantImagesData[] other = new PlantImagesData[1];
         other[0] = dataSet;
 
-        PlantImages images = new PlantImages(flower, leaf,habit, fruit, bark, other);
+        PlantImages images = new PlantImages(flower, leaf, habit, fruit, bark, other);
 
         ChosenPlantDto plantDto = new ChosenPlantDto("dumbo", "190185");
         String url = "http://localhost:" + port + "/api/shelve";
@@ -144,7 +144,6 @@ class PlantControllerTest {
         int sensorData = 60;
         when(searchService.getChoiceFromApi("190185")).thenReturn(data);
         when(dataService.mockSensorData()).thenReturn(sensorData);
-
 
         // WHEN
         ResponseEntity<Plant> putResponse = restTemplate.exchange(url, HttpMethod.PUT, requestEntity, Plant.class);
@@ -165,7 +164,8 @@ class PlantControllerTest {
     public void getAPlantShouldReturnOnePlant() {
         //GIVEN
         String token = loginUser();
-        PlantImagesData dataSet = new PlantImagesData("1","","");
+        PlantImagesData dataSet = new PlantImagesData("1", "", "");
+
         PlantImagesData[] flower = new PlantImagesData[1];
         flower[0] = dataSet;
         PlantImagesData[] leaf = new PlantImagesData[1];
@@ -179,8 +179,7 @@ class PlantControllerTest {
         PlantImagesData[] other = new PlantImagesData[1];
         other[0] = dataSet;
 
-        PlantImages images = new PlantImages(flower, leaf,habit, fruit, bark, other);
-
+        PlantImages images = new PlantImages(flower, leaf, habit, fruit, bark, other);
 
         String url = "http://localhost:" + port + "/api/shelve/Rosie";
         plantDb.save(new Plant("Rosie", "Rosen", "rosa rosea", "genus 1", "rosen family", "https://bs.floristic.org/image/o/400851a79391dbe6f667c66e4bf70299e9921853", 60, images));
@@ -203,8 +202,8 @@ class PlantControllerTest {
     public void deleteAPlantShouldRemovePlantFromDb() {
         //GIVEN
         String token = loginUser();
+        PlantImagesData dataSet = new PlantImagesData("1", "", "");
 
-        PlantImagesData dataSet = new PlantImagesData("1","","");
         PlantImagesData[] flower = new PlantImagesData[1];
         flower[0] = dataSet;
         PlantImagesData[] leaf = new PlantImagesData[1];
@@ -218,8 +217,7 @@ class PlantControllerTest {
         PlantImagesData[] other = new PlantImagesData[1];
         other[0] = dataSet;
 
-        PlantImages images = new PlantImages(flower, leaf,habit, fruit, bark, other);
-
+        PlantImages images = new PlantImages(flower, leaf, habit, fruit, bark, other);
 
         String url = "http://localhost:" + port + "/api/shelve/Rosie";
         plantDb.save(new Plant("Rosie", "Rosen", "rosa rosea", "genus 1", "rosen family", "https://bs.floristic.org/image/o/400851a79391dbe6f667c66e4bf70299e9921853", 60, images));
