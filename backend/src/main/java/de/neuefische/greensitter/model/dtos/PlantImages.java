@@ -11,4 +11,9 @@ import lombok.NoArgsConstructor;
 public class PlantImages {
 
     private PlantImagesData[] flower;
+    private PlantImagesData[] leaf;
+    private PlantImagesData[] habit;
+    private PlantImagesData[] fruit;
+    private PlantImagesData[] bark;
+    private PlantImagesData[] other;
 }
