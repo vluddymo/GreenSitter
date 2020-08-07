@@ -3,13 +3,15 @@ import {makeStyles} from "@material-ui/core/styles";
 import Box from "@material-ui/core/Box";
 import PictureBadge from "./PictureBadge/PictureBadge";
 import PlantCardHeader from "./PlantCardHeader/PlantCardHeader";
-import PlantCardDetailsContent from "./PlantCardDetailsContent/PlantCardDetailsContent";
+import PlantCardContent from "./PlantCardContent/PlantCardContent";
 import PlantCardActions from "./PlantCardActions/PlantCardActions";
 
 const useStyles = makeStyles({
   plantDetailCard: {
-    maxWidth: "md",
-    minWidth: "80%",
+    width: "90%",
+    '@media (min-width: 426px)': {
+      maxWidth: "md",
+    },
     height: "100%",
     alignSelf: "center",
     display: "flex",
@@ -25,7 +27,7 @@ export default function PlantCard({plant}) {
       <Box className={classes.plantDetailCard}>
         <PictureBadge plant={plant}/>
         <PlantCardHeader plantNickname={plant.nickName}/>
-        <PlantCardDetailsContent plant={plant}/>
+        <PlantCardContent plant={plant}/>
        <PlantCardActions plantNickname={plant.nickName}/>
       </Box>
   );
