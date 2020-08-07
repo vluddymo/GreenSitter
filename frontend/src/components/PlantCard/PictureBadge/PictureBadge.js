@@ -2,6 +2,7 @@ import makeStyles from "@material-ui/core/styles/makeStyles";
 import Paper from "@material-ui/core/Paper";
 import React from "react";
 import CardMedia from "@material-ui/core/CardMedia";
+import WateringStatusCircular from "../../WateringStatus/WateringStatusCircular";
 
 const useStyles = makeStyles((theme) => ({
   badge: {
@@ -19,13 +20,14 @@ const useStyles = makeStyles((theme) => ({
   },
   imageBox: {
     padding: theme.spacing(0),
-    height: "80%",
-    width: "80%",
+    height: "75%",
+    width: "75%",
     borderRadius: "50%",
     display: "flex",
     alignSelf: "center",
     justifyContent: "center",
     margin: "auto",
+    zIndex: 1
   },
 }));
 
@@ -35,6 +37,7 @@ export default function PictureBadge({plant}) {
 
   return (
       <Paper className={classes.badge}>
+        <WateringStatusCircular wateringStatus={plant.wateringStatus}/>
           <CardMedia className={classes.imageBox}
                      image={plant.imageUrl}
                      title={plant.nickName}/>
