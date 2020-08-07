@@ -18,6 +18,11 @@ export default function PageContent({children}) {
 
   const classes = useStyles();
 
-  return <Container className={classes.container}>{children}</Container>
+  return (
 
+      <Container className={classes.container}>
+        {children}
+      </Container>
+
+  )
 }

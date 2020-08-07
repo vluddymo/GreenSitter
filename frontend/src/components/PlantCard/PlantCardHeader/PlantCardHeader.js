@@ -7,8 +7,8 @@ const useStyles = makeStyles((theme) => ({
   cardHeader: {
     width: "max-content",
     padding: theme.spacing(1),
-    alignSelf: "center"
-
+    alignSelf: "center",
+    marginBottom: theme.spacing(1),
   }
 }));
 

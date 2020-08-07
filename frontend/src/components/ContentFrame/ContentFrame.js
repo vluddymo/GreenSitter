@@ -1,6 +1,6 @@
 import React from "react";
 import Navigation from "../Navigation/Navigation";
-import Footer from "../Containers/PageComponents/Footer/Footer";
+import Footer from "../PageComponents/Footer/Footer";
 import makeStyles from "@material-ui/core/styles/makeStyles";
 import {BrowserRouter} from "react-router-dom";
 import Container from "@material-ui/core/Container";
