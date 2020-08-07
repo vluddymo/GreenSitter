@@ -72,11 +72,6 @@ export default function AddPlantDialog({open, handleClose, result}) {
                 error={nickName.length < 2}
                 helperText={'min length 2'}
             />
-            <TextField
-                label={result.id}
-                disabled={true}
-                multiline={true}
-            />
           </form>
           {addStatus === 'PENDING' && <LoadingSpinner/>}
           {addStatus === 'FAILED' && (

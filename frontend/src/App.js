@@ -9,16 +9,19 @@ import ContentFrame from "./components/ContentFrame/ContentFrame";
 
 
 function App() {
+
   return (
-      <UserContextProvider>
-        <PlantContextProvider>
-          <ApiSearchContextProvider>
-            <ThemeProvider theme={GreenSitterTheme}>
+
+      <ThemeProvider theme={GreenSitterTheme}>
+        <UserContextProvider>
+          <PlantContextProvider>
+            <ApiSearchContextProvider>
               <ContentFrame/>
-            </ThemeProvider>
-          </ApiSearchContextProvider>
-        </PlantContextProvider>
-      </UserContextProvider>
+            </ApiSearchContextProvider>
+          </PlantContextProvider>
+        </UserContextProvider>
+      </ThemeProvider>
+
   )
 
 }

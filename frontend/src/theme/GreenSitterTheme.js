@@ -23,21 +23,21 @@ const GreenSitterTheme = createMuiTheme({
   typography: {
     h3: {
       fontFamily: "Arial",
-      fontSize: "1rem",
+      fontSize: "1.2rem",
       fontWeight: "normal",
       textTransform: "uppercase",
-      letterSpacing: "0.050em"
+      letterSpacing: "0.090em"
     },
     h4: {
       fontFamily: "Roboto",
-      color: "white",
       fontSize: "large",
-    },
+      color: "#006B5F",    },
     h5: {
-      fontFamily: 'Pacifico',
+      fontFamily: 'Arial',
+      fontSize: "0.8rem",
       color: "#006B5F",
-      fontWeight: "bold",
-      fontSize: "large",
+      textTransform: "uppercase",
+      fontWeight: "normal",
     },
     h6: {
       fontFamily: "Arimo",
@@ -48,6 +48,10 @@ const GreenSitterTheme = createMuiTheme({
     body2: {
       fontFamily: 'Arimo',
       color: '#555855',
+    },
+    overline: {
+      color: 'rgba(85,88,85,0.75)',
+      fontSize: "0.6rem",
     }
   },
 
