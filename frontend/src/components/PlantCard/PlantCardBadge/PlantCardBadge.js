@@ -8,8 +8,8 @@ const useStyles = makeStyles((theme) => ({
   badge: {
     background: "#f0f0f3",
     boxShadow: "-10px -10px 24px #fff, 10px 10px 24px rgba(174,170,192,0.4), 10px 10px 10px #fff inset, -10px -10px 10px rgba(174,170,192,0.25) inset",
-    width: 260,
-    height: 260,
+    width: 200,
+    height: 200,
     margin: theme.spacing(3),
     flexGrow: 0,
     borderRadius: "50%",
@@ -31,7 +31,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function PictureBadge({plant}) {
+export default function PlantCardBadge({plant}) {
 
   const classes = useStyles();
 
