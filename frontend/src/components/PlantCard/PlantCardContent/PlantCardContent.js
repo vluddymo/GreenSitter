@@ -1,8 +1,8 @@
 import CardContent from "@material-ui/core/CardContent";
 import React from "react";
 import {makeStyles} from "@material-ui/core/styles";
-import PlantCardContentEntry from "./PlantCardContentEntry/PlantCardContentEntry";
 import PlantCardContentGallery from "./PlantCardContentGallery/PlantCardContentGallery";
+import BasicPlantData from "./PlantCardContentEntry/BasicPlantData";
 
 const useStyles = makeStyles({
   detailsContent: {
@@ -24,13 +24,12 @@ export default function PlantCardContent({plant}) {
 
   return (
 
-      <CardContent className={classes.detailsContent}>
-        <PlantCardContentEntry plantAttribute={plant.commonName} title={"Common Name"}/>
-        <PlantCardContentEntry plantAttribute={plant.scientificName} title={"Scientific Name"}/>
-        <PlantCardContentEntry plantAttribute={plant.genus} title={"Genus"}/>
-        <PlantCardContentEntry plantAttribute={plant.familyCommonName} title={"Family"}/>
-        <PlantCardContentGallery images={plant.images.flower}/>
-      </CardContent>
+      <>
+        <CardContent className={classes.detailsContent}>
+          <BasicPlantData plant={plant}/>
+          <PlantCardContentGallery images={plant.images.flower}/>
+        </CardContent>
+      </>
 
   )
 

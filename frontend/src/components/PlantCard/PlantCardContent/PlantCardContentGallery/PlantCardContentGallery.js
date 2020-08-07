@@ -8,8 +8,9 @@ import makeStyles from "@material-ui/core/styles/makeStyles";
 const useStyles = makeStyles((theme) => ({
   galleryBox: {
     background: "transparent",
+    width: "100%",
     height: "min-content",
-    margin: theme.spacing(2),
+    margin: theme.spacing(0),
     display: "flex",
     flexDirection: "row",
     justifyContent: "flex-start",
