@@ -24,12 +24,12 @@ export default function PlantCard({plant}) {
   const classes = useStyles();
 
   return (
-      <Box className={classes.plantDetailCard}>
-        <PlantCardBadge plant={plant}/>
-        <PlantCardHeader plantNickname={plant.nickName}/>
-        <PlantCardContent plant={plant}/>
-       <PlantCardActions plantNickname={plant.nickName}/>
-      </Box>
+          <Box className={classes.plantDetailCard}>
+            <PlantCardBadge plant={plant}/>
+            <PlantCardHeader plantNickname={plant.nickName}/>
+            <PlantCardContent plant={plant}/>
+            <PlantCardActions plantNickname={plant.nickName}/>
+          </Box>
   );
 
 }

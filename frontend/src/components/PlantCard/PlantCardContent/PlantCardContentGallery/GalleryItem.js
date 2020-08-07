@@ -6,10 +6,10 @@ import makeStyles from "@material-ui/core/styles/makeStyles";
 const useStyles = makeStyles((theme) => ({
   badge: {
     background: "#f0f0f3",
-    boxShadow: "-10px -10px 24px #fff, 10px 10px 24px rgba(174,170,192,0.4), 10px 10px 10px #fff inset, -10px -10px 10px rgba(174,170,192,0.25) inset",
-    minWidth: 100,
-    height: 100,
-    margin: theme.spacing(3),
+    boxShadow: "-6px -6px 16px #fff, 6px 6px 16px rgba(174,170,192,0.4), 6px 6px 6px #fff inset, -6px -6px 6px rgba(174,170,192,0.25) inset",
+    minWidth: 150,
+    height: 150,
+    margin: theme.spacing(1),
     flexGrow: 0,
     borderRadius: "50%",
     display: "flex",
@@ -25,7 +25,6 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     alignSelf: "center",
     justifyContent: "center",
-    margin: "auto",
     zIndex: 1
   },
 }));
