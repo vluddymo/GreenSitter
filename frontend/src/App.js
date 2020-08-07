@@ -9,7 +9,9 @@ import ContentFrame from "./components/ContentFrame/ContentFrame";
 
 
 function App() {
+
   return (
+
       <ThemeProvider theme={GreenSitterTheme}>
         <UserContextProvider>
           <PlantContextProvider>
@@ -19,6 +21,7 @@ function App() {
           </PlantContextProvider>
         </UserContextProvider>
       </ThemeProvider>
+
   )
 
 }

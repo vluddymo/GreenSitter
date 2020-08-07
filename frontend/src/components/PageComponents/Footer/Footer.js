@@ -1,4 +1,4 @@
-import GreenSitterAppBar from "../../../GreenSitterAppBar/GreenSitterAppBar";
+import GreenSitterAppBar from "../../GreenSitterAppBar/GreenSitterAppBar";
 import React from "react";
 import Container from "@material-ui/core/Container";
 import makeStyles from "@material-ui/core/styles/makeStyles";
@@ -24,7 +24,7 @@ export default function Footer() {
 
   const classes = useStyles();
   return (
-      <Container maxWidth={"md"} component={"footer"} className={classes.container}>
+      <Container component={"footer"} className={classes.container}>
         <GreenSitterAppBar/>
       </Container>
   )
