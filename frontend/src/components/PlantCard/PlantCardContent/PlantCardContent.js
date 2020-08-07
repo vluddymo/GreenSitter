@@ -27,7 +27,7 @@ export default function PlantCardContent({plant}) {
       <>
         <CardContent className={classes.detailsContent}>
           <BasicPlantData plant={plant}/>
-          <PlantCardContentGallery images={plant.images.flower}/>
+          { plant.images.flower != null && <PlantCardContentGallery images={plant.images.flower}/>}
         </CardContent>
       </>
 
