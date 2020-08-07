@@ -36,10 +36,11 @@ export default function GalleryItem({image}) {
   return (
 
       <Paper className={classes.badge}>
-        <CardMedia className={classes.imageBox}
-                   image={image.image_url}
-                   title={image.copyright}
-                   />
+          <CardMedia className={classes.imageBox}
+                     image={image.image_url}
+                     title={image.copyright}
+          />
+
       </Paper>
 
   )
