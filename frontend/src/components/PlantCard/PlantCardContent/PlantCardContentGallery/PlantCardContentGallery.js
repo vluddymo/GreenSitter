@@ -1,7 +1,5 @@
 import {Box} from "@material-ui/core";
-import React, {useContext} from "react";
-import LoadingSpinner from "../../../Spinner/LoadingSpinner";
-import {PlantStateContext} from "../../../../context/plant/PlantContext";
+import React from "react";
 import GalleryItem from "./GalleryItem";
 import makeStyles from "@material-ui/core/styles/makeStyles";
 
@@ -19,22 +17,17 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function PlantCardContentGallery({images}){
+export default function PlantCardContentGallery({images}) {
 
   const classes = useStyles();
-  const {fetchStatus} = useContext(PlantStateContext);
 
   return (
 
-  <Box className={classes.galleryBox}>
-        {fetchStatus === 'PENDING' && <LoadingSpinner/>}
-        {images.map((image) => (
-            <GalleryItem
-                image={image}
-                key={image.id}/>
-        ))}
+      <Box className={classes.galleryBox}>
+        {images.map((image) => (image != null && <GalleryItem image={image} key={image.id}/>
+          ))}
       </Box>
 
   )
 
- }
+}
