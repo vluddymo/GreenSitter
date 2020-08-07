@@ -15,6 +15,6 @@ export default function PlantDetails() {
         .catch((e) => console.error(e));
   }, [nickName]);
 
-  return <PageContent>{plant && <PlantCard plant={plant}/>}</PageContent>;
+  return <PageContent><>{plant && <PlantCard plant={plant}/>}</></PageContent>;
 
 }

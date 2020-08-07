@@ -1,7 +1,7 @@
 import React from "react";
 import {makeStyles} from "@material-ui/core/styles";
 import Box from "@material-ui/core/Box";
-import PictureBadge from "./PictureBadge/PictureBadge";
+import PlantCardBadge from "./PlantCardBadge/PlantCardBadge";
 import PlantCardHeader from "./PlantCardHeader/PlantCardHeader";
 import PlantCardContent from "./PlantCardContent/PlantCardContent";
 import PlantCardActions from "./PlantCardActions/PlantCardActions";
@@ -25,7 +25,7 @@ export default function PlantCard({plant}) {
 
   return (
       <Box className={classes.plantDetailCard}>
-        <PictureBadge plant={plant}/>
+        <PlantCardBadge plant={plant}/>
         <PlantCardHeader plantNickname={plant.nickName}/>
         <PlantCardContent plant={plant}/>
        <PlantCardActions plantNickname={plant.nickName}/>
