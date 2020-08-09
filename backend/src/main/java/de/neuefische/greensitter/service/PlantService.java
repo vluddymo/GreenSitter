@@ -33,8 +33,8 @@ public class PlantService {
         newPlant.setScientificName(plantData.getScientific_name());
         newPlant.setGenus(plantData.getGenus());
         newPlant.setFamilyCommonName(plantData.getFamily_common_name());
-        newPlant.setImageUrl(imageUtils.uploadTitleImageToCloud(plantData.getImage_url(), choiceData.getNickName()));
-        newPlant.setImages(plantData.getImages());
+        newPlant.setImageUrl(imageUtils.compressAndUploadTitleImageToCloud(plantData.getImage_url(), choiceData.getNickName()));
+        newPlant.setImages(imageUtils.compressAndUploadGalleryImagesToCloud(plantData.getImages(), choiceData.getNickName()));
         newPlant.setWateringStatus(wateringStatus);
         plantDb.save(newPlant);
         return newPlant;
@@ -47,7 +47,7 @@ public class PlantService {
 
     public void deletePlant(String nickName) throws Exception {
        plantDb.deleteById(nickName);
-       imageUtils.deleteTitleImageFromCloud(nickName);
+       imageUtils.deleteImagesFromCloud(nickName);
     }
 
 }
