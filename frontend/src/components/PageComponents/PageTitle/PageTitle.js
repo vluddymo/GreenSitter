@@ -7,11 +7,11 @@ const useStyles = makeStyles((theme) => ({
   container: {
     background: "transparent",
     alignSelf: "center",
-    width: "90%",
+    width: "120%",
     display: "flex",
     justifyContent: "center",
     marginTop: theme.spacing(2.5),
-    marginBottom: theme.spacing(1.5),
+    marginBottom: theme.spacing(2.5),
     borderRadius: 30,
     boxShadow: "-8px -8px 8px #fff inset, 8px 8px 8px rgba(174,170,192,0.4) inset",
 
@@ -21,7 +21,6 @@ const useStyles = makeStyles((theme) => ({
     width: "100%",
     height: 32,
     margin: 16,
-    backgroundColor: theme.palette.primary.main,
     textAlign: "center",
   },
   title: {
