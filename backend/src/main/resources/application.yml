@@ -10,3 +10,6 @@ auth:
 api:
   auth:
     token: xxx
+
+cloudinary:
+  url: placeholder-url

@@ -11,6 +11,7 @@ import de.neuefische.greensitter.model.dtos.LoginData;
 import de.neuefische.greensitter.model.dtos.PlantImages;
 import de.neuefische.greensitter.model.dtos.PlantImagesData;
 import de.neuefische.greensitter.service.DataService;
+import de.neuefische.greensitter.utils.ImageUtils;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +26,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+import java.io.IOException;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -53,6 +55,9 @@ class PlantControllerTest {
 
     @MockBean
     public DataService dataService;
+
+    @MockBean
+    public ImageUtils imageUtils;
 
     @BeforeEach
     public void resetDatabase() {
@@ -112,7 +117,7 @@ class PlantControllerTest {
     }
 
     @Test
-    public void addPlantShouldAddPlant() {
+    public void addPlantShouldAddPlant() throws IOException {
         // GIVEN
 
         String token = loginUser();
@@ -144,12 +149,14 @@ class PlantControllerTest {
         int sensorData = 60;
         when(searchService.getChoiceFromApi("190185")).thenReturn(data);
         when(dataService.mockSensorData()).thenReturn(sensorData);
+        when(imageUtils.compressAndUploadTitleImageToCloud("https://bs.floristic.org/image/o/67cb801e2d4f091d7ae27ad83bc0699207631ead", "dumbo")).thenReturn("mockedUrl");
+        when(imageUtils.compressAndUploadGalleryImagesToCloud(images,plantDto.getNickName())).thenReturn(images);
 
         // WHEN
         ResponseEntity<Plant> putResponse = restTemplate.exchange(url, HttpMethod.PUT, requestEntity, Plant.class);
 
         // THEN
-        Plant expectedPlant = new Plant("dumbo", "Didier's tulip", "Tulipa gesneriana", "Tulipa", "Lily family", "https://bs.floristic.org/image/o/67cb801e2d4f091d7ae27ad83bc0699207631ead", 60, images);
+        Plant expectedPlant = new Plant("dumbo", "Didier's tulip", "Tulipa gesneriana", "Tulipa", "Lily family", "mockedUrl", 60, images);
 
         assertEquals(HttpStatus.OK, putResponse.getStatusCode());
         assertNotNull(putResponse.getBody());
