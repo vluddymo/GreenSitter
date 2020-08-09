@@ -43,7 +43,7 @@ const GreenSitterTheme = createMuiTheme({
       fontFamily: "Arimo",
       color: 'rgba(66,85,66,0.75)',
       fontWeight: "normal",
-      fontSize: "medium"
+      fontSize: "small"
     },
     body2: {
       fontFamily: 'Arimo',

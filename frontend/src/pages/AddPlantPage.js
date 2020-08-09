@@ -24,7 +24,7 @@ export default function AddPlantPage() {
       fetchSearchResults(dispatch, query);
       setSearchResult(results)
     }
-  }, [dispatch, query]);
+  }, [dispatch, query, results]);
 
   useEffect(() => {
     if (addStatus === "SUCCESS") {
