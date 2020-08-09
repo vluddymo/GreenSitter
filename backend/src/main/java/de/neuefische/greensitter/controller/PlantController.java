@@ -9,7 +9,7 @@ import de.neuefische.greensitter.service.PlantService;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
-
+import java.io.IOException;
 import java.util.Optional;
 
 @RequestMapping("api/shelve")
@@ -35,18 +35,10 @@ public class PlantController {
 
 
     @PutMapping
-    public Plant addPlantToShelve(@RequestBody ChosenPlantDto choiceData) {
+    public Plant addPlantToShelve(@RequestBody ChosenPlantDto choiceData) throws IOException {
         ChoiceFetchData plantData = apiSearchService.getChoiceFromApi(choiceData.getChoiceId());
-        Plant plant = new Plant();
-        plant.setNickName(choiceData.getNickName());
-        plant.setCommonName(plantData.getCommon_name());
-        plant.setScientificName(plantData.getScientific_name());
-        plant.setGenus(plantData.getGenus());
-        plant.setFamilyCommonName(plantData.getFamily_common_name());
-        plant.setImageUrl(plantData.getImage_url());
-        plant.setImages(plantData.getImages());
-        plant.setWateringStatus(dataService.mockSensorData());
-        return plantService.addPlant(plant);
+        int wateringStatus = dataService.mockSensorData();
+        return plantService.addPlant(choiceData, plantData, wateringStatus);
     }
 
     @GetMapping("{nickName}")
@@ -59,8 +51,7 @@ public class PlantController {
     }
 
     @DeleteMapping("{nickName}")
-    public void deletePlantByNickname(@PathVariable String nickName){
+    public void deletePlantByNickname(@PathVariable String nickName) throws Exception {
         plantService.deletePlant(nickName);
-
     }
 }
