@@ -8,19 +8,29 @@ import Typography from "@material-ui/core/Typography";
 import TextField from "@material-ui/core/TextField";
 import InputBox from "../components/Containers/InputBox/InputBox";
 import PageContent from "../components/PageComponents/PageContent/PageContent";
+import {PlantStateContext} from "../context/plant/PlantContext";
 
 export default function AddPlantPage() {
 
   const [query, setQuery] = useState("");
+  const [searchResult, setSearchResult] = useState([]);
   const dispatch = useContext(ApiSearchDispatchContext);
   const {results, fetchStatus} = useContext(ApiSearchStateContext);
+  const {addStatus} = useContext(PlantStateContext);
 
 
   useEffect(() => {
     if (query.length > 3) {
-      fetchSearchResults(dispatch, query)
+      fetchSearchResults(dispatch, query);
+      setSearchResult(results)
     }
   }, [dispatch, query]);
+
+  useEffect(() => {
+    if (addStatus === "SUCCESS") {
+      setSearchResult([])
+    }
+  }, [addStatus]);
 
   function handleOnInputChange(event) {
     setQuery(event.target.value);
@@ -39,7 +49,7 @@ export default function AddPlantPage() {
                 onChange={handleOnInputChange}
             />
           </InputBox>
-          {results.map(result => (
+          {searchResult.map(result => (
                   <Grid item xs={10} sm={6} md={4} lg={3} key={result.id}>
                     <SearchResultCard result={result}/>
                   </Grid>
