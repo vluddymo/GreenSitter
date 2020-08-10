@@ -12,10 +12,11 @@ const useStyles = makeStyles({
     '@media (min-width: 426px)': {
       maxWidth: "md",
     },
-    height: "100%",
     alignSelf: "center",
     display: "flex",
-    flexDirection: "column"
+    flexGrow: 1,
+    flexDirection: "column",
+    maxHeight: "max-content"
   }
 });
 

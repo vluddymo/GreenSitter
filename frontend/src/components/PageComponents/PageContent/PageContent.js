@@ -10,6 +10,7 @@ const useStyles = makeStyles({
     width: "100%",
     padding: 0,
     alignContent: "center",
+    overflowY: "scroll",
 
   },
 });

@@ -6,6 +6,8 @@ import makeStyles from "@material-ui/core/styles/makeStyles";
 const useStyles = makeStyles((theme) => ({
   cardHeader: {
     width: "max-content",
+    display: "flex",
+    flexDirection: "row",
     padding: theme.spacing(1),
     alignSelf: "center",
     marginBottom: theme.spacing(1),

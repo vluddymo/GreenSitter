@@ -4,7 +4,7 @@ import {makeStyles} from "@material-ui/core/styles";
 import PlantCardContentGallery from "./PlantCardContentGallery/PlantCardContentGallery";
 import BasicPlantData from "./PlantCardContentEntry/BasicPlantData";
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   detailsContent: {
     display: 'flex',
     width: "90%",
@@ -14,8 +14,10 @@ const useStyles = makeStyles({
     borderRadius: 15,
     flexDirection: "column",
     overflowY: "scroll",
+    alignSelf: "center",
+    marginBottom: theme.spacing(2),
   },
-});
+}));
 
 
 export default function PlantCardContent({plant}) {
