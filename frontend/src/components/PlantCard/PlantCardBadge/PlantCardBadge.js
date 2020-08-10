@@ -8,9 +8,10 @@ const useStyles = makeStyles((theme) => ({
   badge: {
     background: "#f0f0f3",
     boxShadow: "-10px -10px 24px #fff, 10px 10px 24px rgba(174,170,192,0.4), 10px 10px 10px #fff inset, -10px -10px 10px rgba(174,170,192,0.25) inset",
-    width: 200,
+    minWidth: 200,
     height: 200,
-    margin: theme.spacing(3),
+    margin: "auto" ,
+    marginTop: theme.spacing(2),
     flexGrow: 0,
     display: "flex",
     borderRadius: "50%",
