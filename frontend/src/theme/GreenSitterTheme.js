@@ -34,7 +34,7 @@ const GreenSitterTheme = createMuiTheme({
       color: "#006B5F",    },
     h5: {
       fontFamily: 'Arial',
-      fontSize: "0.8rem",
+      fontSize: "0.7rem",
       color: "#006B5F",
       textTransform: "uppercase",
       fontWeight: "normal",

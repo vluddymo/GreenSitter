@@ -13,7 +13,7 @@ const useStyles = makeStyles((theme) => ({
     marginTop: theme.spacing(2.5),
     marginBottom: theme.spacing(2.5),
     borderRadius: 30,
-    boxShadow: "-8px -8px 8px #fff inset, 8px 8px 8px rgba(174,170,192,0.4) inset",
+    boxShadow: "-8px -8px 16px #fff, 8px 8px 16px rgba(174,170,192,0.4)",
 
   },
   pageTitle: {
@@ -38,7 +38,7 @@ export default function PageTitle({title}) {
 
       <Box className={classes.container}>
         <Box className={classes.pageTitle}>
-          <Typography variant={"h3"} className={classes.title}>
+          <Typography variant={"h5"} className={classes.title}>
             {title}
           </Typography>
         </Box>

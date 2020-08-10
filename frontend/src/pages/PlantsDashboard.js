@@ -4,7 +4,6 @@ import {fetchPlants} from "../context/plant/plantActions";
 import {PlantDispatchContext, PlantStateContext} from "../context/plant/PlantContext";
 import Typography from "@material-ui/core/Typography";
 import LoadingSpinner from "../components/Spinner/LoadingSpinner";
-import PageTitle from "../components/PageComponents/PageTitle/PageTitle";
 import PageContent from "../components/PageComponents/PageContent/PageContent";
 import WateringButton from "../components/Buttons/FabButtons/WateringButton";
 import AddingButton from "../components/Buttons/FabButtons/AddingButton";
@@ -25,7 +24,6 @@ export default function PlantsDashboard() {
   return (
 
       <PageContent>
-        <PageTitle title={"My Shelve"}/>
           {plants.map((plant) => (
                 <PlantPreviewCard
                     key={plant.nickName}

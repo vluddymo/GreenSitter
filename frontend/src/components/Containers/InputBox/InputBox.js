@@ -7,6 +7,7 @@ const useStyles = makeStyles((theme) => ({
     background: "transparent",
     padding: theme.spacing(1.5),
     margin: theme.spacing(1),
+    marginTop: theme.spacing(2),
     width: "85%",
     maxWidth: "sm",
     borderRadius: 30,

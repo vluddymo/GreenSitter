@@ -10,21 +10,26 @@ import "fontsource-roboto";
 import AddPlantDialog from "../AddPlantDialog/AddPlantDialog";
 import Button from "@material-ui/core/Button";
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   root: {
     maxWidth: 345,
-    margin: 5,
+    boxShadow: "-8px -8px 16px #fff, 8px 8px 16px rgba(174,170,192,0.4)",
+    borderRadius: 12,
+    backgroundColor: "transparent",
+    margin: theme.spacing(2),
+    padding: theme.spacing(2),
   },
   media: {
     height: 0,
     paddingTop: '56.25%', // 16:9
+    borderRadius: 10,
   },
   header: {
     title: {
       fontSize: 12
     }
   },
-});
+}));
 
 
 export default function SearchResultCard({result}) {
