@@ -12,22 +12,21 @@ const useStyles = makeStyles((theme) => ({
     height: 200,
     margin: theme.spacing(3),
     flexGrow: 0,
-    borderRadius: "50%",
     display: "flex",
-    flexDirection: "column",
+    borderRadius: "50%",
     justifyContent: "center",
     alignSelf: "center",
+    position: "relative",
+    zIndex: 1
   },
   imageBox: {
-    padding: theme.spacing(0),
-    height: "75%",
-    width: "75%",
     borderRadius: "50%",
-    display: "flex",
-    alignSelf: "center",
-    justifyContent: "center",
+    zIndex: 1000,
+    width: 140,
+    height: 140,
+    position: "relative",
     margin: "auto",
-    zIndex: 1
+    marginTop: 15
   },
 }));
 
@@ -37,10 +36,31 @@ export default function PlantCardBadge({plant}) {
 
   return (
       <Paper className={classes.badge}>
-        <WateringStatusCircular wateringStatus={plant.wateringStatus}/>
-          <CardMedia className={classes.imageBox}
-                     image={plant.imageUrl}
-                     title={plant.nickName}/>
+        <div
+            style={{
+              display: "flex",
+              width: "90%",
+              height: "90%",
+              justifyContent: "center",
+              alignSelf: "center"
+
+            }}>
+          <div
+              style={{
+                width: 170,
+                height: 170,
+                alignSelf: "center",
+                justifyContent: "center",
+                alignContent: "center",
+                overflow: "hidden"
+              }}
+          >
+            <CardMedia className={classes.imageBox}
+                       image={plant.imageUrl}
+                       title={plant.nickName}/>
+            <WateringStatusCircular wateringStatus={plant.wateringStatus}/>
+          </div>
+        </div>
       </Paper>
   );
 }
