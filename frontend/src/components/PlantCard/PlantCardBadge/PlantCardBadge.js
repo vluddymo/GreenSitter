@@ -12,7 +12,7 @@ const useStyles = makeStyles((theme) => ({
     height: 200,
     margin: "auto" ,
     marginTop: theme.spacing(2),
-    flexGrow: 0,
+    marginBottom: theme.spacing(2),
     display: "flex",
     borderRadius: "50%",
     justifyContent: "center",

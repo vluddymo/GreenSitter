@@ -77,7 +77,7 @@ export default function PlantPreviewCard({plant}) {
               </Grid>
               <Grid item xs={8} sm={8}>
                 <CardContent className={classes.content}>
-                  <Typography variant="h5" component="p" className={classes.title}>
+                  <Typography variant="h4" component="p" className={classes.title}>
                     {plant.nickName}
                   </Typography>
                   <Typography variant="h6" component="p" className={classes.title}>

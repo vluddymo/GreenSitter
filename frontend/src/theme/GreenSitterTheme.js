@@ -21,17 +21,27 @@ const GreenSitterTheme = createMuiTheme({
   },
 
   typography: {
+    h2: {
+      fontFamily: "Verdana",
+      fontSize: "1.2rem",
+      fontWeight: "normal",
+      letterSpacing: "0.080em",
+      color: "rgb(117,123,116)",
+    },
     h3: {
       fontFamily: "Arial",
       fontSize: "1.2rem",
       fontWeight: "normal",
       textTransform: "uppercase",
-      letterSpacing: "0.090em"
+      letterSpacing: "0.080em",
+      color: "rgb(117,123,116)",
     },
     h4: {
       fontFamily: "Roboto",
-      fontSize: "large",
-      color: "#006B5F",    },
+      textTransform: "uppercase",
+      color: "#006B5F",
+      fontSize: "0.93rem",
+    },
     h5: {
       fontFamily: 'Arial',
       fontSize: "0.7rem",
@@ -40,10 +50,17 @@ const GreenSitterTheme = createMuiTheme({
       fontWeight: "normal",
     },
     h6: {
-      fontFamily: "Arimo",
+      fontFamily: "Roboto",
       color: 'rgba(66,85,66,0.75)',
       fontWeight: "normal",
       fontSize: "small"
+    },
+    subtitle2: {
+      fontFamily: 'Arial',
+      color: '#006B5F',
+      fontWeight: "normal",
+      fontSize: "0.7rem",
+      textTransform: "uppercase",
     },
     body2: {
       fontFamily: 'Arimo',

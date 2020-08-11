@@ -8,6 +8,7 @@ import PageContent from "../components/PageComponents/PageContent/PageContent";
 import WateringButton from "../components/Buttons/FabButtons/WateringButton";
 import AddingButton from "../components/Buttons/FabButtons/AddingButton";
 import ButtonBox from "../components/Buttons/FabButtons/ButtonBox/ButtonBox";
+import PageTitle from "../components/PageComponents/PageTitle/PageTitle";
 
 
 
@@ -22,8 +23,8 @@ export default function PlantsDashboard() {
 
 
   return (
-
       <PageContent>
+        <PageTitle title={"My Shelve"}/>
           {plants.map((plant) => (
                 <PlantPreviewCard
                     key={plant.nickName}

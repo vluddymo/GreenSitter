@@ -8,7 +8,7 @@ const useStyles = makeStyles((theme) => ({
     width: '100%',
     height: 15,
     margin: theme.spacing(0),
-    marginTop: theme.spacing(3),
+    marginTop: theme.spacing(2),
     alignSelf: "flex-end",
   },
 }));

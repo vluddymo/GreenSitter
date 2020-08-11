@@ -71,6 +71,7 @@ export default function AddPlantDialog({open, handleClose, result}) {
                 margin="normal"
                 error={nickName.length < 2}
                 helperText={'min length 2'}
+                spellCheck={false}
             />
           </form>
           {addStatus === 'PENDING' && <SmallLoadingSpinner/>}
