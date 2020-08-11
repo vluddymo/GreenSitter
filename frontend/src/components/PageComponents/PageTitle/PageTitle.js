@@ -19,12 +19,12 @@ const useStyles = makeStyles((theme) => ({
   pageTitle: {
     width: "100%",
     height: 32,
-    margin: 4,
+    margin: 6,
     textAlign: "center",
   },
   title: {
     alignSelf: "center",
-    marginTop: theme.spacing(1),
+    marginTop: theme.spacing(0.6),
   }
 }));
 
