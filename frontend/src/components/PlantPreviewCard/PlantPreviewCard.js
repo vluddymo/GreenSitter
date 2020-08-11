@@ -7,7 +7,7 @@ import Grid from "@material-ui/core/Grid";
 import CardMedia from "@material-ui/core/CardMedia";
 import pottyPlant from "./../../images/pottyPlant.svg"
 import {useHistory} from 'react-router-dom';
-import WateringStatus from "../WateringStatus/WateringStatus";
+import WateringStatusLinear from "../WateringStatus/WateringStatusLinear";
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -75,7 +75,7 @@ export default function PlantPreviewCard({plant}) {
                            title="potty plant"
                            image={plant.imageUrl === "null" ? pottyPlant : plant.imageUrl}/>
               </Grid>
-              <Grid item xs={8} sm={7}>
+              <Grid item xs={8} sm={8}>
                 <CardContent className={classes.content}>
                   <Typography variant="h5" component="p" className={classes.title}>
                     {plant.nickName}
@@ -83,8 +83,8 @@ export default function PlantPreviewCard({plant}) {
                   <Typography variant="h6" component="p" className={classes.title}>
                     {plant.commonName}
                   </Typography>
+                  <WateringStatusLinear wateringStatus={plant.wateringStatus}/>
                 </CardContent>
-                <WateringStatus wateringStatus={plant.wateringStatus}/>
               </Grid>
             </Grid>
           </Card>
