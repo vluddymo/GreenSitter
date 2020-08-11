@@ -4,7 +4,7 @@ import makeStyles from "@material-ui/core/styles/makeStyles";
 
 const useStyles = makeStyles({
   circularStatus: {
-    color: "rgba(68,121,193,0.67)",
+    color: "rgba(40,103,186,0.81)",
     transition: "none",
     zIndex: 10,
     marginTop: -155,
