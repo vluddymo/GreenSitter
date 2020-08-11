@@ -7,7 +7,7 @@ const useStyles = makeStyles((theme) => ({
     boxShadow: "-10px -10px 24px #fff, 10px 10px 24px rgba(174,170,192,0.4), 10px 10px 10px #fff inset, -10px -10px 10px rgba(174,170,192,0.25) inset",
     minWidth: 200,
     height: 200,
-    margin: "auto" ,
+    margin: theme.spacing(2),
     marginTop: theme.spacing(2),
     marginBottom: theme.spacing(2),
     flexGrow: 0,
