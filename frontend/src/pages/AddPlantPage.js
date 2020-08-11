@@ -6,13 +6,15 @@ import {fetchSearchResults} from "../context/apiSearch/apiSearchActions";
 import LoadingSpinner from "../components/Spinner/LoadingSpinner";
 import Typography from "@material-ui/core/Typography";
 import TextField from "@material-ui/core/TextField";
-import InputBox from "../components/Containers/InputBox/InputBox";
 import PageContent from "../components/PageComponents/PageContent/PageContent";
 import {PlantStateContext} from "../context/plant/PlantContext";
+import SearchInputBox from "../components/Containers/InputBox/SearchInputBox";
+import SearchPlantsButton from "../components/Buttons/FabButtons/SearchPlantsButton";
 
 export default function AddPlantPage() {
 
   const [query, setQuery] = useState("");
+  const [input, setInput] = useState("");
   const [searchResult, setSearchResult] = useState([]);
   const dispatch = useContext(ApiSearchDispatchContext);
   const {results, fetchStatus} = useContext(ApiSearchStateContext);
@@ -33,14 +35,14 @@ export default function AddPlantPage() {
   }, [addStatus]);
 
   function handleOnInputChange(event) {
-    setQuery(event.target.value);
+    setInput(event.target.value);
   }
 
 
   return (
       <PageContent>
         <Grid container justify={"center"}>
-          <InputBox>
+          <SearchInputBox>
             <TextField
                 id="Search Input"
                 label="Find your plant"
@@ -48,7 +50,8 @@ export default function AddPlantPage() {
                 multiline
                 onChange={handleOnInputChange}
             />
-          </InputBox>
+          <SearchPlantsButton input={input} setQuery={setQuery} />
+          </SearchInputBox>
           {searchResult.map(result => (
                   <Grid item xs={10} sm={6} md={4} lg={3} key={result.id}>
                     <SearchResultCard result={result}/>
