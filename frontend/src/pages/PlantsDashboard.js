@@ -5,7 +5,6 @@ import {PlantDispatchContext, PlantStateContext} from "../context/plant/PlantCon
 import Typography from "@material-ui/core/Typography";
 import LoadingSpinner from "../components/Spinner/LoadingSpinner";
 import PageContent from "../components/PageComponents/PageContent/PageContent";
-import WateringButton from "../components/Buttons/FabButtons/WateringButton";
 import AddingButton from "../components/Buttons/FabButtons/AddingButton";
 import ButtonBox from "../components/Buttons/FabButtons/ButtonBox/ButtonBox";
 import PageTitle from "../components/PageComponents/PageTitle/PageTitle";
@@ -40,7 +39,6 @@ export default function PlantsDashboard() {
           )}
           <ButtonBox>
             <AddingButton/>
-            <WateringButton/>
           </ButtonBox>
       </PageContent>
   )
