@@ -47,7 +47,7 @@ export default function AddPlantPage() {
                 id="Search Input"
                 label="Find your plant"
                 placeholder="sunflower"
-                multiline
+                multiline={false}
                 onChange={handleOnInputChange}
             />
           <SearchPlantsButton input={input} setQuery={setQuery} />

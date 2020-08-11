@@ -8,7 +8,7 @@ const useStyles = makeStyles({
 
     maxWidth: "80%",
     maxHeight: 50,
-    minHeight: 30,
+    minHeight: 48,
     padding: 5,
     background: "transparent",
     display: "flex",

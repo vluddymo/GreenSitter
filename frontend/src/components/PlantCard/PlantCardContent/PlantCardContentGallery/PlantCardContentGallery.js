@@ -7,7 +7,7 @@ const useStyles = makeStyles((theme) => ({
   galleryBox: {
     background: "transparent",
     width: "100%",
-    height: "min-content",
+    height: "100%",
     margin: theme.spacing(0),
     display: "flex",
     flexDirection: "row",
