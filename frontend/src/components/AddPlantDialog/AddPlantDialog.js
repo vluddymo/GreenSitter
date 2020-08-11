@@ -6,11 +6,11 @@ import DialogTitle from "@material-ui/core/DialogTitle";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import TextField from "@material-ui/core/TextField";
-import LoadingSpinner from "../Spinner/LoadingSpinner";
 import Typography from "@material-ui/core/Typography";
 import DialogActions from "@material-ui/core/DialogActions";
 import Button from "@material-ui/core/Button";
 import {useHistory} from "react-router-dom";
+import SmallLoadingSpinner from "../Spinner/SmallLoadingSpinner";
 
 export default function AddPlantDialog({open, handleClose, result}) {
 
@@ -73,7 +73,7 @@ export default function AddPlantDialog({open, handleClose, result}) {
                 helperText={'min length 2'}
             />
           </form>
-          {addStatus === 'PENDING' && <LoadingSpinner/>}
+          {addStatus === 'PENDING' && <SmallLoadingSpinner/>}
           {addStatus === 'FAILED' && (
               <Typography variant="body1" component="p">
                 That did't seem to work
