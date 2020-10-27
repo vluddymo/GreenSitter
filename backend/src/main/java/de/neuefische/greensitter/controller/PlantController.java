@@ -2,8 +2,8 @@ package de.neuefische.greensitter.controller;
 
 import de.neuefische.greensitter.api.ApiSearchService;
 import de.neuefische.greensitter.api.dtos.ChoiceFetchData;
-import de.neuefische.greensitter.model.dtos.ChosenPlantDto;
 import de.neuefische.greensitter.model.Plant;
+import de.neuefische.greensitter.model.dtos.ChosenPlantDto;
 import de.neuefische.greensitter.service.DataService;
 import de.neuefische.greensitter.service.PlantService;
 import org.springframework.http.HttpStatus;

@@ -36,7 +36,7 @@ export default function PageTitle({title}) {
 
       <Box className={classes.container}>
         <Box className={classes.pageTitle}>
-          <Typography variant={"h2"} className={classes.title} color={"white"}>
+          <Typography variant={"h2"} className={classes.title} color={"primary"}>
             {title}
           </Typography>
         </Box>
