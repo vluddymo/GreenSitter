@@ -3,7 +3,7 @@ import IconButton from "@material-ui/core/IconButton";
 import React from "react";
 import {useHistory} from "react-router";
 
-export default function () {
+export default function HomeIconButton() {
 
       const history = useHistory();
 
