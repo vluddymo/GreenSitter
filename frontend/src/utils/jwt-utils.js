@@ -1,4 +1,5 @@
-const jwtDecode = require('jwt-decode');
+import jwt_decode from "jwt-decode";
+
 
 const key = 'green-sitter-user-token';
 
@@ -25,7 +26,7 @@ export function isJWTTokenValid() {
 
 export function getDecodedJWTToken() {
   const jwtToken = getJWTToken();
-  const decodedToken = jwtDecode(jwtToken);
+  const decodedToken = jwt_decode(jwtToken);
   console.log(decodedToken);
   return decodedToken;
 }
