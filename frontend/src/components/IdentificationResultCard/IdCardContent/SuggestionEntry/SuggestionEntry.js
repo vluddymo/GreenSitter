@@ -4,6 +4,7 @@ import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
 import makeStyles from "@material-ui/core/styles/makeStyles";
 import AddPlantButton from "../../../Buttons/FabButtons/AddPlantButton";
+import ResultDetailsButton from "../../../Buttons/IconButtons/ResultDetailsButton";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -85,8 +86,9 @@ export default function SuggestionEntry({suggestion}) {
                     ))}
                 </ImageList>
             </Box>
-            <Box sx={{display: 'flex', alignItems: 'center', pt: 1, }}>
+            <Box sx={{display: 'flex', alignItems: 'center',justifyContent: 'space-between', pt: 1, }}>
                 <AddPlantButton/>
+                <ResultDetailsButton/>
             </Box>
         </Card>
     );
