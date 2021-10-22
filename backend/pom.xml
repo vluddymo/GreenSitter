@@ -15,7 +15,7 @@
     <description>Project for monitoring indoor plants</description>
 
     <properties>
-        <java.version>16</java.version>
+        <java.version>15</java.version>
     </properties>
 
     <dependencies>
