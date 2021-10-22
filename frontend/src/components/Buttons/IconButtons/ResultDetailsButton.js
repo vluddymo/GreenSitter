@@ -12,6 +12,7 @@ const useStyles = makeStyles((theme) => ({
     detailsBox: {
         display: "flex",
         flexDirection: "row",
+
     },
 }));
 
