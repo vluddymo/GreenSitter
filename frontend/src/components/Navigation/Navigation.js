@@ -10,6 +10,7 @@ import PlantsDashboard from "../../pages/PlantsDashboard";
 import LoginPage from "../../pages/LoginPage";
 import PlantDetails from "../../pages/PlantDetails";
 import makeStyles from "@material-ui/core/styles/makeStyles";
+import IdentificationResults from "../../pages/IdentificationResults";
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -42,6 +43,11 @@ export default function Navigation() {
               <PrivateRoute
                   path="/plant/add"
                   component={AddPlantPage}
+                  exact
+              />
+              <PrivateRoute
+                  path="/plant/add/identification"
+                  component={IdentificationResults}
                   exact
               />
               <PrivateRoute
