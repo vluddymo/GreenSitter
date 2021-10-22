@@ -3,7 +3,6 @@ package de.neuefische.greensitter.api;
 import com.fasterxml.jackson.databind.JsonNode;
 import de.neuefische.greensitter.api.dtos.ChoiceFetchData;
 import de.neuefische.greensitter.api.dtos.TrefleChoiceFetchDto;
-import de.neuefische.greensitter.db.SearchEntryMongoDb;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Value;
@@ -17,12 +16,6 @@ import org.springframework.web.client.RestTemplate;
 
 @Service
 public class ApiSearchService {
-
-    private final SearchEntryMongoDb searchEntryDb;
-
-    public ApiSearchService(SearchEntryMongoDb searchEntryDb) {
-        this.searchEntryDb = searchEntryDb;
-    }
 
     @Value("${api.auth.token}")
     private String token;
@@ -63,9 +56,7 @@ public class ApiSearchService {
         HttpEntity<?> httpEntity = new HttpEntity<Object>(body, header);
         ResponseEntity<JsonNode> responseEntity = restTemplate.exchange(url, HttpMethod.POST, httpEntity, JsonNode.class);
 
-        JsonNode queryData = responseEntity.getBody();
-
-        return queryData;
+        return responseEntity.getBody();
     }
 
     public ChoiceFetchData getChoiceFromApi(String choiceId) {
