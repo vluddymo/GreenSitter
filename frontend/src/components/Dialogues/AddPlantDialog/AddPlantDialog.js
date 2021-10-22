@@ -1,6 +1,6 @@
-import {PlantDispatchContext, PlantStateContext} from "../../context/plant/PlantContext";
+import {PlantDispatchContext, PlantStateContext} from "../../../context/plant/PlantContext";
 import React, {useContext, useEffect, useState} from "react";
-import {addPlant} from "../../context/plant/plantActions";
+import {addPlant} from "../../../context/plant/plantActions";
 import Dialog from "@material-ui/core/Dialog";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import DialogContent from "@material-ui/core/DialogContent";
@@ -10,7 +10,7 @@ import Typography from "@material-ui/core/Typography";
 import DialogActions from "@material-ui/core/DialogActions";
 import Button from "@material-ui/core/Button";
 import {useHistory} from "react-router-dom";
-import SmallLoadingSpinner from "../Spinner/SmallLoadingSpinner";
+import SmallLoadingSpinner from "../../Spinner/SmallLoadingSpinner";
 
 export default function AddPlantDialog({open, handleClose, result}) {
 
