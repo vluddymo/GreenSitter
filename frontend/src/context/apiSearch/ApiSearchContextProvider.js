@@ -8,7 +8,7 @@ export default function ApiSearchContextProvider({children}) {
 
   const [state, dispatch] = useReducer(apiSearchReducer, {
     results: [],
-    fetchStatus: undefined
+    fetchResultsStatus: undefined
   });
 
   return (

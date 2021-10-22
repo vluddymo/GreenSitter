@@ -1,12 +1,15 @@
 package de.neuefische.greensitter.controller;
 
+import com.fasterxml.jackson.databind.JsonNode;
 import de.neuefische.greensitter.api.ApiSearchService;
-import de.neuefische.greensitter.api.dtos.SearchResultData;
+import de.neuefische.greensitter.api.dtos.Base64ImageString;
 import de.neuefische.greensitter.service.PlantService;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.io.IOException;
 
 
 @RestController
@@ -19,8 +22,8 @@ public class ApiSearchController {
         this.searchService = searchService;
     }
 
-    @GetMapping
-    public SearchResultData[] getQueryResults(@RequestParam String query){
-        return searchService.getSearchResults(query);
+    @PostMapping
+    public JsonNode getQueryResults(@RequestBody Base64ImageString imageString) throws IOException {
+        return searchService.getSearchResults(imageString.getBase64String());
     }
 }
