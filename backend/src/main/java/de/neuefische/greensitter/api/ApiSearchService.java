@@ -1,30 +1,71 @@
 package de.neuefische.greensitter.api;
 
+import com.fasterxml.jackson.databind.JsonNode;
 import de.neuefische.greensitter.api.dtos.ChoiceFetchData;
-import de.neuefische.greensitter.api.dtos.SearchResultData;
-import de.neuefische.greensitter.api.dtos.TrefleApiQueryDto;
 import de.neuefische.greensitter.api.dtos.TrefleChoiceFetchDto;
+import de.neuefische.greensitter.db.SearchEntryMongoDb;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+
 @Service
 public class ApiSearchService {
+
+    private final SearchEntryMongoDb searchEntryDb;
+
+    public ApiSearchService(SearchEntryMongoDb searchEntryDb) {
+        this.searchEntryDb = searchEntryDb;
+    }
 
     @Value("${api.auth.token}")
     private String token;
 
-    public SearchResultData[] getSearchResults(String query) {
+    public JsonNode getSearchResults(String imageString) {
 
         RestTemplate restTemplate = new RestTemplate();
-        String url = "https://trefle.io/api/v1/plants/search?token=" + token + "&q=" + query;
+        JSONObject body = new JSONObject();
 
-        ResponseEntity<TrefleApiQueryDto> responseEntity = restTemplate.getForEntity(url, TrefleApiQueryDto.class);
+        // add Api-Key
+        HttpHeaders header = new HttpHeaders();
+        header.add("Content-Type", "application/json");
+        header.add("Api-Key", token);
 
-        TrefleApiQueryDto queryData = responseEntity.getBody();
+        // add Base64ImageString
+        JSONArray images = new JSONArray();
+        images.add(imageString);
+        body.put("images", images);
 
-        return queryData.getData();
+        // add Modifiers
+        JSONArray modifiers = new JSONArray();
+        modifiers.add("similar_images");
+        body.put("modifiers", modifiers);
+
+        // add language
+        body.put("plant_language", "de");
+
+        // add details
+        JSONArray plantDetails = new JSONArray();
+        plantDetails.add("common_names");
+        plantDetails.add("url");
+        plantDetails.add("wiki_description");
+        body.put("plant_details", plantDetails);
+
+
+        String url = "https://api.plant.id/v2/identify";
+
+        HttpEntity<?> httpEntity = new HttpEntity<Object>(body, header);
+        ResponseEntity<JsonNode> responseEntity = restTemplate.exchange(url, HttpMethod.POST, httpEntity, JsonNode.class);
+
+        JsonNode queryData = responseEntity.getBody();
+
+        return queryData;
     }
 
     public ChoiceFetchData getChoiceFromApi(String choiceId) {
