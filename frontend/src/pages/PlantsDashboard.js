@@ -8,38 +8,40 @@ import PageContent from "../components/PageComponents/PageContent/PageContent";
 import AddingButton from "../components/Buttons/FabButtons/AddingButton";
 import ButtonBox from "../components/Buttons/FabButtons/ButtonBox/ButtonBox";
 import PageTitle from "../components/PageComponents/PageTitle/PageTitle";
-
+import {ApiSearchStateContext} from "../context/apiSearch/ApiSearchContext";
+import LoadingDialogue from "../components/Dialogues/LoadingDialogue/LoadingDialogue";
 
 
 export default function PlantsDashboard() {
 
-  const {plants, fetchStatus} = useContext(PlantStateContext);
-  const dispatch = useContext(PlantDispatchContext);
+    const {plants, fetchStatus} = useContext(PlantStateContext);
+    const {fetchResultsStatus} = useContext(ApiSearchStateContext);
+    const dispatch = useContext(PlantDispatchContext);
 
-  useEffect(() => {
-    fetchPlants(dispatch);
-  }, [dispatch]);
+    useEffect(() => {
+        fetchPlants(dispatch);
+    }, [dispatch]);
 
 
-  return (
-      <PageContent>
-        <PageTitle title={"My Shelve"}/>
-          {plants.map((plant) => (
+    return (
+        <PageContent>
+            <PageTitle title={"My Shelve"}/>
+            {plants.map((plant) => (
                 <PlantPreviewCard
                     key={plant.nickName}
                     plant={plant}
                 />
-          ))}
-
-          {fetchStatus === 'PENDING' && <LoadingSpinner/>}
-          {fetchStatus === 'FAILED' && (
-              <Typography variant="body1" color="error" component="p">
-                Fetch Plants failed
-              </Typography>
-          )}
-          <ButtonBox>
-            <AddingButton/>
-          </ButtonBox>
-      </PageContent>
-  )
+            ))}
+            {fetchResultsStatus === 'PENDING' && <LoadingDialogue/>}
+            {fetchStatus === 'PENDING' && <LoadingSpinner/>}
+            {fetchStatus === 'FAILED' && (
+                <Typography variant="body1" color="error" component="p">
+                    Fetch Plants failed
+                </Typography>
+            )}
+            <ButtonBox>
+                <AddingButton/>
+            </ButtonBox>
+        </PageContent>
+    )
 }
