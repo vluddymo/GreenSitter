@@ -4,11 +4,11 @@ import {FETCH_RESULTS, FETCH_RESULTS_FAILED, FETCH_RESULTS_SUCCESS} from "./apiS
 export default function plantReducer(state, action) {
   switch (action.type) {
     case FETCH_RESULTS:
-      return { ...state, fetchStatus: 'PENDING'};
+      return { ...state, fetchResultsStatus: 'PENDING'};
     case FETCH_RESULTS_SUCCESS:
-      return { ...state, fetchStatus: 'SUCCESS', results: action.payload };
+      return { ...state, fetchResultsStatus: 'SUCCESS', results: action.payload };
     case FETCH_RESULTS_FAILED:
-      return { ...state, fetchStatus: 'FAILED' };
+      return { ...state, fetchResultsStatus: 'FAILED' };
     default:
       return state;
   }
