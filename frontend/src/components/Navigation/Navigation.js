@@ -5,7 +5,6 @@ import {LOGIN_SUCCESS, LOGIN_FAILED} from "../../context/user/UserContextProvide
 import {Route, Switch} from "react-router-dom";
 import Container from "@material-ui/core/Container";
 import PrivateRoute from "../../pages/PrivateRoute";
-import AddPlantPage from "../../pages/AddPlantPage";
 import PlantsDashboard from "../../pages/PlantsDashboard";
 import LoginPage from "../../pages/LoginPage";
 import PlantDetails from "../../pages/PlantDetails";
@@ -40,11 +39,6 @@ export default function Navigation() {
   return (
           <Container maxWidth={'md'} component="main" className={classes.container}>
             <Switch>
-              <PrivateRoute
-                  path="/plant/add"
-                  component={AddPlantPage}
-                  exact
-              />
               <PrivateRoute
                   path="/plant/add/identification"
                   component={IdentificationResults}
