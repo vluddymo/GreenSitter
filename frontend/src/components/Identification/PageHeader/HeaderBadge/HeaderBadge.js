@@ -30,7 +30,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export default function IdCardBadge({image}) {
+export default function HeaderBadge({image}) {
 
     const classes = useStyles();
 

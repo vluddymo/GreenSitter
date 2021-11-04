@@ -1,12 +1,11 @@
 import React from "react";
 import {makeStyles} from "@material-ui/core/styles";
 import Box from "@material-ui/core/Box";
-import IdCardBadge from "./IdCardBadge/IdCardBadge";
-import IdCardContent from "./IdCardContent/IdCardContent";
-import IdCardHeader from "./IdCardHeader/IdCardHeader";
+import HeaderBadge from "./HeaderBadge/HeaderBadge";
+import HeaderTitle from "./HeaderTitle/HeaderTitle";
 
 const useStyles = makeStyles({
-    resultCard: {
+    identHeader: {
         width: "90%",
         '@media (min-width: 426px)': {
             maxWidth: "md",
@@ -19,15 +18,14 @@ const useStyles = makeStyles({
 });
 
 
-export default function IdentificationResultCard({results}) {
+export default function IdentificationPageHeader({image}) {
 
     const classes = useStyles();
 
     return (
-        <Box className={classes.resultCard}>
-            <IdCardBadge image={results.images[0].url}/>
-            <IdCardHeader/>
-            <IdCardContent suggestions={results.suggestions}/>
+        <Box className={classes.identHeader}>
+            <HeaderBadge image={image}/>
+            <HeaderTitle/>
         </Box>
     );
 

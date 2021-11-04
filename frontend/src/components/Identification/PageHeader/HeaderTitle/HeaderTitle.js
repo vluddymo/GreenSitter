@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-export default function IdCardHeader() {
+export default function HeaderTitle() {
 
     const classes = useStyles();
 
