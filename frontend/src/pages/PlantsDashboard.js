@@ -28,7 +28,7 @@ export default function PlantsDashboard() {
             <PageTitle title={"My Shelve"}/>
             {plants.map((plant) => (
                 <PlantPreviewCard
-                    key={plant.nickName}
+                    key={plant.id}
                     plant={plant}
                 />
             ))}

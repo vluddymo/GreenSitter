@@ -63,11 +63,11 @@ export default function PlantPreviewCard({plant}) {
 
 
   return (
-      <Grid container justify={"center"} className={classes.container}>
+      <Grid container justifyContent={"center"} className={classes.container}>
         <Grid item xs={9} sm={10} className={classes.item}>
           <Card className={classes.root}
-                key={plant.nickName}
-                onClick={() => history.push(`/plant/${plant.nickName}`)}
+                key={plant.id}
+                onClick={() => history.push(`/plant/${plant.id}`)}
           >
             <Grid container>
               <Grid item xs={4} lg={5}>
@@ -77,11 +77,11 @@ export default function PlantPreviewCard({plant}) {
               </Grid>
               <Grid item xs={8} sm={8}>
                 <CardContent className={classes.content}>
-                  <Typography variant="h4" component="p" className={classes.title}>
-                    {plant.nickName}
+                  <Typography variant="h5" component="p" className={classes.title}>
+                    {plant.plantName}
                   </Typography>
                   <Typography variant="h6" component="p" className={classes.title}>
-                    {plant.commonName}
+                    {plant.commonNames[0]}
                   </Typography>
                   <WateringStatusLinear wateringStatus={plant.wateringStatus}/>
                 </CardContent>
