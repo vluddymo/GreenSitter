@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-export default function PlantCardHeader({plantNickname}) {
+export default function PlantCardHeader({plantName}) {
 
   const classes = useStyles();
 
@@ -24,7 +24,7 @@ export default function PlantCardHeader({plantNickname}) {
           className={classes.cardHeader}
           title={
             <Typography variant={"h3"} color={"secondary"}>
-              {plantNickname}
+              {plantName}
             </Typography>
           }
       />

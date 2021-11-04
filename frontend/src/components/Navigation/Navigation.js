@@ -45,7 +45,7 @@ export default function Navigation() {
                   exact
               />
               <PrivateRoute
-                  path="/plant/:nickName"
+                  path="/plant/:id"
                   component={PlantDetails}
                   exact
               />

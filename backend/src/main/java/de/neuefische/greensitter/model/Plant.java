@@ -1,6 +1,7 @@
 package de.neuefische.greensitter.model;
 
 import de.neuefische.greensitter.model.dtos.PlantImages;
+import de.neuefische.greensitter.model.dtos.WikiData;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -14,13 +15,12 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class Plant {
 
     @Id
-    private String nickName;
-    private String commonName;
-    private String scientificName;
-    private String genus;
-    private String familyCommonName;
+    private String id;
+    private String plantName;
+    private String[] commonNames;
+    private WikiData wikiData;
     private String imageUrl;
+    private PlantImages[] images;
     private int wateringStatus;
-    private PlantImages images;
 
 }

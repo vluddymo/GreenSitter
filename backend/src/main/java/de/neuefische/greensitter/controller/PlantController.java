@@ -35,23 +35,24 @@ public class PlantController {
 
 
     @PutMapping
-    public Plant addPlantToShelve(@RequestBody ChosenPlantDto choiceData) throws IOException {
-        ChoiceFetchData plantData = apiSearchService.getChoiceFromApi(choiceData.getChoiceId());
+    public Plant addPlantToShelve(@RequestBody ChosenPlantDto choiceData){
         int wateringStatus = dataService.mockSensorData();
-        return plantService.addPlant(choiceData, plantData, wateringStatus);
+        return plantService.addPlant(choiceData, wateringStatus);
     }
 
-    @GetMapping("{nickName}")
-    public Plant getPlantByNickname(@PathVariable String nickName) {
-        Optional<Plant> plantOptional = plantService.getPlant(nickName);
+    @GetMapping("{id}")
+    public Plant getPlantById(@PathVariable String id) {
+        Optional<Plant> plantOptional = plantService.getPlant(id);
         if (plantOptional.isPresent()) {
             return plantOptional.get();
         }
-        throw new ResponseStatusException(HttpStatus.NOT_FOUND, "I'm sorry, you don't have a plant with the nickname " + nickName + " yet");
+        else {
+            throw  new ResponseStatusException(HttpStatus.NOT_FOUND, "I'm sorry, you don't have a plant with the id " + id + " yet");
+        }
     }
 
-    @DeleteMapping("{nickName}")
-    public void deletePlantByNickname(@PathVariable String nickName) throws Exception {
-        plantService.deletePlant(nickName);
+    @DeleteMapping("{id}")
+    public void deletePlantByNickname(@PathVariable String id){
+        plantService.deletePlant(id);
     }
 }

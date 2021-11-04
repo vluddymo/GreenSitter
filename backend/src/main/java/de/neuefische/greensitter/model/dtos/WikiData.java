@@ -1,6 +1,5 @@
 package de.neuefische.greensitter.model.dtos;
 
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -8,8 +7,8 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class PlantImages {
+public class WikiData {
 
-    private String id;
-    private String url;
+    private String wikiLink;
+    private String wikiDescription;
 }

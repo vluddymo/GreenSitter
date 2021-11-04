@@ -1,7 +1,13 @@
 import Fab from "@material-ui/core/Fab";
-import React from "react";
+import React, {useContext, useEffect} from "react";
 import AddIcon from "@material-ui/icons/Add";
 import makeStyles from "@material-ui/core/styles/makeStyles";
+import {addPlant} from "../../../context/plant/plantActions";
+import {PlantDispatchContext, PlantStateContext} from "../../../context/plant/PlantContext";
+import {useHistory} from "react-router-dom";
+import LoadingDialogue from "../../Dialogues/LoadingDialogue/LoadingDialogue";
+import {ApiSearchStateContext} from "../../../context/apiSearch/ApiSearchContext";
+
 
 const useStyles = makeStyles((theme) => ({
   searchButton: {
@@ -15,9 +21,37 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-export default function AddPlantButton({handleSubmit}) {
+export default function AddPlantButton({suggestion}) {
 
   const classes = useStyles();
+  const history = useHistory();
+  const {results} = useContext(ApiSearchStateContext);
+  const dispatch = useContext(PlantDispatchContext);
+  const {addStatus} = useContext(PlantStateContext);
+
+
+    useEffect(() => {
+        if (addStatus === 'SUCCESS'){
+            history.push("/");
+        }
+    }, [addStatus, history]);
+
+    function buildDataPackage(){
+        return {
+            plantName: `${suggestion.plant_name}`,
+            imageUrl: `${results.images[0].url}`,
+            wikiData: {
+                wikiLink: `${suggestion.plant_details.url}`,
+                wikiDescription: `${suggestion.plant_details.wiki_description.value}`
+            },
+            commonNames: suggestion.plant_details.common_names,
+            images: suggestion.similar_images
+        }
+    }
+
+    function handleSubmit(){
+        addPlant(dispatch,buildDataPackage())
+    }
 
   return (
 
@@ -30,6 +64,7 @@ export default function AddPlantButton({handleSubmit}) {
         >
           <AddIcon/>
         </Fab>
+          {addStatus === 'PENDING' && <LoadingDialogue/>}
       </div>
 
   )

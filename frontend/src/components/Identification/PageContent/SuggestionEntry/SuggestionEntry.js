@@ -63,7 +63,7 @@ export default function SuggestionEntry({suggestion}) {
                         <Box className={classes.probability}>
                             <Typography>{prob}</Typography>
                         </Box>
-                        <Typography component="div" variant="title">
+                        <Typography component="div" variant="subtitle1">
                             {suggestion.plant_name}
                         </Typography>
                     </Box>
@@ -87,7 +87,7 @@ export default function SuggestionEntry({suggestion}) {
                 </ImageList>
             </Box>
             <Box sx={{display: 'flex', alignItems: 'center',justifyContent: 'space-between', pt: 1, }}>
-                <AddPlantButton/>
+                <AddPlantButton suggestion={suggestion}/>
                 <ResultDetailsButton/>
             </Box>
         </Card>

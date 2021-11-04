@@ -1,6 +1,6 @@
 package de.neuefische.greensitter.service;
 
-import de.neuefische.greensitter.api.dtos.ChoiceFetchData;
+import com.fasterxml.jackson.databind.JsonNode;
 import de.neuefische.greensitter.db.PlantMongoDb;
 import de.neuefische.greensitter.model.Plant;
 import de.neuefische.greensitter.model.dtos.ChosenPlantDto;
@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.io.IOException;
 import java.util.Optional;
+import java.util.UUID;
+
 
 @Service
 public class PlantService {
@@ -26,28 +28,26 @@ public class PlantService {
         return plantDb.findAll();
     }
 
-    public Plant addPlant(ChosenPlantDto choiceData, ChoiceFetchData plantData, int wateringStatus) throws IOException {
+    public Plant addPlant(ChosenPlantDto choiceData, int wateringStatus){
         Plant newPlant = new Plant();
-        newPlant.setNickName(choiceData.getNickName());
-        newPlant.setCommonName(plantData.getCommon_name());
-        newPlant.setScientificName(plantData.getScientific_name());
-        newPlant.setGenus(plantData.getGenus());
-        newPlant.setFamilyCommonName(plantData.getFamily_common_name());
-        newPlant.setImageUrl(imageUtils.compressAndUploadTitleImageToCloud(plantData.getImage_url(), choiceData.getNickName()));
-        newPlant.setImages(imageUtils.compressAndUploadGalleryImagesToCloud(plantData.getImages(), choiceData.getNickName()));
+        newPlant.setPlantName(choiceData.getPlantName());
+        newPlant.setImageUrl(choiceData.getImageUrl());
+        newPlant.setWikiData(choiceData.getWikiData());
+        newPlant.setCommonNames(choiceData.getCommonNames());
+        newPlant.setImages(choiceData.getImages());
+        newPlant.setId(UUID.randomUUID().toString());
         newPlant.setWateringStatus(wateringStatus);
         plantDb.save(newPlant);
         return newPlant;
     }
 
 
-    public Optional<Plant> getPlant(String nickName) {
-        return plantDb.findById(nickName);
+    public Optional<Plant> getPlant(String id) {
+        return plantDb.findById(id);
     }
 
-    public void deletePlant(String nickName) throws Exception {
-       plantDb.deleteById(nickName);
-       imageUtils.deleteImagesFromCloud(nickName);
+    public void deletePlant(String id){
+       plantDb.deleteById(id);
     }
 
 }
