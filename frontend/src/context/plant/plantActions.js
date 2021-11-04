@@ -23,21 +23,21 @@ export async function fetchPlants(dispatch) {
   }
 }
 
-export async function addPlant(dispatch, choiceData) {
+export async function addPlant(dispatch, plantData) {
   dispatch({ type: ADD_PLANT });
   try {
-    const plant = await putAPlant(choiceData);
+    const plant = await putAPlant(plantData);
     dispatch({ type: ADD_PLANT_SUCCESS, payload: plant });
   } catch (error) {
     dispatch({ type: ADD_PLANT_FAILED, payload: error });
   }
 }
 
-export async function removePlant(dispatch, nickName) {
+export async function removePlant(dispatch, id) {
   dispatch({ type: DELETE_PLANT });
   try {
-    await removeAPlant(nickName);
-    dispatch({ type: DELETE_PLANT_SUCCESS, payload: nickName });
+    await removeAPlant(id);
+    dispatch({ type: DELETE_PLANT_SUCCESS, payload: id });
   } catch (error) {
     dispatch({ type: DELETE_PLANT_FAILED });
   }
