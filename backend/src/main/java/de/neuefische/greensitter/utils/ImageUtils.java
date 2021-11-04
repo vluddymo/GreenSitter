@@ -17,7 +17,7 @@ public class ImageUtils {
     @Value("${cloudinary.url}")
     private String cloudinaryUrl;
 
-    public String compressAndUploadTitleImageToCloud(String originalImageUrl, String nickName) throws IOException {
+  /*   public String compressAndUploadTitleImageToCloud(String originalImageUrl, String nickName) throws IOException {
 
         String[] options = new String[1];
         options[0] = nickName;
@@ -38,19 +38,19 @@ public class ImageUtils {
     }
 
 
-    public PlantImages compressAndUploadGalleryImagesToCloud(PlantImages originalImages, String nickName){
+   public PlantImages compressAndUploadGalleryImagesToCloud(PlantImages originalImages, String nickName){
 
         PlantImagesData[] flower = originalImages.getFlower();
-       /* PlantImagesData[] leaf = originalImages.getFlower();
+        PlantImagesData[] leaf = originalImages.getFlower();
         PlantImagesData[] habit = originalImages.getHabit();
         PlantImagesData[] fruit = originalImages.getFruit();
         PlantImagesData[] bark = originalImages.getBark();
-        PlantImagesData[] other = originalImages.getOther(); */
+        PlantImagesData[] other = originalImages.getOther();
 
         if (originalImages.getFlower().length > 0) {
         originalImages.setFlower(updateImageUrl(nickName, flower));
         }
-        /*
+
         if (originalImages.getLeaf().length > 0) {
         originalImages.setFlower(updateImageUrl(nickName, leaf));
         }
@@ -65,10 +65,12 @@ public class ImageUtils {
         }
         if (originalImages.getFlower().length > 0) {
         originalImages.setOther(updateImageUrl(nickName, other));
-        } */
+        }
 
         return originalImages;
     }
+
+
 
     public PlantImagesData[] updateImageUrl(String nickName, PlantImagesData[] galleryPart){
 
@@ -83,9 +85,12 @@ public class ImageUtils {
         return galleryPart;
     }
 
+
     public void deleteImagesFromCloud(String nickName) throws Exception {
         Cloudinary cloudinary = new Cloudinary(cloudinaryUrl);
         cloudinary.api().deleteResourcesByTag(nickName, ObjectUtils.emptyMap());
     }
 
+}
+*/
 }
