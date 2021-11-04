@@ -3,12 +3,12 @@ import ButtonBox from "../../Buttons/FabButtons/ButtonBox/ButtonBox";
 import React from "react";
 
 
-export default function PlantCardActions({plantNickname}) {
+export default function PlantCardActions({plantId}) {
 
   return (
 
       <ButtonBox>
-        <DeletingPlantButton plantNickname={plantNickname}/>
+        <DeletingPlantButton plantId={plantId}/>
       </ButtonBox>
 
   )

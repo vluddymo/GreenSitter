@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 
-export default function DeletingPlantButton({plantNickname}) {
+export default function DeletingPlantButton({plantId}) {
 
   const classes = useStyles();
   const history = useHistory();
@@ -22,7 +22,7 @@ export default function DeletingPlantButton({plantNickname}) {
 
   function handleClick(event) {
     event.stopPropagation();
-    removePlant(dispatch, plantNickname)
+    removePlant(dispatch, plantId)
         .then(() => (history.push("/")));
   }
 

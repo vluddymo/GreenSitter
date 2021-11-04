@@ -19,7 +19,7 @@ export default function WateringStatusCircular({wateringStatus}) {
   const classes = useStyles()
 
   return <CircularProgress
-      variant="static"
+      variant="determinate"
       value={wateringStatus}
       className={classes.circularStatus}
       size={170}

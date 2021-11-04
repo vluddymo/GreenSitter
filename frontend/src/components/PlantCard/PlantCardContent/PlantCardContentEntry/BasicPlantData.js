@@ -1,16 +1,21 @@
-import PlantCardContentEntry from "./PlantCardContentEntry";
+import CommonNamesEntry from "./DataEntries/CommonNamesEntry";
 import React from "react";
+import WikiDescriptionEntry from "./DataEntries/WikiDescriptionEntry";
+import WikiLinkEntry from "./DataEntries/WikiLinkEntry";
 
 
 export default function BasicPlantData({plant}) {
 
+    function fuseCommonNames() {
+        const commonNames = plant.commonNames;
+        return commonNames.join(" | ");
+    }
 
-  return (
-      <>
-        <PlantCardContentEntry plantAttribute={plant.commonName} title={"Common Name"}/>
-        <PlantCardContentEntry plantAttribute={plant.scientificName} title={"Scientific Name"}/>
-        <PlantCardContentEntry plantAttribute={plant.genus} title={"Genus"}/>
-        <PlantCardContentEntry plantAttribute={plant.familyCommonName} title={"Family"}/>
-      </>
-  )
+    return (
+        <>
+            <CommonNamesEntry commonNames={fuseCommonNames()}/>
+            <WikiDescriptionEntry description={plant.wikiData.wikiDescription}/>
+            <WikiLinkEntry link={plant.wikiData.wikiLink}/>
+        </>
+    )
 }

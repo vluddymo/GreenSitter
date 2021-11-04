@@ -26,9 +26,9 @@ export default function PlantCard({plant}) {
   return (
           <Box className={classes.plantDetailCard}>
             <PlantCardBadge plant={plant}/>
-            <PlantCardHeader plantNickname={plant.nickName}/>
+            <PlantCardHeader plantName={plant.plantName}/>
             <PlantCardContent plant={plant}/>
-            <PlantCardActions plantNickname={plant.nickName}/>
+            <PlantCardActions plantId={plant.id}/>
           </Box>
   );
 

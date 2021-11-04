@@ -51,8 +51,8 @@ export default function PlantCardContent({plant}) {
           {showData === "basic" &&
           <BasicPlantData plant={plant}/>
           }
-          {showData === "gallery" && plant.images.flower != null &&
-          <PlantCardContentGallery images={plant.images.flower}/>
+          {showData === "gallery" && plant.images != null &&
+          <PlantCardContentGallery images={plant.images}/>
           }
         </CardContent>
         <Box className={classes.options}>

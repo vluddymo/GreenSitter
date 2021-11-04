@@ -1,15 +1,15 @@
 import Typography from "@material-ui/core/Typography";
 import React from "react";
 
-export default function PlantCardContentEntry({plantAttribute, title}) {
+export default function CommonNamesEntry({commonNames}) {
 
 return (
 
-  plantAttribute != null &&
+  commonNames != null &&
           <>
-            <Typography variant={"overline"} component={"p"}>{title}</Typography>
+            <Typography variant={"overline"} component={"p"}>Synonyme</Typography>
             <Typography variant="h5" component="p" gutterBottom={true}>
-              {plantAttribute}
+              {commonNames}
             </Typography>
           </>
 
