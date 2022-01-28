@@ -51,7 +51,10 @@ const useStyles = makeStyles((theme) => ({
     paddingTop: '105%',
   },
   title: {
-    height: "1%",
+    fontSize: 10,
+    '@media (min-width: 599px)': {
+      fontSize: "unset",
+    },
   },
 }));
 
@@ -70,12 +73,12 @@ export default function PlantPreviewCard({plant}) {
                 onClick={() => history.push(`/plant/${plant.id}`)}
           >
             <Grid container>
-              <Grid item xs={4} lg={5}>
+              <Grid item xs={4} md={5} lg={6}>
                 <CardMedia className={classes.cover}
                            title="potty plant"
                            image={plant.imageUrl === "null" ? pottyPlant : plant.imageUrl}/>
               </Grid>
-              <Grid item xs={8} sm={8}>
+              <Grid item xs={8} md={7} lg={6}>
                 <CardContent className={classes.content}>
                   <Typography variant="h5" component="p" className={classes.title}>
                     {plant.plantName}
