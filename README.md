@@ -1,3 +1,19 @@
+# GreenSitter
+
+GreenSitter is my first capstone project. The idea for it came to me when a friend of me forgot how to water my plants when I went on vacation.
+The vision of this app is to connect it to a watering system at home. This way you can monitor your plant status and take care of them from everywhere with an internet connection.
+
+## Adding new plants
+
+The adding feature works through the implementation of the plant.id API. Take a picture of your new plant and let it be automatically recognizend by the out of the box AI. A set of useful data like images and wiki descriptions comes with the result. 
+
+
+## Disclaimer
+So far the project is on pause. The device is yet to be build and programmed. First IoT connection experiments have been successfull though :)
+
+
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
